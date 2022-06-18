@@ -20,7 +20,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonpassword"
-        android:layout_width="264dp"
+        android:layout_width="280dp"
         android:layout_height="60dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/transparent_button"
@@ -64,14 +64,14 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.829"
+            app:layout_constraintHorizontal_bias="0.736"
             app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonuser"
-        android:layout_width="264dp"
+        android:layout_width="280dp"
         android:layout_height="60dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/transparent_button"
@@ -114,7 +114,7 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.829"
+            app:layout_constraintHorizontal_bias="0.718"
             app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -123,7 +123,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="88dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_regular"
         android:text="Aún no tienes cuenta?"
@@ -148,7 +148,7 @@
     <Button
         android:id="@+id/bt_login"
         style="@android:style/Widget.Button"
-        android:layout_width="264dp"
+        android:layout_width="280dp"
         android:layout_height="60dp"
         android:layout_marginTop="76dp"
         android:background="@drawable/white_button"
