@@ -28,6 +28,7 @@ public class PrincipalPage extends AppCompatActivity {
 
 
         al = new ArrayList<>();
+
         al.add("Jeff, 19");
         al.add("Miguel, 25");
         al.add("Carlos, 25");
@@ -37,7 +38,9 @@ public class PrincipalPage extends AppCompatActivity {
         al.add("Martin, 20");
         al.add("javascript");
 
+
         arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.name, al );
+
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
         flingContainer.setAdapter(arrayAdapter);
@@ -66,7 +69,7 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
                 // Ask for more data here
-                al.add("XML ".concat(String.valueOf(i)));
+                al.add("Name ".concat(String.valueOf(i)));
                 arrayAdapter.notifyDataSetChanged();
                 Log.d("LIST", "notified");
                 i++;

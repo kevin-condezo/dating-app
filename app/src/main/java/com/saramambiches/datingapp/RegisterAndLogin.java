@@ -12,26 +12,25 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class RegisterAndLogin extends AppCompatActivity {
-    Button btlogin;
-    TextView btredirect;
+    Button btlogin, btregister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_and_login);
 
 
-        btredirect=(TextView)findViewById(R.id.bt_redirect);
         btlogin= (Button) findViewById(R.id.bt_login);
+        btregister= (Button) findViewById(R.id.bt_register);
 
         btlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(RegisterAndLogin.this, PrincipalPage.class);
+                Intent i = new Intent(RegisterAndLogin.this, LoginPage.class);
                 startActivity(i);
                 finish();
             }
         });
-        btredirect.setOnClickListener(new View.OnClickListener() {
+        btregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(RegisterAndLogin.this, RegisterPage.class);
