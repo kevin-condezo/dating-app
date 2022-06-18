@@ -60,7 +60,7 @@ public class PrincipalPage extends AppCompatActivity {
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                Toast.makeText(PrincipalPage.this, "Like", Toast.LENGTH_SHORT).show();Toast.makeText(PrincipalPage.this, "left", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PrincipalPage.this, "Like", Toast.LENGTH_SHORT).show();
             }
 
             @Override
