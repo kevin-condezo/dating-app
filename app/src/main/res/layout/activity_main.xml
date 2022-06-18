@@ -8,7 +8,7 @@
     android:background="#FFFFFF"
     android:backgroundTint="#FFFFFF"
     tools:context=".MainActivity">
-
+   //Logo Image
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"

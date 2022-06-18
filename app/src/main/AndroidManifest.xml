@@ -14,6 +14,15 @@
         android:theme="@style/Theme.DatingApp"
         tools:targetApi="31">
         <activity
+            android:name=".RegisterPage"
+            android:exported="false" />
+        <activity
+            android:name=".PrincipalPage"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterAndLogin"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
