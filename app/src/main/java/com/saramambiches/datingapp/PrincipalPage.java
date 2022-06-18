@@ -28,16 +28,16 @@ public class PrincipalPage extends AppCompatActivity {
 
 
         al = new ArrayList<>();
-        al.add("php");
-        al.add("c");
-        al.add("python");
-        al.add("java");
-        al.add("html");
-        al.add("c++");
-        al.add("css");
+        al.add("Carlos, 25");
+        al.add("Miguel, 25");
+        al.add("Jeff, 19");
+        al.add("Gibran, 21");
+        al.add("Kevin, 25");
+        al.add("Albert, 21");
+        al.add("Martin, 20");
         al.add("javascript");
 
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.name, al );
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
         flingContainer.setAdapter(arrayAdapter);
