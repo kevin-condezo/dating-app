@@ -11,7 +11,7 @@
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="166dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="88dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,38 +121,13 @@
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/quicksand_regular"
-        android:text="Aún no tienes cuenta?"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_login_f" />
-
-    <TextView
-        android:id="@+id/text_redirect_r"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:clickable="false"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="  Registrarme"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/bt_login_f" />
 
     <Button
         android:id="@+id/bt_login_f"
         style="@android:style/Widget.Button"
         android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="76dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/white_button"
         android:fontFamily="@font/quicksand_bold"
         android:text="Login"
@@ -160,9 +135,39 @@
         android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonpassword"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_login_f">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="Aún no tienes cuenta?"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_redirect_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:clickable="false"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="  Registrarme"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

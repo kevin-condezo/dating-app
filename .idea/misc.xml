@@ -4,8 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable-v24/blue_button.xml" value="0.124" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable-v24/pink_button.xml" value="0.124" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable-v24/purple_button.xml" value="0.124" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/background_gradient.xml" value="0.206" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/transparent_button.xml" value="0.124" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_login_page.xml" value="0.2" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.536" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_and_login.xml" value="0.22418478260869565" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_principal_page.xml" value="0.1" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_and_login.xml" value="0.2" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_page.xml" value="0.17617753623188406" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item.xml" value="0.1" />
       </map>
     </option>
   </component>
