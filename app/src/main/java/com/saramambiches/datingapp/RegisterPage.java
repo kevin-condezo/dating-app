@@ -9,9 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class RegisterPage extends AppCompatActivity {
     Button btregisterf;
+    FloatingActionButton btFB, btGOOGLE;
     TextView btredirectl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,8 @@ public class RegisterPage extends AppCompatActivity {
         setContentView(R.layout.activity_register_page);
         btregisterf= (Button) findViewById(R.id.bt_register_f);
         btredirectl=(TextView) findViewById(R.id.text_redirect_l);
+        btFB=(FloatingActionButton) findViewById(R.id.bt_fb);
+        btGOOGLE=(FloatingActionButton) findViewById(R.id.bt_google);
 
         btregisterf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +44,18 @@ public class RegisterPage extends AppCompatActivity {
             }
         });
 
+        btFB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(RegisterPage.this,"Aqui redirecciona a Facebook",Toast.LENGTH_LONG).show();
+            }
+        });
+        btGOOGLE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(RegisterPage.this,"Aqui redirecciona a google",Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

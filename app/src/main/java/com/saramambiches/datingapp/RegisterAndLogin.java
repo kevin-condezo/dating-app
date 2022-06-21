@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterAndLogin extends AppCompatActivity {
-    Button btlogin, btregister;
+    Button btlogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +31,11 @@ public class RegisterAndLogin extends AppCompatActivity {
         slideModels.add(new SlideModel(R.drawable.im1));
         slideModels.add(new SlideModel(R.drawable.im2));
         slideModels.add(new SlideModel(R.drawable.im3));
-        slideModels.add(new SlideModel(R.drawable.im4));
-        slideModels.add(new SlideModel(R.drawable.im5));
-        slideModels.add(new SlideModel(R.drawable.im6));
 
         Imagenes.setImageList(slideModels, true);
 
 
         btlogin= (Button) findViewById(R.id.bt_login);
-        btregister= (Button) findViewById(R.id.bt_register);
 
         btlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,14 +45,7 @@ public class RegisterAndLogin extends AppCompatActivity {
                 finish();
             }
         });
-        btregister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(RegisterAndLogin.this, RegisterPage.class);
-                startActivity(i);
-                finish();
-            }
-        });
+
     }
 
 }

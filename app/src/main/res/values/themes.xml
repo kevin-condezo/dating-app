@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.DatingApp" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorPrimary">@color/pat1</item>
+        <item name="colorPrimaryDark">@color/pat1</item>
+        <item name="colorAccent">@color/pat1</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

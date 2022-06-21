@@ -6,23 +6,19 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:clipToPadding="false"
-    android:outlineProvider="bounds"
-    android:paddingLeft="40sp"
-    android:paddingTop="20sp"
-    android:paddingRight="40sp"
-    android:paddingBottom="20sp">
+    android:outlineProvider="bounds">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
         android:layout_gravity="center"
         android:elevation="2dp"
         app:cardCornerRadius="10dp">
 
         <FrameLayout
-            android:layout_width="370dp"
-            android:layout_height="500dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center">
 
             <ImageView

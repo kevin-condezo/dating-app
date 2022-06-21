@@ -1,3 +1,33 @@
 <resources>
+    <!--Nombre de la App-->
     <string name="app_name">Fiu Fiu</string>
+
+    <!--Botones-->
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
+
+    <!--Avisos-->
+    <string name="m1">Si también deslizan el dedo a la derecha, !Es un match!</string>
+    <string name="m2">Unete a nosotros y socializa con miles de personas</string>
+    <string name="no_login">¿Aún no tienes una cuenta?</string>
+    <string name="no_register">¿Ya tienes una cuenta?</string>
+    <string name="cc_register">Registrarme</string>
+    <string name="cc_login">Loguearme</string>
+    <string name="or_signup">Or Signup with</string>
+    <string name="or_signin">Or Signin with</string>
+
+    <!--Registro y Login de Usuarios-->
+    <string name="name">Nombre</string>
+    <string name="email">Correo Electronico</string>
+    <string name="password">Contraseña</string>
+    <string name="repeat_password">Repite tu contraseña</string>
+
+    <!--Colores Usados-->
+    <color name="pat1">#9751ff</color>
+    <color name="pat2">#F545FF</color>
+    <color name="pat3">#B13FE8</color>
+    <color name="pat4">#543FE8</color>
+    <color name="pat5">#455FFF</color>
+    <color name="PlomoApp">#70717b</color>
+    <color name="NegroApp">#2E2828</color>
 </resources>
