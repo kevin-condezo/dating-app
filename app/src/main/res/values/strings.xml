@@ -15,6 +15,8 @@
     <string name="cc_login">Loguearme</string>
     <string name="or_signup">Or Signup with</string>
     <string name="or_signin">Or Signin with</string>
+    <string name="subtitle">Ingresa tus datos correctamente</string>
+    <string name="welcome">COMENZEMOS</string>
 
     <!--Registro y Login de Usuarios-->
     <string name="name">Nombre</string>

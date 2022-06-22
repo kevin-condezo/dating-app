@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PrincipalPage">
-    <!--Bloque Total superior-->
+    <!--Bloque Superior-->
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -70,13 +70,13 @@
         android:layout_height="match_parent"
         android:gravity="bottom|center"
         android:orientation="horizontal">
-
+        <!--Barra de botones-->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:gravity="center"
             android:orientation="horizontal">
-
+            <!--Button back-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,6 +88,7 @@
                 app:rippleColor="@null"
                 app:backgroundTint="@color/white"
                 app:fabSize="mini"/>
+            <!--Button x-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,6 +100,7 @@
                 app:rippleColor="@null"
                 app:backgroundTint="@color/white"
                 app:fabSize="normal"/>
+            <!--Button star-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,6 +112,7 @@
                 app:rippleColor="@null"
                 app:backgroundTint="@color/white"
                 app:fabSize="mini"/>
+            <!--Button heart-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,6 +123,7 @@
                 app:rippleColor="@null"
                 app:backgroundTint="@color/white"
                 app:fabSize="normal"/>
+            <!--Button flash-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
