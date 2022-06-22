@@ -21,8 +21,9 @@
 
     <!--Bloque Medio-->
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/block_medio"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_below="@+id/bottom_navigation">
@@ -36,9 +37,11 @@
 
     <!--Bloque Inferior-->
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/block_inferior"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom|center"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:padding="10dp">
         <!--Barra de botones-->
@@ -69,7 +72,6 @@
                 android:clickable="true"
                 android:focusable="true"
                 app:srcCompat="@drawable/ic_x"
-                app:maxImageSize="38dp"
                 app:rippleColor="@null"
                 app:backgroundTint="@color/white"
                 app:fabSize="normal"/>
