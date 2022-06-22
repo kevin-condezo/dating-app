@@ -29,10 +29,12 @@ public class Profile extends AppCompatActivity {
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(),PrincipalPage.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.nav_sms:
                         startActivity(new Intent(getApplicationContext(),Messages.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.nav_user:
                         return true;

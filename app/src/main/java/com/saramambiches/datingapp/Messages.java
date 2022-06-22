@@ -29,12 +29,14 @@ public class Messages extends AppCompatActivity {
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(),PrincipalPage.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.nav_sms:
                         return true;
                     case R.id.nav_user:
                         startActivity(new Intent(getApplicationContext(),Profile.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
 
                 }

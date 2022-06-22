@@ -48,10 +48,12 @@ public class PrincipalPage extends AppCompatActivity {
                     case R.id.nav_sms:
                         startActivity(new Intent(getApplicationContext(),Messages.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.nav_user:
                         startActivity(new Intent(getApplicationContext(),Profile.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
 
                 }
