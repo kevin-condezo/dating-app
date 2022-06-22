@@ -29,7 +29,6 @@ public class PrincipalPage extends AppCompatActivity {
     private int i;
 
     private FloatingActionButton bt_back, bt_skip, bt_superlike, bt_like, bt_boost;
-
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -59,7 +58,6 @@ public class PrincipalPage extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         finish();
                         return true;
-
                 }
 
                 return false;
@@ -67,51 +65,6 @@ public class PrincipalPage extends AppCompatActivity {
         });
 
         //-----------
-
-        //Botones flotantes
-
-        init();
-        bt_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AnimarFab(bt_back);
-                Toast.makeText(PrincipalPage.this, "Back", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        bt_skip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AnimarFab(bt_skip);
-                Toast.makeText(PrincipalPage.this, "Skip", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        bt_superlike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AnimarFab(bt_superlike);
-                Toast.makeText(PrincipalPage.this, "Super Like", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        bt_like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AnimarFab(bt_like);
-                Toast.makeText(PrincipalPage.this, "Like", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        bt_boost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AnimarFab(bt_boost);
-                Toast.makeText(PrincipalPage.this, "Boost", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //--------------
 
         al = new ArrayList<>();
 
@@ -168,13 +121,61 @@ public class PrincipalPage extends AppCompatActivity {
         });
 
 
-        // Optionally add an OnItemClickListener
+        // Optionally Leer Info aditional
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
                     Toast.makeText(PrincipalPage.this, "Info", Toast.LENGTH_SHORT).show();
             }
         });
+
+        //Botones flotantes
+
+        init();
+        bt_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_back);
+                Toast.makeText(PrincipalPage.this, "Back", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        bt_skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_skip);
+                Toast.makeText(PrincipalPage.this, "Skip", Toast.LENGTH_SHORT).show();
+                flingContainer.getTopCardListener().selectLeft();
+            }
+        });
+
+        bt_superlike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_superlike);
+                Toast.makeText(PrincipalPage.this, "Super Like", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        bt_like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_like);
+                Toast.makeText(PrincipalPage.this, "Like", Toast.LENGTH_SHORT).show();
+                flingContainer.getTopCardListener().selectRight();
+            }
+        });
+
+        bt_boost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_boost);
+                Toast.makeText(PrincipalPage.this, "Boost", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //--------------
+
 
     }
 
