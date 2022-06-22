@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context=".LoginPage">
 
     <!--Bloque Superior-->
@@ -101,8 +102,7 @@
         android:layout_height="wrap_content"
         android:gravity="center|bottom"
         android:orientation="vertical"
-        android:paddingHorizontal="30dp"
-        android:paddingBottom="30dp"
+        android:padding="30dp"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/block_superior">
 
