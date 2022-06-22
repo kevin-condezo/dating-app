@@ -11,10 +11,12 @@ import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
@@ -25,6 +27,8 @@ public class PrincipalPage extends AppCompatActivity {
     private ArrayList<String> al;
     private ArrayAdapter<String> arrayAdapter;
     private int i;
+
+    private FloatingActionButton bt_back, bt_skip, bt_superlike, bt_like, bt_boost;
 
     BottomNavigationView bottomNavigationView;
 
@@ -64,6 +68,45 @@ public class PrincipalPage extends AppCompatActivity {
 
         //-----------
 
+        //Botones flotantes
+
+        init();
+        bt_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_back);
+            }
+        });
+
+        bt_skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_skip);
+            }
+        });
+
+        bt_superlike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_superlike);
+            }
+        });
+
+        bt_like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_like);
+            }
+        });
+
+        bt_boost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_boost);
+            }
+        });
+
+        //--------------
 
         al = new ArrayList<>();
 
@@ -128,6 +171,24 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void init() {
+        this.bt_back = findViewById(R.id.bt_back);
+        this.bt_skip = findViewById(R.id.bt_skip);
+        this.bt_superlike = findViewById(R.id.bt_superlike);
+        this.bt_like = findViewById(R.id.bt_like);
+        this.bt_boost = findViewById(R.id.bt_boost);
+
+    }
+
+    private void AnimarFab(final FloatingActionButton fab){
+        fab.animate().scaleX(0.7f).scaleY(0.7f).setDuration(100).withEndAction(new Runnable() {
+            @Override
+            public void run() {
+                fab.animate().scaleX(1f).scaleY(1f);
+            }
+        });
     }
 
 }

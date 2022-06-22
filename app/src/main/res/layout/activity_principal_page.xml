@@ -51,7 +51,7 @@
             android:layout_height="100dp"
             android:gravity="center"
             android:orientation="horizontal">
-            <!--Button back-->
+            <!--Button Back-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bt_back"
                 android:layout_width="wrap_content"
@@ -64,9 +64,9 @@
                 app:rippleColor="@null"
                 app:backgroundTint="@color/white"
                 app:fabSize="mini"/>
-            <!--Button x-->
+            <!--Button Skip-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/bt_x"
+                android:id="@+id/bt_skip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
@@ -76,9 +76,9 @@
                 app:rippleColor="@null"
                 app:backgroundTint="@color/white"
                 app:fabSize="normal"/>
-            <!--Button star-->
+            <!--Button SuperLike-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/bt_star"
+                android:id="@+id/bt_superlike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
@@ -89,9 +89,9 @@
                 app:rippleColor="@null"
                 app:backgroundTint="@color/white"
                 app:fabSize="mini"/>
-            <!--Button heart-->
+            <!--Button Like-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/bt_heart"
+                android:id="@+id/bt_like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
@@ -101,9 +101,9 @@
                 app:rippleColor="@null"
                 app:backgroundTint="@color/white"
                 app:fabSize="normal"/>
-            <!--Button flash-->
+            <!--Button Boost-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/bt_flash"
+                android:id="@+id/bt_boost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
