@@ -75,9 +75,11 @@
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="20sp">
             <!--Button back-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/bt_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -90,6 +92,7 @@
                 app:fabSize="mini"/>
             <!--Button x-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/bt_x"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -102,6 +105,7 @@
                 app:fabSize="normal"/>
             <!--Button star-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/bt_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -114,6 +118,7 @@
                 app:fabSize="mini"/>
             <!--Button heart-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/bt_heart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -125,6 +130,7 @@
                 app:fabSize="normal"/>
             <!--Button flash-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/bt_flash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
