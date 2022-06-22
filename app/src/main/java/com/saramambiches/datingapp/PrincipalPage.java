@@ -75,6 +75,7 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AnimarFab(bt_back);
+                Toast.makeText(PrincipalPage.this, "Back", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -82,6 +83,7 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AnimarFab(bt_skip);
+                Toast.makeText(PrincipalPage.this, "Skip", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -89,6 +91,7 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AnimarFab(bt_superlike);
+                Toast.makeText(PrincipalPage.this, "Super Like", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -96,6 +99,7 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AnimarFab(bt_like);
+                Toast.makeText(PrincipalPage.this, "Like", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -103,6 +107,7 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AnimarFab(bt_boost);
+                Toast.makeText(PrincipalPage.this, "Boost", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -139,7 +144,7 @@ public class PrincipalPage extends AppCompatActivity {
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
-                Toast.makeText(PrincipalPage.this, "Dislike", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PrincipalPage.this, "Skip", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -167,7 +172,7 @@ public class PrincipalPage extends AppCompatActivity {
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-                    Toast.makeText(PrincipalPage.this, "Click", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PrincipalPage.this, "Info", Toast.LENGTH_SHORT).show();
             }
         });
 
