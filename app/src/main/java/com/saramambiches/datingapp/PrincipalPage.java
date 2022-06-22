@@ -28,7 +28,7 @@ public class PrincipalPage extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapter;
     private int i;
 
-    private FloatingActionButton bt_back, bt_skip, bt_superlike, bt_like;
+    private FloatingActionButton bt_back, bt_skip, bt_like;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -132,6 +132,7 @@ public class PrincipalPage extends AppCompatActivity {
         //Botones flotantes
 
         init();
+
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -149,13 +150,6 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
 
-        bt_superlike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AnimarFab(bt_superlike);
-                Toast.makeText(PrincipalPage.this, "Super Like", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         bt_like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,7 +168,6 @@ public class PrincipalPage extends AppCompatActivity {
     private void init() {
         this.bt_back = findViewById(R.id.bt_back);
         this.bt_skip = findViewById(R.id.bt_skip);
-        this.bt_superlike = findViewById(R.id.bt_superlike);
         this.bt_like = findViewById(R.id.bt_like);
 
     }
