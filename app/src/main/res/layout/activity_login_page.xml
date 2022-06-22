@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,8 +9,9 @@
 
     <!--Bloque Superior-->
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/block_superior"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center|top"
         android:orientation="vertical"
         android:padding="30dp"
@@ -95,11 +96,14 @@
 
     <!--Bloque Inferior-->
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/block_inferior"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center|bottom"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/block_superior">
 
         <!--Boton de Register-->
         <Button
@@ -201,4 +205,4 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
