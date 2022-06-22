@@ -101,19 +101,7 @@
                 app:rippleColor="@null"
                 app:backgroundTint="@color/white"
                 app:fabSize="normal"/>
-            <!--Button Boost-->
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/bt_boost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
-                android:clickable="true"
-                android:focusable="true"
-                app:srcCompat="@drawable/ic_flash"
-                app:maxImageSize="18dp"
-                app:rippleColor="@null"
-                app:backgroundTint="@color/white"
-                app:fabSize="mini"/>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </RelativeLayout>

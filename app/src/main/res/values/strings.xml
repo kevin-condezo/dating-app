@@ -12,7 +12,7 @@
     <string name="user">Profile</string>
 
     <!--Avisos-->
-    <string name="m1">Si también deslizan el dedo a la derecha, !Es un match!</string>
+    <string name="m1">Si también deslizan el dedo a la derecha, ¡es un match!</string>
     <string name="m2">Unete a nosotros y socializa con miles de personas</string>
     <string name="no_login">¿Aún no tienes una cuenta?</string>
     <string name="no_register">¿Ya tienes una cuenta?</string>

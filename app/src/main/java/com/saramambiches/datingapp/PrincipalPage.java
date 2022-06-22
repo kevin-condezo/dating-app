@@ -28,7 +28,7 @@ public class PrincipalPage extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapter;
     private int i;
 
-    private FloatingActionButton bt_back, bt_skip, bt_superlike, bt_like, bt_boost;
+    private FloatingActionButton bt_back, bt_skip, bt_superlike, bt_like;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -166,14 +166,6 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
 
-        bt_boost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AnimarFab(bt_boost);
-                Toast.makeText(PrincipalPage.this, "Boost", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         //--------------
 
 
@@ -184,7 +176,6 @@ public class PrincipalPage extends AppCompatActivity {
         this.bt_skip = findViewById(R.id.bt_skip);
         this.bt_superlike = findViewById(R.id.bt_superlike);
         this.bt_like = findViewById(R.id.bt_like);
-        this.bt_boost = findViewById(R.id.bt_boost);
 
     }
 
