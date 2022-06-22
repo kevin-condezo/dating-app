@@ -6,6 +6,11 @@
     <string name="login">LOGIN</string>
     <string name="register">REGISTER</string>
 
+    <!--NAV-->
+    <string name="home">Home</string>
+    <string name="sms">Messages</string>
+    <string name="user">Profile</string>
+
     <!--Avisos-->
     <string name="m1">Si también deslizan el dedo a la derecha, !Es un match!</string>
     <string name="m2">Unete a nosotros y socializa con miles de personas</string>
@@ -32,4 +37,6 @@
     <color name="pat5">#455FFF</color>
     <color name="PlomoApp">#70717b</color>
     <color name="NegroApp">#2E2828</color>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

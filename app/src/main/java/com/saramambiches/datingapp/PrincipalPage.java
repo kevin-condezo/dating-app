@@ -1,13 +1,21 @@
 package com.saramambiches.datingapp;
 
+import androidx.annotation.FloatRange;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -18,13 +26,41 @@ public class PrincipalPage extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapter;
     private int i;
 
-
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_page);
 
+        //Navigation Bar
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.nav_home:
+                        return true;
+                    case R.id.nav_sms:
+                        startActivity(new Intent(getApplicationContext(),Messages.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_user:
+                        startActivity(new Intent(getApplicationContext(),Profile.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+
+                return false;
+            }
+        });
+
+        //-----------
 
 
         al = new ArrayList<>();
