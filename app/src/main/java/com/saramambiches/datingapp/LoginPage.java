@@ -32,7 +32,7 @@ public class LoginPage extends AppCompatActivity {
 
     private TextInputEditText r_email, r_password;
 
-    private FirebaseAuth Auth;
+    private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
 
     @Override
@@ -40,7 +40,7 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-        Auth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -70,7 +70,7 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View view) {
                 final String email = r_email.getText().toString();
                 final String password = r_password.getText().toString();
-                Auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
@@ -115,12 +115,12 @@ public class LoginPage extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Auth.addAuthStateListener(firebaseAuthStateListener);
+        mAuth.addAuthStateListener(firebaseAuthStateListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Auth.removeAuthStateListener(firebaseAuthStateListener);
+        mAuth.removeAuthStateListener(firebaseAuthStateListener);
     }
 }

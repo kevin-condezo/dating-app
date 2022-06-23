@@ -27,14 +27,14 @@ public class RegisterPage extends AppCompatActivity {
 
     private TextInputEditText r_email, r_password;
 
-    private FirebaseAuth Auth;
+    private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Auth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -65,7 +65,7 @@ public class RegisterPage extends AppCompatActivity {
             public void onClick(View view) {
                 final String email = r_email.getText().toString();
                 final String password = r_password.getText().toString();
-                Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterPage.this, new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterPage.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
@@ -110,12 +110,12 @@ public class RegisterPage extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Auth.addAuthStateListener(firebaseAuthStateListener);
+        mAuth.addAuthStateListener(firebaseAuthStateListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Auth.removeAuthStateListener(firebaseAuthStateListener);
+        mAuth.removeAuthStateListener(firebaseAuthStateListener);
     }
 }
