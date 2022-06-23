@@ -145,7 +145,6 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AnimarFab(bt_skip);
-                Toast.makeText(PrincipalPage.this, "Skip", Toast.LENGTH_SHORT).show();
                 flingContainer.getTopCardListener().selectLeft();
             }
         });
@@ -155,7 +154,6 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AnimarFab(bt_like);
-                Toast.makeText(PrincipalPage.this, "Like", Toast.LENGTH_SHORT).show();
                 flingContainer.getTopCardListener().selectRight();
             }
         });

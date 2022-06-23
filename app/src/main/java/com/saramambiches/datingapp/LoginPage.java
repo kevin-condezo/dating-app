@@ -1,5 +1,6 @@
 package com.saramambiches.datingapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -13,33 +14,73 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
 public class LoginPage extends AppCompatActivity {
+
     Button btloginf;
     FloatingActionButton btFB, btGOOGLE;
     TextView btredirectR;
+
+    private TextInputEditText r_email, r_password;
+
+    private FirebaseAuth Auth;
+    private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
+
+        Auth = FirebaseAuth.getInstance();
+        firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if(user!=null){
+                    Intent i = new Intent(LoginPage.this, PrincipalPage.class);
+                    startActivity(i);
+                    finish();
+                    return;
+                }
+            }
+        };
 
         btloginf= (Button) findViewById(R.id.bt_login_f);
         btredirectR=(TextView) findViewById(R.id.text_redirect_r);
         btFB=(FloatingActionButton) findViewById(R.id.bt_fb);
         btGOOGLE=(FloatingActionButton) findViewById(R.id.bt_google);
 
-        //Funciones al presionar los botones
+        //Verificando Informacion
+        r_email=(TextInputEditText) findViewById(R.id.email);
+        r_password=(TextInputEditText) findViewById(R.id.password);
+
+
+        //Boton Login
         btloginf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LoginPage.this, PrincipalPage.class);
-                startActivity(i);
-                finish();
+                final String email = r_email.getText().toString();
+                final String password = r_password.getText().toString();
+                Auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(!task.isSuccessful()){
+                            Toast.makeText(LoginPage.this, "Sign in Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
+        //Boton redirect Register
         btredirectR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View V) {
@@ -48,6 +89,7 @@ public class LoginPage extends AppCompatActivity {
                 finish();
             }
         });
+        //Botones social red
         btFB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,5 +110,17 @@ public class LoginPage extends AppCompatActivity {
         Intent i = new Intent(LoginPage.this, RegisterAndLogin.class);
         startActivity(i);
         finish();
+    }
+    //Nose
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Auth.addAuthStateListener(firebaseAuthStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Auth.removeAuthStateListener(firebaseAuthStateListener);
     }
 }

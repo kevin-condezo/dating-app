@@ -46,7 +46,7 @@
 
         <!--Campo de Correo-->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_email"
+            android:id="@+id/emailLayout"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="30dp"
@@ -100,11 +100,11 @@
         android:id="@+id/block_inferior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/block_superior"
+        android:layout_alignParentBottom="true"
         android:gravity="center|bottom"
         android:orientation="vertical"
-        android:padding="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/block_superior">
+        android:padding="30dp">
 
         <!--Boton de Register-->
         <Button
@@ -117,41 +117,44 @@
             android:fontFamily="@font/quicksand_bold"
             android:text="@string/login"
             android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <!--Textos de opcion-->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal">
+
             <View
                 android:layout_width="150dp"
                 android:layout_height="1dp"
-                android:background="@color/PlomoApp"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical"
+                android:background="@color/PlomoApp" />
+
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/quicksand_medium"
                 android:text="@string/or_signin"
                 android:textColor="@color/PlomoApp"
-                android:textSize="15sp"
-                android:layout_marginHorizontal="10dp"/>
+                android:textSize="15sp" />
+
             <View
                 android:layout_width="150dp"
                 android:layout_height="1dp"
-                android:background="@color/PlomoApp"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical"
+                android:background="@color/PlomoApp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <!--Redes sociales-->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:gravity="center"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:gravity="center">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bt_google"
@@ -160,23 +163,23 @@
                 android:layout_margin="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:srcCompat="@drawable/google"
-                app:rippleColor="@null"
                 app:backgroundTint="@color/white"
-                app:fabSize="normal"/>
+                app:fabSize="normal"
+                app:rippleColor="@null"
+                app:srcCompat="@drawable/google" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bt_fb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                app:maxImageSize="18dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:srcCompat="@drawable/fb"
-                app:rippleColor="@null"
                 app:backgroundTint="@color/white"
-                app:fabSize="normal"/>
+                app:fabSize="normal"
+                app:maxImageSize="18dp"
+                app:rippleColor="@null"
+                app:srcCompat="@drawable/fb" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -184,8 +187,9 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
@@ -201,7 +205,7 @@
                 android:layout_marginLeft="5dp"
                 android:fontFamily="@font/quicksand_bold"
                 android:text="@string/cc_register"
-                android:textColor="@color/pat1"/>
+                android:textColor="@color/pat1" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

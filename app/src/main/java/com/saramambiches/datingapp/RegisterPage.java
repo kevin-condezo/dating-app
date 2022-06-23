@@ -11,15 +11,42 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.internal.Objects;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterPage extends AppCompatActivity {
     Button btregisterf;
     FloatingActionButton btFB, btGOOGLE;
     TextView btredirectl;
+
+    private TextInputEditText r_email, r_password;
+
+    private FirebaseAuth Auth;
+    private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Auth = FirebaseAuth.getInstance();
+        firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if(user!=null){
+                    Intent i = new Intent(RegisterPage.this, PrincipalPage.class);
+                    startActivity(i);
+                    finish();
+                    return;
+                }
+            }
+        };
 
         setContentView(R.layout.activity_register_page);
         btregisterf= (Button) findViewById(R.id.bt_register_f);
@@ -27,12 +54,25 @@ public class RegisterPage extends AppCompatActivity {
         btFB=(FloatingActionButton) findViewById(R.id.bt_fb);
         btGOOGLE=(FloatingActionButton) findViewById(R.id.bt_google);
 
+        //Recolectando informacion
+        r_email=(TextInputEditText) findViewById(R.id.email);
+        r_password=(TextInputEditText) findViewById(R.id.password);
+
+
+
         btregisterf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(RegisterPage.this, PrincipalPage.class);
-                startActivity(i);
-                finish();
+                final String email = r_email.getText().toString();
+                final String password = r_password.getText().toString();
+                Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterPage.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(!task.isSuccessful()){
+                            Toast.makeText(RegisterPage.this, "Sign up Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
         btredirectl.setOnClickListener(new View.OnClickListener() {
@@ -65,5 +105,17 @@ public class RegisterPage extends AppCompatActivity {
         Intent i = new Intent(RegisterPage.this, RegisterAndLogin.class);
         startActivity(i);
         finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Auth.addAuthStateListener(firebaseAuthStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Auth.removeAuthStateListener(firebaseAuthStateListener);
     }
 }
