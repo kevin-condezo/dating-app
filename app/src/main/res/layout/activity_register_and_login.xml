@@ -31,11 +31,20 @@
             android:textColor="@color/NegroApp"
             android:textSize="20sp" />
 
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/block_medio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/block_superior">
         <!--Carrusel de imagenes-->
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/slider"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="350dp"
             android:layout_marginTop="40dp"
             app:auto_cycle="true"
             app:delay="0"
@@ -44,7 +53,6 @@
             app:placeholder="@color/white">
         </com.denzcoskun.imageslider.ImageSlider>
     </androidx.appcompat.widget.LinearLayoutCompat>
-
     <!--Bloque Inferior-->
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/block_inferior"
@@ -54,7 +62,7 @@
         android:orientation="vertical"
         android:padding="30dp"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/block_superior">
+        android:layout_below="@+id/block_medio">
         <!--Aviso 2-->
         <TextView
             android:id="@+id/saludo2"
