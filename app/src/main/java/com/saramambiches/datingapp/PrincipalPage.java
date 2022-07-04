@@ -78,7 +78,7 @@ public class PrincipalPage extends AppCompatActivity {
         al.add("javascript");
 
 
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.name, al );
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.name, al);
 
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);

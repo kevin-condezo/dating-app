@@ -54,10 +54,10 @@ public class LoginPage extends AppCompatActivity {
             }
         };
 
-        btloginf= (Button) findViewById(R.id.bt_login_f);
-        btredirectR=(TextView) findViewById(R.id.text_redirect_r);
-        btFB=(FloatingActionButton) findViewById(R.id.bt_fb);
-        btGOOGLE=(FloatingActionButton) findViewById(R.id.bt_google);
+        btloginf = (Button) findViewById(R.id.bt_login_f);
+        btredirectR = (TextView) findViewById(R.id.text_redirect_r);
+        btFB = (FloatingActionButton) findViewById(R.id.bt_fb);
+        btGOOGLE = (FloatingActionButton) findViewById(R.id.bt_google);
 
         //Verificando Informacion
         r_email=(TextInputEditText) findViewById(R.id.email);

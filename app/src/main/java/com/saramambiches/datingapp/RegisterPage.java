@@ -39,7 +39,7 @@ public class RegisterPage extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if(user!=null){
+                if(user!= null) {
                     Intent i = new Intent(RegisterPage.this, PrincipalPage.class);
                     startActivity(i);
                     finish();
@@ -49,14 +49,14 @@ public class RegisterPage extends AppCompatActivity {
         };
 
         setContentView(R.layout.activity_register_page);
-        btregisterf= (Button) findViewById(R.id.bt_register_f);
-        btredirectl=(TextView) findViewById(R.id.text_redirect_l);
-        btFB=(FloatingActionButton) findViewById(R.id.bt_fb);
-        btGOOGLE=(FloatingActionButton) findViewById(R.id.bt_google);
+        btregisterf = (Button) findViewById(R.id.bt_register_f);
+        btredirectl =(TextView) findViewById(R.id.text_redirect_l);
+        btFB = (FloatingActionButton) findViewById(R.id.bt_fb);
+        btGOOGLE = (FloatingActionButton) findViewById(R.id.bt_google);
 
         //Recolectando informacion
-        r_email=(TextInputEditText) findViewById(R.id.email);
-        r_password=(TextInputEditText) findViewById(R.id.password);
+        r_email = (TextInputEditText) findViewById(R.id.email);
+        r_password = (TextInputEditText) findViewById(R.id.password);
 
 
 

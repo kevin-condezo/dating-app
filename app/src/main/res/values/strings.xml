@@ -1,6 +1,6 @@
 <resources>
     <!--Nombre de la App-->
-    <string name="app_name">Fiu Fiu</string>
+    <string name="app_name">Fiu Fiu!</string>
 
     <!--Botones-->
     <string name="login">LOGIN</string>

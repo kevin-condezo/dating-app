@@ -24,25 +24,25 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="left"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:layout_gravity="left"
             android:fontFamily="@font/quicksand_bold"
             android:text="@string/login"
-            android:textSize="50sp"
-            android:textColor="@color/pat1" />
+            android:textColor="@color/pat1"
+            android:textSize="50sp" />
 
         <!--Subtitulo-->
         <TextView
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:layout_gravity="left"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/quicksand_semibold"
             android:text="@string/subtitle"
             android:textColor="@color/PlomoApp"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
         <!--Campo de Correo-->
         <com.google.android.material.textfield.TextInputLayout
@@ -50,21 +50,21 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="30dp"
-            android:textColorHint="@color/PlomoApp"
             android:gravity="bottom"
+            android:textColorHint="@color/PlomoApp"
             app:placeholderTextColor="@color/PlomoApp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="@drawable/button_transparent"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/email"
-                android:textColor="@color/NegroApp"
                 android:inputType="textEmailAddress"
-                android:textSize="16dp"
                 android:paddingLeft="30dp"
-                android:background="@drawable/button_transparent"/>
+                android:textColor="@color/NegroApp"
+                android:textSize="16dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,21 +75,21 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
+            android:gravity="bottom"
             android:textColorHint="@color/PlomoApp"
-            app:endIconMode="password_toggle"
-            android:gravity="bottom">
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="@drawable/button_transparent"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/password"
-                android:textColor="@color/NegroApp"
                 android:inputType="textPassword"
-                android:textSize="16dp"
                 android:paddingLeft="30dp"
-                android:background="@drawable/button_transparent"/>
+                android:textColor="@color/NegroApp"
+                android:textSize="16dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,7 +104,7 @@
         android:layout_alignParentBottom="true"
         android:gravity="center|bottom"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="30dp" >
 
         <!--Boton de Register-->
         <Button
@@ -152,7 +152,7 @@
         <!--Redes sociales-->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="80dp"
             android:layout_marginTop="15dp"
             android:gravity="center">
 

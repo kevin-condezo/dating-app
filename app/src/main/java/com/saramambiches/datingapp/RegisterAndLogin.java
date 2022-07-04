@@ -26,7 +26,7 @@ public class RegisterAndLogin extends AppCompatActivity {
 
         ImageSlider Imagenes=findViewById(R.id.slider);
 
-        List<SlideModel> slideModels=new ArrayList<>();
+        List<SlideModel> slideModels = new ArrayList<>();
 
         slideModels.add(new SlideModel(R.drawable.im1));
         slideModels.add(new SlideModel(R.drawable.im2));
@@ -35,7 +35,7 @@ public class RegisterAndLogin extends AppCompatActivity {
         Imagenes.setImageList(slideModels, true);
 
 
-        btlogin= (Button) findViewById(R.id.bt_login);
+        btlogin = (Button) findViewById(R.id.bt_login);
 
         btlogin.setOnClickListener(new View.OnClickListener() {
             @Override
