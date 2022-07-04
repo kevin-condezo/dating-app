@@ -45,4 +45,6 @@
     <color name="NegroApp">#2E2828</color>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 </resources>

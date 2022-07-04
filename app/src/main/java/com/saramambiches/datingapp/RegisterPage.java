@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,13 +21,16 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterPage extends AppCompatActivity {
     Button btregisterf;
     FloatingActionButton btFB, btGOOGLE;
     TextView btredirectl;
 
-    private TextInputEditText r_email, r_password;
+    private TextInputEditText r_email, r_password, r_name;
+    private RadioGroup r_RadioGroup;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
@@ -57,19 +62,31 @@ public class RegisterPage extends AppCompatActivity {
         //Recolectando informacion
         r_email = (TextInputEditText) findViewById(R.id.email);
         r_password = (TextInputEditText) findViewById(R.id.password);
+        r_name = (TextInputEditText)  findViewById(R.id.name);
 
-
+        r_RadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
         btregisterf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int selectId = r_RadioGroup.getCheckedRadioButtonId();
+                final RadioButton radioButton = (RadioButton) findViewById(selectId);
+                if (radioButton.getText() == null) {
+                    return;
+                }
+
                 final String email = r_email.getText().toString();
                 final String password = r_password.getText().toString();
+                final String name = r_name.getText().toString();
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterPage.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
                             Toast.makeText(RegisterPage.this, "Sign up Error", Toast.LENGTH_SHORT).show();
+                        } else {
+                            String userId = mAuth.getCurrentUser().getUid();
+                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId).child("name");
+                            currentUserDb.setValue(name);
                         }
                     }
                 });
