@@ -63,7 +63,6 @@ public class RegisterPage extends AppCompatActivity {
         r_email = (TextInputEditText) findViewById(R.id.email);
         r_password = (TextInputEditText) findViewById(R.id.password);
         r_name = (TextInputEditText)  findViewById(R.id.name);
-
         r_RadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
         btregisterf.setOnClickListener(new View.OnClickListener() {
