@@ -26,19 +26,19 @@
         android:id="@+id/block_medio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/bottom_navigation"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_below="@+id/bottom_navigation">
-        <com.lorentzos.flingswipe.SwipeFlingAdapterView
-            android:id="@+id/frame"
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical">
+
+        <com.lorentzos.flingswipe.SwipeFlingAdapterView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:rotation_degrees="15.5"
-            tools:context=".MyActivity"
             app:max_visible="4"
-            app:min_adapter_stack="6"/>
+            app:min_adapter_stack="6"
+            app:rotation_degrees="15.5"
+            tools:context=".MyActivity" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <!--Bloque Inferior-->

@@ -36,6 +36,7 @@ public class PrincipalPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_page);
 
@@ -52,19 +53,19 @@ public class PrincipalPage extends AppCompatActivity {
                     case R.id.nav_home:
                         return true;
                     case R.id.nav_sms:
-                        startActivity(new Intent(getApplicationContext(),Messages.class));
+                        startActivity(new Intent(getApplicationContext(), Messages.class));
                         overridePendingTransition(0,0);
                         finish();
                         return true;
                     case R.id.nav_user:
-                        startActivity(new Intent(getApplicationContext(),Profile.class));
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
                         overridePendingTransition(0,0);
                         finish();
                         return true;
                     case R.id.nav_logoutUser:
                         mAuth.signOut();
-                        Intent intent = new Intent(PrincipalPage.this, MainActivity.class);
-                        startActivity(intent);
+                        startActivity(new Intent(getApplicationContext(), RegisterAndLogin.class));
+                        overridePendingTransition(0,0);
                         finish();
                         return true;
                 }

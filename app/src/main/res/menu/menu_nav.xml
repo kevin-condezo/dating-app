@@ -13,9 +13,9 @@
         android:id="@+id/nav_user"
         android:icon="@drawable/ic_user"
         android:title="@string/user"/>
+
     <item
         android:id="@+id/nav_logoutUser"
         android:icon="@drawable/placeholder"
-        android:title="@string/logoutuser"/>
-
+        android:title="@string/signout"/>
 </menu>

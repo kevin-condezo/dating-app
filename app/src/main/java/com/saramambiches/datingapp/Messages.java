@@ -8,11 +8,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Messages extends AppCompatActivity {
+    private FirebaseAuth mAuth;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
 
@@ -38,7 +41,12 @@ public class Messages extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         finish();
                         return true;
-
+                    case R.id.nav_logoutUser:
+                        mAuth.signOut();
+                        startActivity(new Intent(getApplicationContext(), RegisterAndLogin.class));
+                        overridePendingTransition(0,0);
+                        finish();
+                        return true;
                 }
 
                 return false;

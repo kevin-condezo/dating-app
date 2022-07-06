@@ -6,15 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile extends AppCompatActivity {
+    private FirebaseAuth mAuth;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
 
         //Navigation Bar
 
@@ -38,7 +43,12 @@ public class Profile extends AppCompatActivity {
                         return true;
                     case R.id.nav_user:
                         return true;
-
+                    case R.id.nav_logoutUser:
+                        mAuth.signOut();
+                        startActivity(new Intent(getApplicationContext(), RegisterAndLogin.class));
+                        overridePendingTransition(0,0);
+                        finish();
+                        return true;
                 }
 
                 return false;
