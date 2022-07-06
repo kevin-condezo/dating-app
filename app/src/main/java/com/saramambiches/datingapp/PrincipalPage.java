@@ -61,6 +61,12 @@ public class PrincipalPage extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         finish();
                         return true;
+                    case R.id.nav_logoutUser:
+                        mAuth.signOut();
+                        Intent intent = new Intent(PrincipalPage.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                        return true;
                 }
 
                 return false;
