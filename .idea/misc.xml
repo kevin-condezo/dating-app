@@ -3,57 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_pass.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/drawable/item_selector.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_login_page.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.176" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_principal_page.xml" value="0.12158054711246201" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_profile.xml" value="0.24320652173913043" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_and_login.xml" value="0.12158054711246201" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_page.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/item.xml" value="0.24320652173913043" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/menu/menu_nav.xml" value="0.1" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable-v24/blue_button.xml" value="0.124" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable-v24/button_color.xml" value="0.1795" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable-v24/pink_button.xml" value="0.124" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable-v24/purple_button.xml" value="0.124" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable-v24/red_button.xml" value="0.1645" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/background_gradient.xml" value="0.206" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_transparent.xml" value="0.201" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/fb_button.xml" value="0.1815" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/fb_icon.xml" value="0.1855" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/google_icon.xml" value="0.1645" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_aspa2.xml" value="0.163" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_back.xml" value="0.1795" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_email.xml" value="0.201" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_flash.xml" value="0.1795" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_heart.xml" value="0.1795" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_prof.xml" value="0.163" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_resource_return.xml" value="0.163" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_star.xml" value="0.176" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_user.xml" value="0.163" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_x.xml" value="0.176" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/item_selector.xml" value="0.163" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/line.xml" value="0.1795" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/transparent_button.xml" value="0.124" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/white_button.xml" value="0.1955" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_login_page.xml" value="0.2" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.176" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_messages.xml" value="0.21403508771929824" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_principal_page.xml" value="0.21203703703703702" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_profile.xml" value="0.20219298245614034" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_and_login.xml" value="0.20863616930312098" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_page.xml" value="0.2" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/fragment_first.xml" value="0.20087719298245615" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/fragment_home.xml" value="0.20087719298245615" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/fragment_second.xml" value="0.20087719298245615" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/fragment_sms.xml" value="0.20087719298245615" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/fragment_third.xml" value="0.20087719298245615" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/fragment_user.xml" value="0.20087719298245615" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item.xml" value="0.264" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_selector.xml" value="0.20087719298245615" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/menu/bottom_navigation.xml" value="0.2131578947368421" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/menu/menu_nav.xml" value="0.20087719298245615" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_checked.xml" value="0.178" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_selector.xml" value="0.178" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_unchecked.xml" value="0.178" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_female.xml" value="0.178" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_male.xml" value="0.178" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_login_page.xml" value="0.21403508771929824" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.536" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_page.xml" value="0.21403508771929824" />
       </map>
     </option>
   </component>

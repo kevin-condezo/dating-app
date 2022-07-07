@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:gravity="center|top"
         android:orientation="vertical"
-        android:padding="30dp"
+        android:paddingHorizontal="30dp"
+        android:paddingTop="30dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
         <!--Titulo-->
@@ -48,7 +49,6 @@
             android:id="@+id/text_input_name"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_marginTop="10dp"
             android:gravity="bottom"
             android:textColorHint="@color/PlomoApp"
             app:placeholderTextColor="@color/PlomoApp">
@@ -66,23 +66,6 @@
                 android:textSize="16dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!--Botones de sexo-->
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/radioGroup" >
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/male" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/female" />
-        </RadioGroup>
-
 
         <!--Campo de Correo-->
         <com.google.android.material.textfield.TextInputLayout
@@ -132,15 +115,67 @@
                 android:textSize="16dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
+        <!--Botones de sexo-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Sexo :"
+            android:textColor="@color/PlomoApp"
+            android:textSize="16sp" />
 
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:checkedButton="@id/maleid"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/maleid"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/button_selector"
+                android:button="@drawable/button_transparent"
+                android:drawableStart="@drawable/ic_male"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/color_selector"
+                android:fontFamily="@font/quicksand_medium"
+                android:padding="15dp"
+                android:text="@string/male"
+                android:textAlignment="center"
+                android:textColor="@color/color_selector"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/femaleid"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/button_selector"
+                android:button="@drawable/button_transparent"
+                android:drawableStart="@drawable/ic_female"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/color_selector"
+                android:fontFamily="@font/quicksand_medium"
+                android:padding="15dp"
+                android:text="@string/female"
+                android:textAlignment="center"
+                android:textColor="@color/color_selector"
+                android:textSize="16sp" />
+        </RadioGroup>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <!--Bloque Inferior-->
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
         android:id="@+id/block_inferior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/block_superior"
         android:layout_alignParentBottom="true"
         android:gravity="center|bottom"
         android:orientation="vertical"
@@ -161,11 +196,12 @@
             android:textSize="16sp" />
 
         <!--Textos de opcion-->
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <View
                 android:layout_width="150dp"
@@ -188,14 +224,15 @@
                 android:layout_height="1dp"
                 android:layout_gravity="center_vertical"
                 android:background="@color/PlomoApp" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
 
         <!--Redes sociales-->
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginTop="15dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bt_google"
@@ -222,10 +259,10 @@
                 app:rippleColor="@null"
                 app:srcCompat="@drawable/fb" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
 
         <!--Textos de confirmacion-->
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -247,8 +284,8 @@
                 android:fontFamily="@font/quicksand_bold"
                 android:text="@string/cc_login"
                 android:textColor="@color/pat1" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
 
 </RelativeLayout>
