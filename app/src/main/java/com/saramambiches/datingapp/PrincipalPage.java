@@ -164,7 +164,6 @@ public class PrincipalPage extends AppCompatActivity {
 
         //--------------
 
-
     }
 
     private void init() {
