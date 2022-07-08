@@ -169,7 +169,6 @@ public class PrincipalPage extends AppCompatActivity {
         this.bt_back = findViewById(R.id.bt_back);
         this.bt_skip = findViewById(R.id.bt_skip);
         this.bt_like = findViewById(R.id.bt_like);
-
     }
 
     private void AnimarFab(final FloatingActionButton fab){
