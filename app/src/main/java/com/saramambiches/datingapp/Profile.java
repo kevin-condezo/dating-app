@@ -43,12 +43,6 @@ public class Profile extends AppCompatActivity {
                         return true;
                     case R.id.nav_user:
                         return true;
-                    case R.id.nav_logoutUser:
-                        mAuth.signOut();
-                        startActivity(new Intent(getApplicationContext(), LoginPage.class));
-                        overridePendingTransition(0,0);
-                        finish();
-                        return true;
                 }
 
                 return false;
@@ -56,5 +50,13 @@ public class Profile extends AppCompatActivity {
         });
 
         //-----------
+    }
+
+    public void logoutUser(View view) {
+        mAuth.signOut();
+        Intent intent = new Intent(Profile.this, LoginPage.class);
+        startActivity(intent);
+        finish();
+        return;
     }
 }

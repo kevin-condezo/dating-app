@@ -41,12 +41,6 @@ public class Messages extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         finish();
                         return true;
-                    case R.id.nav_logoutUser:
-                        mAuth.signOut();
-                        startActivity(new Intent(getApplicationContext(), LoginPage.class));
-                        overridePendingTransition(0,0);
-                        finish();
-                        return true;
                 }
 
                 return false;
