@@ -6,14 +6,17 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_checked.xml" value="0.178" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_selector.xml" value="0.178" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_transparent.xml" value="0.1" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_unchecked.xml" value="0.178" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_female.xml" value="0.178" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_heart.xml" value="0.1" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_male.xml" value="0.178" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_login_page.xml" value="0.21403508771929824" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.536" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_principal_page.xml" value="0.21403508771929824" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_page.xml" value="0.21403508771929824" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_page.xml" value="0.3093681917211329" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item.xml" value="0.21403508771929824" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/sex_items.xml" value="0.1824561403508772" />
       </map>
     </option>
   </component>

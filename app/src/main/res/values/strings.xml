@@ -43,6 +43,7 @@
     <!--Colores Apartados-->
     <color name="PlomoApp">#70717b</color>
     <color name="NegroApp">#2E2828</color>
+    <color name="PlomoTransparente">#f1f1f1</color>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="female">Female</string>

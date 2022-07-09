@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -18,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,6 +32,10 @@ public class RegisterPage extends AppCompatActivity {
     Button btregisterf;
     //FloatingActionButton btFB, btGOOGLE;
     TextView btredirectl;
+
+    //TextInputLayout menusex;
+    //AutoCompleteTextView dropitemsex;
+
 
     private TextInputEditText r_email, r_password, r_name;
     private RadioGroup r_RadioGroup;
@@ -53,17 +61,28 @@ public class RegisterPage extends AppCompatActivity {
             }
         };
 
+
+
+
+
         setContentView(R.layout.activity_register_page);
         btregisterf = (Button) findViewById(R.id.bt_register_f);
         btredirectl =(TextView) findViewById(R.id.text_redirect_l);
         //btFB = (FloatingActionButton) findViewById(R.id.bt_fb);
         //btGOOGLE = (FloatingActionButton) findViewById(R.id.bt_google);
-
+        //menusex= (TextInputLayout) findViewById(R.id.menu_sex);
+        //dropitemsex = (AutoCompleteTextView) findViewById(R.id.drop_item_sex);
         //Recolectando informacion
         r_email = (TextInputEditText) findViewById(R.id.email);
         r_password = (TextInputEditText) findViewById(R.id.password);
         r_name = (TextInputEditText)  findViewById(R.id.name);
         r_RadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+
+        //String [] itemsSex={"Hombre", "Mujer"};
+        //ArrayAdapter<String> itemsAdapter= new ArrayAdapter<>(RegisterPage.this , R.layout.sex_items, itemsSex);
+        //dropitemsex.setAdapter(itemsAdapter);
+
 
         btregisterf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +108,7 @@ public class RegisterPage extends AppCompatActivity {
                         }
                     }
                 });
+
             }
         });
         btredirectl.setOnClickListener(new View.OnClickListener() {
