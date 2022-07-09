@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,17 +30,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PrincipalPage extends AppCompatActivity {
+    private cards cards_data[];
 
-    private ArrayList<String> al;
-    private ArrayAdapter<String> arrayAdapter;
+    private arrayAdapter arrayAdapter;
     private int i;
 
     private FirebaseAuth mAuth;
 
     private FloatingActionButton bt_back, bt_skip, bt_like;
     BottomNavigationView bottomNavigationView;
+
+    ListView listView;
+    List<cards> rowItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +83,7 @@ public class PrincipalPage extends AppCompatActivity {
 
         checkUserSex();
 
-        al = new ArrayList<>();
+        rowItems = new ArrayList<cards>();
 
         /*
         al.add("Jeff, 19");
@@ -91,7 +96,7 @@ public class PrincipalPage extends AppCompatActivity {
         al.add("javascript");
          */
 
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.name, al);
+        arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems);
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
         flingContainer.setAdapter(arrayAdapter);
@@ -100,7 +105,7 @@ public class PrincipalPage extends AppCompatActivity {
             public void removeFirstObjectInAdapter() {
                 // this is the simplest way to delete an object from the Adapter (/AdapterView)
                 Log.d("LIST", "removed object!");
-                al.remove(0);
+                rowItems.remove(0);
                 arrayAdapter.notifyDataSetChanged();
             }
 
@@ -123,7 +128,6 @@ public class PrincipalPage extends AppCompatActivity {
 
             @Override
             public void onScroll(float scrollProgressPercent) {
-
             }
         });
 
@@ -241,7 +245,8 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 if (snapshot.exists()) {
-                    al.add(snapshot.child("name").getValue().toString());
+                    cards Item = new cards(snapshot.getKey(), snapshot.child("name").toString());
+                    rowItems.add(Item);
                     arrayAdapter.notifyDataSetChanged();
                 }
             }
