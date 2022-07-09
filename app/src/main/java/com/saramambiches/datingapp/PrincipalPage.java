@@ -34,11 +34,12 @@ import java.util.List;
 
 public class PrincipalPage extends AppCompatActivity {
     private cards cards_data[];
-
     private arrayAdapter arrayAdapter;
     private int i;
 
     private FirebaseAuth mAuth;
+    private String currentUId;
+    private DatabaseReference usersDb;
 
     private FloatingActionButton bt_back, bt_skip, bt_like;
     BottomNavigationView bottomNavigationView;
@@ -48,7 +49,6 @@ public class PrincipalPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_page);
 
@@ -81,24 +81,19 @@ public class PrincipalPage extends AppCompatActivity {
 
         //-----------
 
+        mAuth = FirebaseAuth.getInstance();
+        currentUId= mAuth.getCurrentUser().getUid();
+
+
         checkUserSex();
 
         rowItems = new ArrayList<cards>();
 
-        /*
-        al.add("Jeff, 19");
-        al.add("Miguel, 25");
-        al.add("Carlos, 25");
-        al.add("Gibran, 21");
-        al.add("Kevin, 25");
-        al.add("Albert, 21");
-        al.add("Martin, 20");
-        al.add("javascript");
-         */
 
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems);
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
+
         flingContainer.setAdapter(arrayAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
@@ -124,6 +119,7 @@ public class PrincipalPage extends AppCompatActivity {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
+                //Aca va si le da click al cuadro
             }
 
             @Override
@@ -190,6 +186,8 @@ public class PrincipalPage extends AppCompatActivity {
     private String oppositeUserSex;
     public void checkUserSex() {
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        //male
         DatabaseReference maleDb = FirebaseDatabase.getInstance().getReference().child("Users").child("Male");
         maleDb.addChildEventListener(new ChildEventListener() {
             @Override
@@ -214,6 +212,7 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
 
+        //female
         DatabaseReference femaleDb = FirebaseDatabase.getInstance().getReference().child("Users").child("Female");
         femaleDb.addChildEventListener(new ChildEventListener() {
             @Override
@@ -245,7 +244,7 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 if (snapshot.exists()) {
-                    cards Item = new cards(snapshot.getKey(), snapshot.child("name").toString());
+                    cards Item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString());
                     rowItems.add(Item);
                     arrayAdapter.notifyDataSetChanged();
                 }

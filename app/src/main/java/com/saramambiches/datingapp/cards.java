@@ -6,7 +6,7 @@ public class cards {
 
     public cards(String userId, String name) {
         this.userId = userId;
-        this.setName(name);
+        this.name = name;
     }
 
     public String getUserId() {
