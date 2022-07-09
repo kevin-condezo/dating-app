@@ -27,7 +27,7 @@ import org.w3c.dom.Text;
 public class LoginPage extends AppCompatActivity {
 
     Button btloginf;
-    FloatingActionButton btFB, btGOOGLE;
+    //FloatingActionButton btFB, btGOOGLE;
     TextView btredirectR;
 
     private TextInputEditText r_email, r_password;
@@ -56,8 +56,8 @@ public class LoginPage extends AppCompatActivity {
 
         btloginf = (Button) findViewById(R.id.bt_login_f);
         btredirectR = (TextView) findViewById(R.id.text_redirect_r);
-        btFB = (FloatingActionButton) findViewById(R.id.bt_fb);
-        btGOOGLE = (FloatingActionButton) findViewById(R.id.bt_google);
+        //btFB = (FloatingActionButton) findViewById(R.id.bt_fb);
+        //btGOOGLE = (FloatingActionButton) findViewById(R.id.bt_google);
 
         //Verificando Informacion
         r_email=(TextInputEditText) findViewById(R.id.email);
@@ -89,7 +89,7 @@ public class LoginPage extends AppCompatActivity {
                 finish();
             }
         });
-        //Botones social red
+        /* Botones social red
         btFB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,6 +102,7 @@ public class LoginPage extends AppCompatActivity {
                 Toast.makeText(LoginPage.this,"Aqui redirecciona a google",Toast.LENGTH_LONG).show();
             }
         });
+        */
     }
     //Redireccionamiento de pagina
     @Override

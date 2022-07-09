@@ -67,54 +67,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--Campo de Correo-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailLayout"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="5dp"
-            android:gravity="bottom"
-            android:textColorHint="@color/PlomoApp"
-            app:placeholderTextColor="@color/PlomoApp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/button_transparent"
-                android:fontFamily="@font/quicksand_medium"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:paddingLeft="30dp"
-                android:textColor="@color/NegroApp"
-                android:textSize="16dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!--Contraseña-->
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordLayout"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="5dp"
-            android:gravity="bottom"
-            android:textColorHint="@color/PlomoApp"
-            app:endIconMode="password_toggle">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/button_transparent"
-                android:fontFamily="@font/quicksand_medium"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:paddingLeft="30dp"
-                android:textColor="@color/NegroApp"
-                android:textSize="16dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
         <!--Botones de sexo-->
         <TextView
             android:layout_width="wrap_content"
@@ -169,6 +121,56 @@
                 android:textColor="@color/color_selector"
                 android:textSize="16sp" />
         </RadioGroup>
+
+        <!--Campo de Correo-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
+            android:gravity="bottom"
+            android:textColorHint="@color/PlomoApp"
+            app:placeholderTextColor="@color/PlomoApp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/button_transparent"
+                android:fontFamily="@font/quicksand_medium"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="30dp"
+                android:textColor="@color/NegroApp"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Contraseña-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
+            android:gravity="bottom"
+            android:textColorHint="@color/PlomoApp"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/button_transparent"
+                android:fontFamily="@font/quicksand_medium"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:paddingLeft="30dp"
+                android:textColor="@color/NegroApp"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <!--Bloque Inferior-->
@@ -195,7 +197,7 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
 
-        <!--Textos de opcion-->
+        <!--Textos de opcion
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -225,8 +227,8 @@
                 android:layout_gravity="center_vertical"
                 android:background="@color/PlomoApp" />
         </LinearLayout>
-
-        <!--Redes sociales-->
+        -->
+        <!--Redes sociales
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -260,7 +262,7 @@
                 app:srcCompat="@drawable/fb" />
 
         </LinearLayout>
-
+        -->
         <!--Textos de confirmacion-->
         <LinearLayout
             android:layout_width="match_parent"

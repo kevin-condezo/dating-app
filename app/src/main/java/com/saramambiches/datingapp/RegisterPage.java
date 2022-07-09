@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterPage extends AppCompatActivity {
     Button btregisterf;
-    FloatingActionButton btFB, btGOOGLE;
+    //FloatingActionButton btFB, btGOOGLE;
     TextView btredirectl;
 
     private TextInputEditText r_email, r_password, r_name;
@@ -56,8 +56,8 @@ public class RegisterPage extends AppCompatActivity {
         setContentView(R.layout.activity_register_page);
         btregisterf = (Button) findViewById(R.id.bt_register_f);
         btredirectl =(TextView) findViewById(R.id.text_redirect_l);
-        btFB = (FloatingActionButton) findViewById(R.id.bt_fb);
-        btGOOGLE = (FloatingActionButton) findViewById(R.id.bt_google);
+        //btFB = (FloatingActionButton) findViewById(R.id.bt_fb);
+        //btGOOGLE = (FloatingActionButton) findViewById(R.id.bt_google);
 
         //Recolectando informacion
         r_email = (TextInputEditText) findViewById(R.id.email);
@@ -99,7 +99,7 @@ public class RegisterPage extends AppCompatActivity {
                 finish();
             }
         });
-
+        /*
         btFB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,6 +112,7 @@ public class RegisterPage extends AppCompatActivity {
                 Toast.makeText(RegisterPage.this,"Aqui redirecciona a google",Toast.LENGTH_LONG).show();
             }
         });
+        */
 
     }
 

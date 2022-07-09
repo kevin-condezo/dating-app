@@ -118,7 +118,7 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
 
-        <!--Textos de opcion-->
+        <!--Textos de opcion
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -148,7 +148,6 @@
                 android:background="@color/PlomoApp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <!--Redes sociales-->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -181,8 +180,7 @@
                 app:srcCompat="@drawable/fb" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <!--Textos de confirmacion-->
+        -->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
