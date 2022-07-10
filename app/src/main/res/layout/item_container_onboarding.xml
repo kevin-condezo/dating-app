@@ -3,23 +3,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="50dp"
-    android:gravity="top|center"
+    android:gravity="center"
     android:background="@color/colorBackground"
     android:paddingVertical="100dp">
     <ImageView
         android:id="@+id/imageOnboarding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:adjustViewBounds="true"
-        android:layout_marginVertical="10dp"
         android:contentDescription="@string/app_name"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="20dp">
+        android:paddingHorizontal="30dp">
         <TextView
             android:id="@+id/textTitle"
             android:layout_width="match_parent"
@@ -38,7 +36,6 @@
             android:text="Descripcion"
             android:textSize="16sp"
             android:layout_marginVertical="10dp"
-            android:layout_marginTop="10dp"
             android:fontFamily="@font/quicksand_medium"/>
     </LinearLayout>
 
