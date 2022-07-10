@@ -134,7 +134,6 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
 
-
         // Optionally Leer Info aditional
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
