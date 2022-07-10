@@ -81,6 +81,7 @@ public class PrincipalPage extends AppCompatActivity {
 
         //-----------
 
+        usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
         currentUId= mAuth.getCurrentUser().getUid();
 
@@ -109,11 +110,17 @@ public class PrincipalPage extends AppCompatActivity {
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
+                cards object = (cards) dataObject;
+                String userId = object.getUserId();
+                usersDb.child(oppositeUserSex).child(userId).child("connections").child("skip").child(currentUId).setValue(true);
                 Toast.makeText(PrincipalPage.this, "Skip", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
+                cards object = (cards) dataObject;
+                String userId = object.getUserId();
+                usersDb.child(oppositeUserSex).child(userId).child("connections").child("like").child(currentUId).setValue(true);
                 Toast.makeText(PrincipalPage.this, "Like", Toast.LENGTH_SHORT).show();
             }
 
@@ -243,7 +250,7 @@ public class PrincipalPage extends AppCompatActivity {
         oppositeSexDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                if (snapshot.exists()) {
+                if (snapshot.exists() && !snapshot.child("connections").child("skip").hasChild(currentUId) && !snapshot.child("connections").child("like").hasChild(currentUId)) {
                     cards Item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString());
                     rowItems.add(Item);
                     arrayAdapter.notifyDataSetChanged();

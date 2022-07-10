@@ -21,7 +21,7 @@
     <string name="or_signup">Or Signup with</string>
     <string name="or_signin">Or Signin with</string>
     <string name="subtitle">Ingresa tus datos correctamente</string>
-    <string name="welcome">COMENZEMOS</string>
+    <string name="welcome">COMENCEMOS</string>
 
     <!--Registro y Login de Usuarios-->
     <string name="name">Nombre</string>
