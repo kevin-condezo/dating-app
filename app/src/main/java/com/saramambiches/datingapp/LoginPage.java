@@ -189,13 +189,6 @@ public class LoginPage extends AppCompatActivity {
         return retorno;
     }
 
-    public void clickEmail(View v){
-        layout_email.setError(null);
-
-    }
-    public void clickPass(View v){
-        layout_pass.setError(null);
-    }
 
     //Redireccionamiento de pagina
     @Override
