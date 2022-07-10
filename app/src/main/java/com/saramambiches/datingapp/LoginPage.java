@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,9 +32,12 @@ public class LoginPage extends AppCompatActivity {
     TextView btredirectR;
 
     private TextInputEditText r_email, r_password;
+    private TextInputLayout layout_email, layout_pass;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,22 +66,30 @@ public class LoginPage extends AppCompatActivity {
         //Verificando Informacion
         r_email=(TextInputEditText) findViewById(R.id.email);
         r_password=(TextInputEditText) findViewById(R.id.password);
+        layout_email=(TextInputLayout) findViewById(R.id.emailLayout);
+        layout_pass=(TextInputLayout) findViewById(R.id.passwordLayout);
 
 
         //Boton Login
         btloginf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String email = r_email.getText().toString();
-                final String password = r_password.getText().toString();
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
-                            Toast.makeText(LoginPage.this, "Sign in Error", Toast.LENGTH_SHORT).show();
-                        }
+                try{
+                    if (validar()) {
+                        final String email = r_email.getText().toString();
+                        final String password = r_password.getText().toString();
+                        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (!task.isSuccessful()) {
+                                    Toast.makeText(LoginPage.this, "Sign in Error", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     }
-                });
+                }catch (Exception e){
+                    
+                }
             }
         });
         //Boton redirect Register
@@ -104,6 +116,31 @@ public class LoginPage extends AppCompatActivity {
         });
         */
     }
+
+    //Validez de campos
+    public boolean validar() {
+        boolean retorno = true;
+        String email = r_email.getText().toString();
+        String pass = r_password.getText().toString();
+        if (email.isEmpty()) {
+            layout_email.setError("Complete el campo");
+            retorno = false;
+        }
+        if (pass.isEmpty()) {
+            layout_pass.setError("Complete el campo");
+            retorno = false;
+        }
+        return retorno;
+    }
+
+    public void clickEmail(View v){
+        layout_email.setError(null);
+
+    }
+    public void clickPass(View v){
+        layout_pass.setError(null);
+    }
+
     //Redireccionamiento de pagina
     @Override
     public void onBackPressed() {
