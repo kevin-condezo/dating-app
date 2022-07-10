@@ -40,7 +40,7 @@ public class RegisterAndLogin extends AppCompatActivity {
         btlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(RegisterAndLogin.this, LoginPage.class);
+                Intent i = new Intent(RegisterAndLogin.this, RegisterPage.class);
                 startActivity(i);
                 finish();
             }
