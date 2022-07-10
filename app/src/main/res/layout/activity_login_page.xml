@@ -62,7 +62,6 @@
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
-                android:onClick="clickEmail"
                 android:paddingLeft="30dp"
                 android:textColor="@color/NegroApp"
                 android:textSize="16dp" />
@@ -89,7 +88,6 @@
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:onClick="clickPass"
                 android:paddingLeft="30dp"
                 android:textColor="@color/NegroApp"
                 android:textSize="16dp" />
