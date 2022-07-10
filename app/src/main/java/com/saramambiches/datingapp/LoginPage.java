@@ -1,8 +1,11 @@
 package com.saramambiches.datingapp;
 
+import static www.sanju.motiontoast.MotionToast.*;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -24,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
+
+import www.sanju.motiontoast.MotionToast;
 
 public class LoginPage extends AppCompatActivity {
 
@@ -82,13 +87,27 @@ public class LoginPage extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(LoginPage.this, "Sign in Error", Toast.LENGTH_SHORT).show();
+                                    MotionToast.Companion.createColorToast(LoginPage.this,"Error al loguearse",
+                                            TOAST_ERROR,
+                                            GRAVITY_BOTTOM,
+                                            SHORT_DURATION,
+                                            ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
+
                                 }
+                                MotionToast.Companion.createColorToast(LoginPage.this,"Logueado Correctamente",
+                                        TOAST_SUCCESS,
+                                        GRAVITY_BOTTOM,
+                                        SHORT_DURATION,
+                                        ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
                             }
                         });
                     }
                 }catch (Exception e){
-                    
+                    MotionToast.Companion.createColorToast(LoginPage.this,"Error al loguearse",
+                            TOAST_ERROR,
+                            GRAVITY_BOTTOM,
+                            SHORT_DURATION,
+                            ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
                 }
             }
         });

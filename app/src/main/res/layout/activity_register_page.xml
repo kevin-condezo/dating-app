@@ -46,7 +46,7 @@
 
         <!--Campo de Nombre-->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_name"
+            android:id="@+id/nameLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             android:gravity="center"
             android:orientation="horizontal">
             <RadioButton
-                android:id="@+id/maleid"
+                android:id="@+id/maleId"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
                 android:textColor="@color/color_selector"
                 android:textSize="16sp" />
             <RadioButton
-                android:id="@+id/femaleid"
+                android:id="@+id/femaleId"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

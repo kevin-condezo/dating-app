@@ -1,7 +1,13 @@
 package com.saramambiches.datingapp;
 
+import static www.sanju.motiontoast.MotionToast.GRAVITY_BOTTOM;
+import static www.sanju.motiontoast.MotionToast.SHORT_DURATION;
+import static www.sanju.motiontoast.MotionToast.TOAST_ERROR;
+import static www.sanju.motiontoast.MotionToast.TOAST_SUCCESS;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +34,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import www.sanju.motiontoast.MotionToast;
+
 public class RegisterPage extends AppCompatActivity {
     Button btregisterf;
     //FloatingActionButton btFB, btGOOGLE;
@@ -38,6 +46,7 @@ public class RegisterPage extends AppCompatActivity {
 
 
     private TextInputEditText r_email, r_password, r_name;
+    private TextInputLayout layout_name, layout_email, layout_pass;
     private RadioGroup r_RadioGroup;
 
     private FirebaseAuth mAuth;
@@ -77,6 +86,9 @@ public class RegisterPage extends AppCompatActivity {
         r_password = (TextInputEditText) findViewById(R.id.password);
         r_name = (TextInputEditText)  findViewById(R.id.name);
         r_RadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        layout_name=(TextInputLayout) findViewById(R.id.nameLayout);
+        layout_email=(TextInputLayout) findViewById(R.id.emailLayout);
+        layout_pass=(TextInputLayout) findViewById(R.id.passwordLayout);
 
 
         //String [] itemsSex={"Hombre", "Mujer"};
@@ -87,27 +99,47 @@ public class RegisterPage extends AppCompatActivity {
         btregisterf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int selectId = r_RadioGroup.getCheckedRadioButtonId();
-                final RadioButton radioButton = (RadioButton) findViewById(selectId);
-                if (radioButton.getText() == null) {
-                    return;
+                try{
+                    if(validar()){
+                        int selectId = r_RadioGroup.getCheckedRadioButtonId();
+                        final RadioButton radioButton = (RadioButton) findViewById(selectId);
+                        if (radioButton.getText() == null) {
+                            return;
+                        }
+
+                        final String email = r_email.getText().toString();
+                        final String password = r_password.getText().toString();
+                        final String name = r_name.getText().toString();
+                        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterPage.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(!task.isSuccessful()){
+                                    MotionToast.Companion.createColorToast(RegisterPage.this,"Error al registrarte",
+                                            TOAST_ERROR,
+                                            GRAVITY_BOTTOM,
+                                            SHORT_DURATION,
+                                            ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
+                                } else {
+                                    String userId = mAuth.getCurrentUser().getUid();
+                                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId).child("name");
+                                    currentUserDb.setValue(name);
+                                }
+                                MotionToast.Companion.createColorToast(RegisterPage.this,"Registrado Correctamente",
+                                        TOAST_SUCCESS,
+                                        GRAVITY_BOTTOM,
+                                        SHORT_DURATION,
+                                        ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
+                            }
+                        });
+                    }
+                }catch (Exception e){
+                    MotionToast.Companion.createColorToast(RegisterPage.this,"Error al registrarte",
+                            TOAST_ERROR,
+                            GRAVITY_BOTTOM,
+                            SHORT_DURATION,
+                            ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
                 }
 
-                final String email = r_email.getText().toString();
-                final String password = r_password.getText().toString();
-                final String name = r_name.getText().toString();
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterPage.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
-                            Toast.makeText(RegisterPage.this, "Sign up Error", Toast.LENGTH_SHORT).show();
-                        } else {
-                            String userId = mAuth.getCurrentUser().getUid();
-                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId).child("name");
-                            currentUserDb.setValue(name);
-                        }
-                    }
-                });
 
             }
         });
@@ -134,6 +166,27 @@ public class RegisterPage extends AppCompatActivity {
         });
         */
 
+    }
+
+    //Validez de campos
+    public boolean validar() {
+        boolean retorno = true;
+        String name = r_name.getText().toString();
+        String email = r_email.getText().toString();
+        String pass = r_password.getText().toString();
+        if (name.isEmpty()) {
+            layout_name.setError("Complete el campo");
+            retorno = false;
+        }
+        if (email.isEmpty()) {
+            layout_email.setError("Complete el campo");
+            retorno = false;
+        }
+        if (pass.isEmpty()) {
+            layout_pass.setError("Complete el campo");
+            retorno = false;
+        }
+        return retorno;
     }
 
     @Override
