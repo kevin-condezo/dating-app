@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/colorTextSecondary"
+            android:textColor="@color/colorText"
             android:text="Descripcion"
             android:textSize="16sp"
             android:layout_marginVertical="10dp"

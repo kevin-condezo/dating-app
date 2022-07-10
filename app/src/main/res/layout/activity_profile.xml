@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Profile">
+    tools:context=".Profile"
+    android:background="@color/colorBackground">
     <!--Navigation bar-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/white"
+        android:background="@color/colorCabecera"
         android:paddingVertical="8dp"
         app:itemIconSize="25dp"
         app:itemIconTint="@drawable/item_selector"
@@ -32,7 +33,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="logoutUser"
-            android:text="@string/signout" />
+            android:backgroundTint="@color/colorButtonPurple"
+            android:text="@string/signout"
+            android:textColor="@color/colorText"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView

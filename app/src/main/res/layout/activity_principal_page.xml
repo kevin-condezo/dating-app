@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PrincipalPage"
-    android:background="@color/white"
+    android:background="@color/colorBackground"
     android:fitsSystemWindows="true"
     android:id="@+id/body_container">
 
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/white"
+        android:background="@color/colorCabecera"
         android:paddingVertical="8dp"
         app:itemIconSize="25dp"
         app:itemIconTint="@drawable/item_selector"
@@ -65,10 +65,10 @@
                 android:layout_marginHorizontal="20dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:backgroundTint="@color/white"
+                app:backgroundTint="@color/colorButton"
                 app:fabSize="normal"
-                app:tint="@null"
-                app:srcCompat="@drawable/ic_x" />
+                app:srcCompat="@drawable/ic_x"
+                app:tint="@null" />
             <!--Button Back-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bt_back"
@@ -77,11 +77,11 @@
                 android:layout_marginHorizontal="20dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:backgroundTint="@color/white"
+                app:backgroundTint="@color/colorButton"
                 app:fabSize="mini"
                 app:maxImageSize="18dp"
-                app:tint="@null"
-                app:srcCompat="@drawable/ic_back" />
+                app:srcCompat="@drawable/ic_back"
+                app:tint="@null" />
             <!--Button Like-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bt_like"
@@ -90,10 +90,10 @@
                 android:layout_marginHorizontal="20dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:srcCompat="@drawable/ic_heart"
-                app:backgroundTint="@color/white"
+                app:backgroundTint="@color/colorButton"
                 app:fabSize="normal"
-                app:tint="@null"/>
+                app:srcCompat="@drawable/ic_heart"
+                app:tint="@null" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
