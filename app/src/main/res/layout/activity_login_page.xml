@@ -48,7 +48,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailLayout"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:gravity="bottom"
             android:textColorHint="@color/PlomoApp"
             app:placeholderTextColor="@color/PlomoApp">
@@ -56,7 +56,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:background="@drawable/button_transparent"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/email"
@@ -72,8 +72,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordLayout"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
             android:gravity="bottom"
             android:textColorHint="@color/PlomoApp"
             app:endIconMode="password_toggle">
@@ -81,7 +81,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:background="@drawable/button_transparent"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/password"
@@ -103,7 +103,7 @@
         android:layout_alignParentBottom="true"
         android:gravity="center|bottom"
         android:orientation="vertical"
-        android:padding="30dp" >
+        android:padding="30dp">
 
         <!--Boton de Register-->
         <Button

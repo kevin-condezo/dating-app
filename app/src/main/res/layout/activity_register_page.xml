@@ -48,7 +48,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_name"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             app:boxCornerRadiusTopEnd="5dp"
             app:boxCornerRadiusTopStart="5dp"
             android:gravity="bottom"
@@ -58,7 +58,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:backgroundTint="@color/PlomoTransparente"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/name"
@@ -152,7 +152,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailLayout"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             app:boxCornerRadiusTopEnd="5dp"
             app:boxCornerRadiusTopStart="5dp"
             android:layout_marginTop="5dp"
@@ -163,7 +163,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:backgroundTint="@color/PlomoTransparente"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/email"
@@ -179,7 +179,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordLayout"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             app:boxCornerRadiusTopEnd="5dp"
             app:boxCornerRadiusTopStart="5dp"
             android:layout_marginTop="5dp"
@@ -190,7 +190,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:backgroundTint="@color/PlomoTransparente"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/password"
