@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
+    android:layout_gravity="top|center"
     android:clipToPadding="false"
     android:outlineProvider="bounds"
     android:paddingTop="20sp"
     android:paddingBottom="20dp"
-    android:paddingLeft="40sp"
-    android:paddingRight="40sp">
+    android:paddingLeft="10sp"
+    android:paddingRight="10sp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:elevation="2dp"
+        android:elevation="5dp"
         app:cardCornerRadius="10dp">
 
         <FrameLayout
-            android:layout_width="300dp"
-            android:layout_height="450dp"
+            android:layout_width="350dp"
+            android:layout_height="530dp"
             android:layout_gravity="center">
             <ImageView
                 android:id="@+id/image"
@@ -31,18 +31,18 @@
                 android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/name"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textColor="@android:color/white"
                 android:gravity="bottom"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/roboto_medium"
-                android:paddingLeft="25dp"
+                android:paddingLeft="35dp"
                 android:paddingBottom="25dp"
                 android:shadowColor="#000000"
                 android:shadowDx="2"
                 android:shadowDy="5"
-                android:shadowRadius="15"
+                android:shadowRadius="50"
                 tools:text="Name"
                 android:background="@android:color/transparent"/>
         </FrameLayout>
