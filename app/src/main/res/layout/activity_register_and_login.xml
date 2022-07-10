@@ -1,93 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/colorBackground"
     android:fitsSystemWindows="true"
     tools:context=".RegisterAndLogin">
-    <!--Bloque Superior-->
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/block_superior"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:gravity="center|top"
-        android:orientation="vertical">
-
-        <!--Aviso 1-->
-        <TextView
-            android:id="@+id/saludo1"
-            android:layout_width="match_parent"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonOnboardingAction"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="12sp"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp"
             android:fontFamily="@font/quicksand_bold"
-            android:gravity="center"
-            android:text="@string/m1"
-            android:textColor="@color/NegroApp"
-            android:textSize="20sp" />
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/block_medio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_below="@+id/block_superior">
-        <!--Carrusel de imagenes-->
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/slider"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:layout_marginTop="40dp"
-            app:auto_cycle="true"
-            app:delay="0"
-            app:error_image="@color/white"
-            app:period="2000"
-            app:placeholder="@color/white">
-        </com.denzcoskun.imageslider.ImageSlider>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-    <!--Bloque Inferior-->
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/block_inferior"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center|bottom"
-        android:orientation="vertical"
-        android:padding="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/block_medio">
-        <!--Aviso 2-->
-        <TextView
-            android:id="@+id/saludo2"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/onboardingViewPager"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:id="@+id/layoutOnboardingIndicators"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:fontFamily="@font/quicksand_medium"
-            android:gravity="center"
-            android:text="@string/m2"
-            android:textColor="@color/PlomoApp"
-            android:textSize="18sp" />
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/buttonOnboardingAction"
+            app:layout_constraintEnd_toStartOf="@id/buttonOnboardingAction"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/buttonOnboardingAction"/>
 
-        <!--Boton que redirige al LoginPage-->
-        <Button
-            android:id="@+id/bt_login"
-            style="@android:style/Widget.Button"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginVertical="30dp"
-            android:background="@drawable/button_color"
-            android:fontFamily="@font/quicksand_bold"
-            android:text="@string/welcome"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
