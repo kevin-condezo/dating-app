@@ -12,6 +12,7 @@
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorText">#121212</color>
     <color name="colorTextWhite">#FFFFFF</color>
+    <color name="colorTextGray">#70717b</color>
     <color name="colorCabecera">#FFFFFF</color>
     <color name="colorButton">#FFFFFF</color>
     <color name="colorButtonPurple">#9751ff</color>

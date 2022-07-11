@@ -9,11 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>
-    <color name="colorBackground">#121212</color>
+    <color name="colorBackground">#232832</color>
     <color name="colorText">#FFFFFFFF</color>
     <color name="colorTextWhite">#1F1F1F</color>
-    <color name="colorCabecera">#1F1F1F</color>
-    <color name="colorButton">#2C2C2C</color>
+    <color name="colorTextGray">#FFFFFFFF</color>
+    <color name="colorCabecera">#242933</color>
+    <color name="colorButton">#393e46</color>
     <color name="colorButtonPurple">#2C2C2C</color>
     <color name="colorOnboardingIndicatorInactive">#8C9751ff</color>
 

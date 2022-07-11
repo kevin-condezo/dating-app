@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/colorBackground"
     android:fitsSystemWindows="true"
     tools:context=".LoginPage">
 
@@ -41,7 +41,7 @@
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/quicksand_semibold"
             android:text="@string/subtitle"
-            android:textColor="@color/PlomoApp"
+            android:textColor="@color/colorTextGray"
             android:textSize="15sp" />
 
         <!--Campo de Correo-->
@@ -51,8 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
-            android:textColorHint="@color/PlomoApp"
-            app:placeholderTextColor="@color/PlomoApp"
+            android:textColorHint="@color/colorTextGray"
+            app:placeholderTextColor="@color/colorTextGray"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="bottom"
-            android:textColorHint="@color/PlomoApp"
+            android:textColorHint="@color/colorTextGray"
             app:endIconMode="password_toggle"
             app:errorEnabled="true">
 
