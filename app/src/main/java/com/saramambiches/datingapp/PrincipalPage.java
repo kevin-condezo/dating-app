@@ -147,13 +147,13 @@ public class PrincipalPage extends AppCompatActivity {
 
         init();
 
-        bt_back.setOnClickListener(new View.OnClickListener() {
+        /*bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AnimarFab(bt_back);
                 Toast.makeText(PrincipalPage.this, "Back", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         bt_skip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,11 +175,10 @@ public class PrincipalPage extends AppCompatActivity {
     }
 
     private void init() {
-        this.bt_back = findViewById(R.id.bt_back);
+        //this.bt_back = findViewById(R.id.bt_back);
         this.bt_skip = findViewById(R.id.bt_skip);
         this.bt_like = findViewById(R.id.bt_like);
     }
-
     private void AnimarFab(final FloatingActionButton fab){
         fab.animate().scaleX(0.7f).scaleY(0.7f).setDuration(100).withEndAction(new Runnable() {
             @Override

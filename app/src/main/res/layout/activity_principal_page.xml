@@ -60,14 +60,14 @@
                 android:id="@+id/bt_skip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="40dp"
                 android:clickable="true"
                 android:focusable="true"
                 app:backgroundTint="@color/colorButton"
                 app:fabSize="normal"
                 app:srcCompat="@drawable/ic_x"
-                app:tint="@null" />
-            <!--Button Back-->
+                app:tint="@null"/>
+            <!--Button Back
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bt_back"
                 android:layout_width="wrap_content"
@@ -80,12 +80,13 @@
                 app:maxImageSize="18dp"
                 app:srcCompat="@drawable/ic_back"
                 app:tint="@null" />
+            -->
             <!--Button Like-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bt_like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="40dp"
                 android:clickable="true"
                 android:focusable="true"
                 app:backgroundTint="@color/colorButton"
