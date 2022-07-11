@@ -10,10 +10,13 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -45,6 +48,9 @@ public class PrincipalPage extends AppCompatActivity {
     private FloatingActionButton bt_back, bt_skip, bt_like;
     BottomNavigationView bottomNavigationView;
 
+    private Button layoutHide;
+    private LinearLayout layoutMatch;
+
     ListView listView;
     List<cards> rowItems;
 
@@ -52,6 +58,7 @@ public class PrincipalPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_page);
+
 
         //Navigation Bar
 
@@ -142,6 +149,8 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
                     Toast.makeText(PrincipalPage.this, "Info", Toast.LENGTH_SHORT).show();
+                    //View match = flingContainer.getSelectedView();
+                    //match.findViewById(R.id.item_match).setAlpha(1);
             }
         });
 
@@ -173,6 +182,13 @@ public class PrincipalPage extends AppCompatActivity {
                 flingContainer.getTopCardListener().selectRight();
             }
         });
+
+        layoutHide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layoutMatch.setVisibility(View.INVISIBLE);
+            }
+        });
         //--------------
     }
 
@@ -183,7 +199,8 @@ public class PrincipalPage extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()){
                     //Match
-                    Toast.makeText(PrincipalPage.this, "new Connection", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(PrincipalPage.this, "new Connection", Toast.LENGTH_LONG).show();
+                    layoutMatch.setVisibility(View.VISIBLE);
 
                     usersDb.child(oppositeUserSex).child(snapshot.getKey()).child("connections").child("matches").child(currentUId).setValue(true);
                     usersDb.child(userSex).child(currentUId).child("connections").child("matches").child(snapshot.getKey()).setValue(true);
@@ -200,6 +217,9 @@ public class PrincipalPage extends AppCompatActivity {
         //this.bt_back = findViewById(R.id.bt_back);
         this.bt_skip = findViewById(R.id.bt_skip);
         this.bt_like = findViewById(R.id.bt_like);
+        this.layoutHide= findViewById(R.id.hideLayout);
+        this.layoutMatch= findViewById(R.id.matchLayout);
+        layoutMatch.setVisibility(View.INVISIBLE);
     }
     private void AnimarFab(final FloatingActionButton fab){
         fab.animate().scaleX(0.7f).scaleY(0.7f).setDuration(100).withEndAction(new Runnable() {
