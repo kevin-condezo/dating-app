@@ -30,16 +30,14 @@
         android:gravity="top"
         android:orientation="vertical">
 
-        <com.lorentzos.flingswipe.SwipeFlingAdapterView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.lorentzos.flingswipe.SwipeFlingAdapterView
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:max_visible="4"
             android:layout_gravity="top"
+            app:max_visible="4"
             app:min_adapter_stack="6"
-            app:rotation_degrees="15.5"
-            tools:context=".MyActivity" />
+            app:rotation_degrees="15.5"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <!--Bloque Inferior-->

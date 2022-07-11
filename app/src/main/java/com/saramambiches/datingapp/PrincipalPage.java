@@ -113,7 +113,6 @@ public class PrincipalPage extends AppCompatActivity {
                 cards object = (cards) dataObject;
                 String userId = object.getUserId();
                 usersDb.child(oppositeUserSex).child(userId).child("connections").child("skip").child(currentUId).setValue(true);
-                Toast.makeText(PrincipalPage.this, "Skip", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -121,20 +120,22 @@ public class PrincipalPage extends AppCompatActivity {
                 cards object = (cards) dataObject;
                 String userId = object.getUserId();
                 usersDb.child(oppositeUserSex).child(userId).child("connections").child("like").child(currentUId).setValue(true);
-                Toast.makeText(PrincipalPage.this, "Like", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-                //Aca va si le da click al cuadro
+                //mensaje al entrar a la pantalla
             }
 
             @Override
             public void onScroll(float scrollProgressPercent) {
+                View view = flingContainer.getSelectedView();
+                view.findViewById(R.id.item_swipe_right_indicator).setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
+                view.findViewById(R.id.item_swipe_left_indicator).setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
             }
         });
 
-        // Optionally Leer Info aditional
+        // Darle click
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
