@@ -27,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -120,6 +121,7 @@ public class PrincipalPage extends AppCompatActivity {
                 cards object = (cards) dataObject;
                 String userId = object.getUserId();
                 usersDb.child(oppositeUserSex).child(userId).child("connections").child("like").child(currentUId).setValue(true);
+                isConnectionMatch(userId);
             }
 
             @Override
@@ -172,6 +174,28 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
         //--------------
+    }
+
+    private void isConnectionMatch(String userId) {
+        DatabaseReference currentUserConnectionsDb = usersDb.child(currentUId).child("connections").child("yeps").child(userId);
+        currentUserConnectionsDb.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot Snapshot) {
+                if (Snapshot.exists()){
+                    //Match
+                    Toast.makeText(PrincipalPage.this, "new Connection", Toast.LENGTH_LONG).show();
+
+                    String key = FirebaseDatabase.getInstance().getReference().child("Chat").push().getKey();
+
+                    usersDb.child(Snapshot.getKey()).child("connections").child("matches").child(currentUId).child("ChatId").setValue(key);
+                    usersDb.child(currentUId).child("connections").child("matches").child(Snapshot.getKey()).child("ChatId").setValue(key);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     private void init() {
