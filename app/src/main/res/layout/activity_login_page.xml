@@ -108,7 +108,7 @@
         android:padding="30dp">
 
         <!--Boton de Register-->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_login_f"
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"

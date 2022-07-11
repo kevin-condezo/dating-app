@@ -66,7 +66,7 @@
                 app:backgroundTint="@color/colorButton"
                 app:fabSize="normal"
                 app:srcCompat="@drawable/ic_x"
-                app:tint="@null"/>
+                app:tint="@null" />
             <!--Button Back
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bt_back"

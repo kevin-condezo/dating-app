@@ -5,14 +5,21 @@
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable-v24/button_color.xml" value="0.1575" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/background_gradient.xml" value="0.184" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_checked.xml" value="0.178" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_circle.xml" value="0.12" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_circle_color_shadow.xml" value="0.152" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_selector.xml" value="0.178" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_transparent.xml" value="0.1" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_unchecked.xml" value="0.178" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_white.xml" value="0.184" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_female.xml" value="0.178" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_heart.xml" value="0.1" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_male.xml" value="0.178" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_next.xml" value="0.1965" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_pass.xml" value="0.184" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_setting.xml" value="0.184" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_user.xml" value="0.184" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/onboarding_indicator_active.xml" value="0.1" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/onboarding_indicator_inactive.xml" value="0.1" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/shape.xml" value="0.184" />
@@ -22,7 +29,7 @@
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_messages.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_principal_page.xml" value="0.2" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_profile.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_and_login.xml" value="0.17316017316017315" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_page.xml" value="0.176" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item.xml" value="0.2490740740740741" />
