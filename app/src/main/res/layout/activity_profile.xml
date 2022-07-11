@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".Profile"
-    android:background="#f5f7fa">
+    android:background="@color/colorBackground">
     <!--Navigation bar-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -32,11 +32,27 @@
         android:paddingBottom="30dp">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/ic_user_default"
             app:tint="@color/colorTextGray"/>
-
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre, x"
+            android:textSize="30dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="@color/black"
+            android:layout_marginVertical="5dp"/>
+        <TextView
+            android:id="@+id/subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="University"
+            android:textSize="20dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:textColor="@color/black"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/block_superior"
             android:layout_width="match_parent"
@@ -106,14 +122,16 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="60dp"
         android:layout_marginBottom="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/button_color"
+        android:background="@drawable/button_white"
         android:onClick="logoutUser"
         android:text="@string/signout"
-        android:textColor="@color/colorTextWhite" />
+        android:textColor="@color/colorTextGray"
+        android:fontFamily="@font/quicksand_bold"
+        android:textSize="16sp"/>
 
 </RelativeLayout>
