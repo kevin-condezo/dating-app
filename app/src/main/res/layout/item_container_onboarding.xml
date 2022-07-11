@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="@color/colorBackground"
-    android:paddingVertical="100dp">
+    android:paddingVertical="100dp"
+    android:paddingBottom="80dp">
     <ImageView
         android:id="@+id/imageOnboarding"
         android:layout_width="match_parent"

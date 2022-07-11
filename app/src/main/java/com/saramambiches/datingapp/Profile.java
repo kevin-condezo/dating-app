@@ -9,17 +9,25 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile extends AppCompatActivity {
     private FirebaseAuth mAuth;
     BottomNavigationView bottomNavigationView;
+
+    private FloatingActionButton bt_setting, bt_photoAdd, bt_edit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
+        bt_setting= (FloatingActionButton) findViewById(R.id.setting);
+        bt_photoAdd= (FloatingActionButton) findViewById(R.id.photoAdd);
+        bt_edit= (FloatingActionButton) findViewById(R.id.edit);
 
         //Navigation Bar
 
@@ -50,11 +58,20 @@ public class Profile extends AppCompatActivity {
         });
 
         //-----------
+        bt_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Profile.this, SettingsActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
+
 
     public void logoutUser(View view) {
         mAuth.signOut();
-        Intent intent = new Intent(Profile.this, RegisterAndLogin.class);
+        Intent intent = new Intent(Profile.this, LoginPage.class);
         startActivity(intent);
         finish();
         return;
