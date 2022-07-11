@@ -180,20 +180,20 @@ public class PrincipalPage extends AppCompatActivity {
         DatabaseReference currentUserConnectionsDb = usersDb.child(currentUId).child("connections").child("like").child(userId);
         currentUserConnectionsDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot Snapshot) {
-                if (Snapshot.exists()){
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
                     //Match
                     Toast.makeText(PrincipalPage.this, "new Connection", Toast.LENGTH_LONG).show();
 
                     String key = FirebaseDatabase.getInstance().getReference().child("Chat").push().getKey();
 
-                    usersDb.child(Snapshot.getKey()).child("connections").child("matches").child(currentUId).child("ChatId").setValue(key);
-                    usersDb.child(currentUId).child("connections").child("matches").child(Snapshot.getKey()).child("ChatId").setValue(key);
+                    usersDb.child(snapshot.getKey()).child("connections").child("matches").child(currentUId).child("ChatId").setValue(key);
+                    usersDb.child(currentUId).child("connections").child("matches").child(snapshot.getKey()).child("ChatId").setValue(key);
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
