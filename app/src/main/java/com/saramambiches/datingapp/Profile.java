@@ -11,6 +11,7 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.saramambiches.datingapp.Utils.PulsatorLayout;
 
 public class Profile extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -24,6 +25,8 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        PulsatorLayout mPulsator = findViewById(R.id.pulsator);
+        mPulsator.start();
 
         bt_setting= (FloatingActionButton) findViewById(R.id.setting);
         bt_photoAdd= (FloatingActionButton) findViewById(R.id.photoAdd);
