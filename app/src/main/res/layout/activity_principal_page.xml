@@ -108,7 +108,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:paddingHorizontal="50dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:clickable="true">
 
         <ImageView
