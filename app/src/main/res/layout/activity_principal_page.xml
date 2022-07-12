@@ -28,7 +28,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/block_medio"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/bottom_navigation"
             android:gravity="top"
             android:orientation="vertical">
