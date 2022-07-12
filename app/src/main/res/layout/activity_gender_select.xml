@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register.GenderSelect">
+    <ImageView
+        android:id="@+id/afs"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_back"
+        app:tint="@color/colorTextGray"/>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="150dp"
+        android:text="Show me"
+        android:textSize="50sp"
+        android:fontFamily="@font/quicksand_bold"
+        android:gravity="center"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="60dp">
+
+        <RadioButton
+            android:id="@+id/maleId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/button_selector"
+            android:button="@drawable/button_transparent"
+            android:fontFamily="@font/quicksand_bold"
+            android:padding="15dp"
+            android:text="@string/male"
+            android:textAlignment="center"
+            android:textColor="@color/color_selector"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/femaleId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/button_selector"
+            android:button="@drawable/button_transparent"
+            android:fontFamily="@font/quicksand_bold"
+            android:padding="15dp"
+            android:text="@string/female"
+            android:textAlignment="center"
+            android:textColor="@color/color_selector"
+            android:textSize="18sp" />
+    </RadioGroup>
+</RelativeLayout>
