@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".register.GenderSelect">
     <ImageView
-        android:id="@+id/afs"
+        android:id="@+id/back"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentTop="true"
@@ -67,5 +67,35 @@
             android:textAlignment="center"
             android:textColor="@color/color_selector"
             android:textSize="18sp" />
+        <RadioButton
+            android:id="@+id/everyoneId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/button_selector"
+            android:button="@drawable/button_transparent"
+            android:fontFamily="@font/quicksand_bold"
+            android:padding="15dp"
+            android:text="Everyone"
+            android:textAlignment="center"
+            android:textColor="@color/color_selector"
+            android:textSize="18sp" />
     </RadioGroup>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp">
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:background="@drawable/button_color"
+            android:backgroundTint="@color/pat2"
+            android:textSize="18sp"
+            android:text="Continuar"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 </RelativeLayout>
