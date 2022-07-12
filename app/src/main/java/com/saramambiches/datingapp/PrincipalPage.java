@@ -219,7 +219,6 @@ public class PrincipalPage extends AppCompatActivity {
         this.bt_like = findViewById(R.id.bt_like);
         this.layoutHide= findViewById(R.id.hideLayout);
         this.layoutMatch= findViewById(R.id.matchLayout);
-        layoutMatch.setVisibility(View.INVISIBLE);
     }
     private void AnimarFab(final FloatingActionButton fab){
         fab.animate().scaleX(0.7f).scaleY(0.7f).setDuration(100).withEndAction(new Runnable() {

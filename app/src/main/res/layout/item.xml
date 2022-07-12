@@ -54,14 +54,6 @@
             android:background="@drawable/like"/>
 
         <View
-            android:id="@+id/item_match"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:alpha="0"
-            android:background="@drawable/like"
-            android:layout_gravity="center"/>
-
-        <View
             android:id="@+id/item_swipe_right_indicator"
             android:layout_width="150dp"
             android:layout_height="150dp"
