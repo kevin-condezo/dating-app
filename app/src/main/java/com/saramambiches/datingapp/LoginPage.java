@@ -190,14 +190,14 @@ public class LoginPage extends AppCompatActivity {
     }
 
 
-    //Redireccionamiento de pagina
+    /*Redireccionamiento de pagina
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(LoginPage.this, RegisterAndLogin.class);
         startActivity(i);
         finish();
-    }
+    }*/
     //Nose
     @Override
     protected void onStart() {
@@ -209,5 +209,10 @@ public class LoginPage extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mAuth.removeAuthStateListener(firebaseAuthStateListener);
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

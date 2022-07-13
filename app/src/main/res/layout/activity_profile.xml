@@ -119,25 +119,29 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="130dp"
                 android:layout_marginTop="65dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <RelativeLayout
-                    android:layout_width="96dp"
-                    android:layout_height="100dp"
-                    android:gravity="center">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="12"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="3.8dp">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/photoAdd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
                         android:backgroundTint="@color/pat2"
                         android:clickable="true"
                         app:backgroundTint="#CCf4f5f6"
@@ -166,6 +170,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginTop="7dp"
                     android:fontFamily="@font/quicksand_bold"
                     android:text="AÑADIR FOTOS"

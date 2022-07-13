@@ -243,13 +243,13 @@ public class RegisterPage extends AppCompatActivity {
         return retorno;
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(RegisterPage.this, RegisterAndLogin.class);
         startActivity(i);
         finish();
-    }
+    }*/
 
     @Override
     protected void onStart() {
@@ -261,5 +261,10 @@ public class RegisterPage extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mAuth.removeAuthStateListener(firebaseAuthStateListener);
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }
