@@ -81,72 +81,33 @@ public class LoginPage extends AppCompatActivity {
         btloginf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    if (validar()) {
-                        final String email = r_email.getText().toString();
-                        final String password = r_password.getText().toString();
-                        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (!task.isSuccessful()) {
-                                    MotionToast.Companion.createColorToast(LoginPage.this,"Error al loguearse",
-                                            TOAST_ERROR,
-                                            GRAVITY_BOTTOM,
-                                            SHORT_DURATION,
-                                            ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
+                final String email = r_email.getText().toString();
+                final String password = r_password.getText().toString();
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (!task.isSuccessful()) {
+                            MotionToast.Companion.createColorToast(LoginPage.this,"Error al loguearse",
+                                    TOAST_ERROR,
+                                    GRAVITY_BOTTOM,
+                                    SHORT_DURATION,
+                                    ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
 
-                                }
-                                MotionToast.Companion.createColorToast(LoginPage.this,"Logueado Correctamente",
-                                        TOAST_SUCCESS,
-                                        GRAVITY_BOTTOM,
-                                        SHORT_DURATION,
-                                        ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
-                            }
-                        });
+                        }
+                        MotionToast.Companion.createColorToast(LoginPage.this,"Logueado Correctamente",
+                                TOAST_SUCCESS,
+                                GRAVITY_BOTTOM,
+                                SHORT_DURATION,
+                                ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
                     }
-                }catch (Exception e){
-                    MotionToast.Companion.createColorToast(LoginPage.this,"Error al loguearse",
-                            TOAST_ERROR,
-                            GRAVITY_BOTTOM,
-                            SHORT_DURATION,
-                            ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
-                }
+                });
             }
         });
 
-        r_email.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                layout_email.setErrorEnabled(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        r_password.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                layout_pass.setErrorEnabled(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+        r_email.addTextChangedListener(loginTextWatcher);
+        r_password.addTextChangedListener(loginTextWatcher);
 
         //Boton redirect Register
         btredirectR.setOnClickListener(new View.OnClickListener() {
@@ -173,22 +134,47 @@ public class LoginPage extends AppCompatActivity {
         */
     }
 
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String email = r_email.getText().toString().trim();
+            String pass = r_password.getText().toString().trim();
+
+            btloginf.setEnabled(!email.isEmpty() && !pass.isEmpty());
+            if(validar()){
+                btloginf.setBackground(getResources().getDrawable(R.drawable.button_color));
+                btloginf.setTextColor(Color.WHITE);
+            }else{
+                btloginf.setBackground(getResources().getDrawable(R.drawable.button_color_inactive));
+                btloginf.setTextColor(getResources().getColor(R.color.inactive));
+            }
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
     //Validez de campos
     public boolean validar() {
         boolean retorno = true;
         String email = r_email.getText().toString();
         String pass = r_password.getText().toString();
         if (email.isEmpty()) {
-            layout_email.setError("Complete el campo");
             retorno = false;
         }
         if (pass.isEmpty()) {
-            layout_pass.setError("Complete el campo");
             retorno = false;
         }
         return retorno;
     }
-
 
     /*Redireccionamiento de pagina
     @Override

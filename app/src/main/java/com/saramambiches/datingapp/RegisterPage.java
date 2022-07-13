@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -101,101 +102,43 @@ public class RegisterPage extends AppCompatActivity {
         btregisterf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    if(validar()){
-                        int selectId = r_RadioGroup.getCheckedRadioButtonId();
-                        final RadioButton radioButton = (RadioButton) findViewById(selectId);
-                        if (radioButton.getText() == null) {
-                            return;
-                        }
-
-                        final String email = r_email.getText().toString();
-                        final String password = r_password.getText().toString();
-                        final String name = r_name.getText().toString();
-                        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterPage.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(!task.isSuccessful()){
-                                    MotionToast.Companion.createColorToast(RegisterPage.this,"Error al registrarte",
-                                            TOAST_ERROR,
-                                            GRAVITY_BOTTOM,
-                                            SHORT_DURATION,
-                                            ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
-                                } else {
-                                    String userId = mAuth.getCurrentUser().getUid();
-                                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId).child("name");
-                                    currentUserDb.setValue(name);
-                                }
-                                MotionToast.Companion.createColorToast(RegisterPage.this,"Registrado Correctamente",
-                                        TOAST_SUCCESS,
-                                        GRAVITY_BOTTOM,
-                                        SHORT_DURATION,
-                                        ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
-                            }
-                        });
-                    }
-                }catch (Exception e){
-                    MotionToast.Companion.createColorToast(RegisterPage.this,"Error al registrarte",
-                            TOAST_ERROR,
-                            GRAVITY_BOTTOM,
-                            SHORT_DURATION,
-                            ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
+                int selectId = r_RadioGroup.getCheckedRadioButtonId();
+                final RadioButton radioButton = (RadioButton) findViewById(selectId);
+                if (radioButton.getText() == null) {
+                    return;
                 }
 
-
+                final String email = r_email.getText().toString();
+                final String password = r_password.getText().toString();
+                final String name = r_name.getText().toString();
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterPage.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(!task.isSuccessful()){
+                            MotionToast.Companion.createColorToast(RegisterPage.this,"Error al registrarte",
+                                    TOAST_ERROR,
+                                    GRAVITY_BOTTOM,
+                                    SHORT_DURATION,
+                                    ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
+                        } else {
+                            String userId = mAuth.getCurrentUser().getUid();
+                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId).child("name");
+                            currentUserDb.setValue(name);
+                        }
+                        MotionToast.Companion.createColorToast(RegisterPage.this,"Registrado Correctamente",
+                                TOAST_SUCCESS,
+                                GRAVITY_BOTTOM,
+                                SHORT_DURATION,
+                                ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
+                    }
+                });
             }
         });
 
-        r_name.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        r_name.addTextChangedListener(loginTextWatcher);
+        r_email.addTextChangedListener(loginTextWatcher);
+        r_password.addTextChangedListener(loginTextWatcher);
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                layout_name.setErrorEnabled(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        r_email.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                layout_email.setErrorEnabled(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        r_password.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                layout_pass.setErrorEnabled(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
 
         btredirectl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,6 +165,35 @@ public class RegisterPage extends AppCompatActivity {
 
     }
 
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String name = r_name.getText().toString().trim();
+            String email = r_email.getText().toString().trim();
+            String pass = r_password.getText().toString().trim();
+
+            btregisterf.setEnabled(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty());
+            if(validar()){
+                btregisterf.setBackground(getResources().getDrawable(R.drawable.button_color));
+                btregisterf.setTextColor(Color.WHITE);
+            }else{
+                btregisterf.setBackground(getResources().getDrawable(R.drawable.button_color_inactive));
+                btregisterf.setTextColor(getResources().getColor(R.color.inactive));
+            }
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
     //Validez de campos
     public boolean validar() {
         boolean retorno = true;
@@ -229,15 +201,12 @@ public class RegisterPage extends AppCompatActivity {
         String email = r_email.getText().toString();
         String pass = r_password.getText().toString();
         if (name.isEmpty()) {
-            layout_name.setError("Complete el campo");
             retorno = false;
         }
         if (email.isEmpty()) {
-            layout_email.setError("Complete el campo");
             retorno = false;
         }
         if (pass.isEmpty()) {
-            layout_pass.setError("Complete el campo");
             retorno = false;
         }
         return retorno;

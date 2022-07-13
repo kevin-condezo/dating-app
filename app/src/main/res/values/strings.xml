@@ -35,6 +35,7 @@
     <color name="pat3">#B13FE8</color>
     <color name="pat4">#543FE8</color>
     <color name="pat5">#455FFF</color>
+    <color name="inactive">#878787</color>
     <!--Colores Complementarios-->
     <color name="pat6">#5F27B3</color>
     <color name="pat7">#A66BFF</color>
