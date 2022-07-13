@@ -146,13 +146,13 @@ public class LoginPage extends AppCompatActivity {
             String pass = r_password.getText().toString().trim();
 
             btloginf.setEnabled(!email.isEmpty() && !pass.isEmpty());
-            if(validar()){
+            /*if(validar()){
                 btloginf.setBackground(getResources().getDrawable(R.drawable.button_color));
                 btloginf.setTextColor(Color.WHITE);
             }else{
                 btloginf.setBackground(getResources().getDrawable(R.drawable.button_color_inactive));
                 btloginf.setTextColor(getResources().getColor(R.color.inactive));
-            }
+            }*/
 
         }
 

@@ -178,13 +178,13 @@ public class RegisterPage extends AppCompatActivity {
             String pass = r_password.getText().toString().trim();
 
             btregisterf.setEnabled(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty());
-            if(validar()){
+            /*if(validar()){
                 btregisterf.setBackground(getResources().getDrawable(R.drawable.button_color));
                 btregisterf.setTextColor(Color.WHITE);
             }else{
                 btregisterf.setBackground(getResources().getDrawable(R.drawable.button_color_inactive));
                 btregisterf.setTextColor(getResources().getColor(R.color.inactive));
-            }
+            }*/
 
         }
 

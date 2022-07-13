@@ -47,26 +47,21 @@
         <!--Campo de Nombre-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nameLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="bottom"
-            android:textColorHint="@color/colorTextGray"
-            app:boxCornerRadiusTopEnd="5dp"
-            app:boxCornerRadiusTopStart="5dp"
-            app:placeholderTextColor="@color/colorTextGray">
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorTextGray"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/name"
                 android:inputType="textPersonName"
-                android:paddingLeft="30dp"
-                android:textColor="@color/NegroApp"
-                android:textSize="16dp" />
+                android:paddingVertical="17dp"
+                android:textSize="16dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
         <!--
@@ -100,7 +95,7 @@
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -143,27 +138,21 @@
         <!--Campo de Correo-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_height="match_parent"
             android:gravity="bottom"
-            android:textColorHint="@color/colorTextGray"
-            app:boxCornerRadiusTopEnd="5dp"
-            app:boxCornerRadiusTopStart="5dp"
-            app:placeholderTextColor="@color/colorTextGray">
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorTextGray"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="30dp"
-                android:textColor="@color/NegroApp"
-                android:textSize="16dp" />
+                android:paddingVertical="17dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -171,28 +160,22 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_height="match_parent"
             android:gravity="bottom"
-            android:textColorHint="@color/colorTextGray"
-            app:boxCornerRadiusTopEnd="5dp"
-            app:boxCornerRadiusTopStart="5dp"
-            app:endIconMode="password_toggle">
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorTextGray"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:paddingLeft="30dp"
-                android:textColor="@color/NegroApp"
-                android:textSize="16dp" />
-
+                android:paddingVertical="17dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -209,18 +192,16 @@
 
         <!--Boton de Register-->
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_register_f"
-            style="@android:style/Widget.Button"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="17dp"
             android:enabled="false"
-            android:background="@drawable/button_color_inactive"
-            android:textColor="@color/inactive"
             android:fontFamily="@font/quicksand_bold"
             android:text="@string/register"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:cornerRadius="50dp"/>
 
         <!--Textos de opcion
         <LinearLayout

@@ -16,9 +16,7 @@
         android:gravity="center|top"
         android:orientation="vertical"
         android:paddingHorizontal="30dp"
-        android:paddingTop="30dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:paddingTop="30dp">
 
         <!--Titulo-->
         <TextView
@@ -47,24 +45,27 @@
         <!--Campo de Correo-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="bottom"
             android:textColorHint="@color/colorTextGray"
             app:placeholderTextColor="@color/colorTextGray"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            app:boxCornerRadiusTopEnd="28dp"
+            app:boxCornerRadiusBottomEnd="28dp"
+            app:boxCornerRadiusBottomStart="28dp"
+            app:boxCornerRadiusTopStart="28dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="30dp"
-                android:textColor="@color/NegroApp"
-                android:textSize="16dp" />
+                android:paddingVertical="17dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,26 +73,22 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_height="match_parent"
             android:gravity="bottom"
-            android:textColorHint="@color/colorTextGray"
             app:endIconMode="password_toggle"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/quicksand_medium"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:paddingLeft="30dp"
-                android:textColor="@color/NegroApp"
-                android:textSize="16dp" />
-
+                android:paddingVertical="17dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -108,18 +105,17 @@
         android:padding="30dp">
 
         <!--Boton de Register-->
-        <androidx.appcompat.widget.AppCompatButton
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_login_f"
-            style="@android:style/Widget.Button"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content"
             android:enabled="false"
-            android:background="@drawable/button_color_inactive"
-            android:textColor="@color/inactive"
             android:fontFamily="@font/quicksand_bold"
+            android:paddingVertical="17dp"
             android:text="@string/login"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:cornerRadius="50dp" />
 
         <!--Textos de opcion
         <androidx.appcompat.widget.LinearLayoutCompat

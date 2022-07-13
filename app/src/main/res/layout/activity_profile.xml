@@ -28,7 +28,7 @@
         android:background="@drawable/panel_curve"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingTop="50dp"
+        android:paddingTop="20dp"
         android:paddingBottom="30dp">
 
         <com.saramambiches.datingapp.Utils.PulsatorLayout

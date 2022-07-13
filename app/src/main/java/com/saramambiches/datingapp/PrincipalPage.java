@@ -115,9 +115,6 @@ public class PrincipalPage extends AppCompatActivity {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-                //Do something on the left!
-                //You also have access to the original object.
-                //If you want to use it just cast it (String) dataObject
                 cards object = (cards) dataObject;
                 String userId = object.getUserId();
                 usersDb.child(oppositeUserSex).child(userId).child("connections").child("skip").child(currentUId).setValue(true);
@@ -198,8 +195,8 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()){
-                    //Match
-                    //Toast.makeText(PrincipalPage.this, "new Connection", Toast.LENGTH_LONG).show();
+
+                    //Show layout of Match
                     layoutMatch.setVisibility(View.VISIBLE);
 
                     usersDb.child(oppositeUserSex).child(snapshot.getKey()).child("connections").child("matches").child(currentUId).setValue(true);
