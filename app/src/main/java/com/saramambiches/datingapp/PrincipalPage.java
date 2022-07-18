@@ -78,7 +78,9 @@ public class PrincipalPage extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.nav_user:
-                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        Intent i = new Intent(getApplicationContext(), Profile.class);
+                        i.putExtra("sex", userSex);
+                        startActivity(i);
                         overridePendingTransition(0,0);
                         finish();
                         return true;

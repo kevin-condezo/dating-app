@@ -53,4 +53,6 @@
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="signout">Sign Out</string>
+    <string name="edit">EDIT</string>
+    <string name="save">GUARDAR</string>
 </resources>
