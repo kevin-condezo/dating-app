@@ -18,7 +18,7 @@ public class Profile extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     private FloatingActionButton bt_setting, bt_photoAdd, bt_edit;
-    
+
     private String userSex;
 
     @Override
@@ -26,18 +26,7 @@ public class Profile extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if(extras == null) {
-                userSex = null;
-            } else {
-                userSex = extras.getString("sex");
-            }
-        } else {
-            userSex = (String) savedInstanceState.getSerializable("sex");
-        }
-
+        userSex = getIntent().getExtras().getString("sex");
         PulsatorLayout mPulsator = findViewById(R.id.pulsator);
         mPulsator.start();
 
@@ -61,7 +50,10 @@ public class Profile extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.nav_sms:
-                        startActivity(new Intent(getApplicationContext(),Messages.class));
+                        //startActivity(new Intent(getApplicationContext(),Messages.class));
+                        Intent i = new Intent(Profile.this, Messages.class);
+                        i.putExtra("sex", userSex);
+                        startActivity(i);
                         overridePendingTransition(0,0);
                         finish();
                         return true;
@@ -87,7 +79,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Profile.this, EditProfileActivity.class);
-                i.putExtra("userSex", userSex);
+                i.putExtra("sex", userSex);
                 startActivity(i);
                 finish();
             }

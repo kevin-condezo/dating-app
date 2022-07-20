@@ -73,14 +73,18 @@ public class PrincipalPage extends AppCompatActivity {
                     case R.id.nav_home:
                         return true;
                     case R.id.nav_sms:
-                        startActivity(new Intent(getApplicationContext(), Messages.class));
+                        //startActivity(new Intent(getApplicationContext(), Messages.class));
+                        Intent i = new Intent(PrincipalPage.this, Messages.class);
+                        i.putExtra("sex", userSex);
+                        startActivity(i);
                         overridePendingTransition(0,0);
                         finish();
                         return true;
                     case R.id.nav_user:
-                        Intent i = new Intent(getApplicationContext(), Profile.class);
-                        i.putExtra("sex", userSex);
-                        startActivity(i);
+                        //startActivity(new Intent(getApplicationContext(), Profile.class));
+                        Intent intent = new Intent(PrincipalPage.this, Profile.class);
+                        intent.putExtra("sex", userSex);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         finish();
                         return true;

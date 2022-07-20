@@ -8,6 +8,9 @@
     android:fitsSystemWindows="true"
     tools:context=".EditProfileActivity">
 
+    <!--TODO: agregar campos para editar-->
+    <!--TODO: mejorar layout-->
+
     <!--Bloque Superior-->
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/bloque_superior"
