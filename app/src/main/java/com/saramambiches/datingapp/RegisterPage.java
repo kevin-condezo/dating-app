@@ -37,6 +37,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import www.sanju.motiontoast.MotionToast;
 
 public class RegisterPage extends AppCompatActivity {
@@ -122,8 +125,12 @@ public class RegisterPage extends AppCompatActivity {
                                     ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
                         } else {
                             String userId = mAuth.getCurrentUser().getUid();
-                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId).child("name");
-                            currentUserDb.setValue(name);
+                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId);//.child("name");
+                            Map userInfo = new HashMap<>();
+                            userInfo.put("name", name);
+                            userInfo.put("profileImageUrl", "default");
+                            currentUserDb.updateChildren(userInfo);
+                            //currentUserDb.setValue(name);
                         }
                         MotionToast.Companion.createColorToast(RegisterPage.this,"Registrado Correctamente",
                                 TOAST_SUCCESS,

@@ -122,7 +122,6 @@ public class EditProfileActivity extends AppCompatActivity {
                     Glide.with(mProfileImage);
                     if(map.get("profileImageUrl")!=null){
                         profileImageUrl = Objects.requireNonNull(map.get("profileImageUrl")).toString();
-                        //Glide.with(getApplication()).load(profileImageUrl).into(mProfileImage);
                         if ("default".equals(profileImageUrl)) {
                             Glide.with(getApplication()).load(R.mipmap.ic_launcher).into(mProfileImage);
                         } else {

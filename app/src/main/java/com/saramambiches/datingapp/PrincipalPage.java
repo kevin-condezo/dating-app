@@ -294,7 +294,11 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 if (snapshot.exists() && !snapshot.child("connections").child("skip").hasChild(currentUId) && !snapshot.child("connections").child("like").hasChild(currentUId)) {
-                    cards Item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString());
+                    String imageUrl = "default";
+                    if (!snapshot.child("profileImageUrl").getValue().equals("default")) {
+                        imageUrl = snapshot.child("profileImageUrl").getValue().toString();
+                    }
+                    cards Item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString(), imageUrl);
                     rowItems.add(Item);
                     arrayAdapter.notifyDataSetChanged();
                 }
