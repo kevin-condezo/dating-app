@@ -26,7 +26,6 @@ public class Profile extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        userSex = getIntent().getExtras().getString("sex");
         PulsatorLayout mPulsator = findViewById(R.id.pulsator);
         mPulsator.start();
 
@@ -50,10 +49,7 @@ public class Profile extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.nav_sms:
-                        //startActivity(new Intent(getApplicationContext(),Messages.class));
-                        Intent i = new Intent(Profile.this, Messages.class);
-                        i.putExtra("sex", userSex);
-                        startActivity(i);
+                        startActivity(new Intent(getApplicationContext(),Messages.class));
                         overridePendingTransition(0,0);
                         finish();
                         return true;
@@ -79,7 +75,6 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Profile.this, EditProfileActivity.class);
-                i.putExtra("sex", userSex);
                 startActivity(i);
                 finish();
             }

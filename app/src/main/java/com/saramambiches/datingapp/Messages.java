@@ -19,7 +19,7 @@ public class Messages extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
 
-        String userSex = getIntent().getExtras().getString("sex");
+
 
         //Navigation Bar
 
@@ -39,10 +39,7 @@ public class Messages extends AppCompatActivity {
                     case R.id.nav_sms:
                         return true;
                     case R.id.nav_user:
-                        //startActivity(new Intent(getApplicationContext(),Profile.class));
-                        Intent i = new Intent(Messages.this, Profile.class);
-                        i.putExtra("sex", userSex);
-                        startActivity(i);
+                        startActivity(new Intent(getApplicationContext(),Profile.class));
                         overridePendingTransition(0,0);
                         finish();
                         return true;

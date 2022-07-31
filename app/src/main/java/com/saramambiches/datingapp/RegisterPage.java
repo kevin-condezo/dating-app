@@ -125,9 +125,10 @@ public class RegisterPage extends AppCompatActivity {
                                     ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
                         } else {
                             String userId = mAuth.getCurrentUser().getUid();
-                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId);//.child("name");
+                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);//.child("name");
                             Map userInfo = new HashMap<>();
                             userInfo.put("name", name);
+                            userInfo.put("sex", radioButton.getText().toString());
                             userInfo.put("profileImageUrl", "default");
                             currentUserDb.updateChildren(userInfo);
                             //currentUserDb.setValue(name);

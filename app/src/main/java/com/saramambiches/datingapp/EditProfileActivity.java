@@ -55,7 +55,7 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        userSex = getIntent().getExtras().getString("sex"); // Se obtiene el dato de la instancia anterior
+       // userSex = getIntent().getExtras().getString("sex"); // Se obtiene el dato de la instancia anterior
 
         mNameField = findViewById(R.id.name);
         mNameField.addTextChangedListener(editTextWatcher);
@@ -65,7 +65,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         userId = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userSex).child(userId);
+
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
 
         getUserInfo();
 
@@ -83,10 +84,7 @@ public class EditProfileActivity extends AppCompatActivity {
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(getApplicationContext(), Profile.class));
-                Intent i = new Intent(EditProfileActivity.this, Profile.class);
-                i.putExtra("sex", userSex);
-                startActivity(i);
+                startActivity(new Intent(getApplicationContext(), Profile.class));
                 overridePendingTransition(0,0);
                 finish();
             }
@@ -118,6 +116,9 @@ public class EditProfileActivity extends AppCompatActivity {
                     if(map.get("name")!=null){
                         name = Objects.requireNonNull(map.get("name")).toString();
                         mNameField.setText(name);
+                    }
+                    if(map.get("sex")!=null){
+                        userSex = Objects.requireNonNull(map.get("sex")).toString();
                     }
                     Glide.with(mProfileImage);
                     if(map.get("profileImageUrl")!=null){
