@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Messages"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    tools:context=".Messages">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -20,6 +20,7 @@
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_nav" />
 
+    <!--
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,14 +29,17 @@
         android:textColor="@color/colorText"
         android:textSize="30sp"
         android:textStyle="bold" />
+    -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recyclerView"
-        android:scrollbars="vertical"
-        />
+        android:layout_height="match_parent"
+        android:paddingTop="70dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recyclerView"
+            android:scrollbars="vertical">
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

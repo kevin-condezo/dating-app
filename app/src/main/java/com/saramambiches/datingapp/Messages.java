@@ -54,7 +54,7 @@ public class Messages extends AppCompatActivity {
         //Navigation Bar
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-            bottomNavigationView.setSelectedItemId(R.id.nav_sms);
+        bottomNavigationView.setSelectedItemId(R.id.nav_sms);
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

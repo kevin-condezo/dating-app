@@ -1,5 +1,6 @@
 package com.saramambiches.datingapp.Matches;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,8 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.core.Context;
-import com.saramambiches.datingapp.Messages;
 import com.saramambiches.datingapp.R;
 
 import java.util.List;
@@ -21,8 +20,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolders> {
         this.context = context;
     }
 
-    public MatchesAdapter(List<MatchesObject> dataSetMatches, Messages messages) {
-    }
+//    public MatchesAdapter(List<MatchesObject> dataSetMatches, Messages messages) {
+//    }
 
     @NonNull
     @Override
@@ -37,11 +36,10 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolders> {
     @Override
     public void onBindViewHolder(@NonNull MatchesViewHolders holder, int position) {
         holder.mMatchId.setText(matchesList.get(position).getUserId());
-
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.matchesList.size();
     }
 }
