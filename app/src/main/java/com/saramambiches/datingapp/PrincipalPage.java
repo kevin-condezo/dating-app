@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -36,6 +37,9 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PrincipalPage extends AppCompatActivity {
     private cards cards_data[];
@@ -51,6 +55,9 @@ public class PrincipalPage extends AppCompatActivity {
 
     private Button layoutHide;
     private LinearLayout layoutMatch;
+
+    private CircleImageView myImage, matchImage;
+    private String myImageUrl, matchImageUrl;
 
     ListView listView;
     List<cards> rowItems;
@@ -196,12 +203,36 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()){
+                    usersDb.child(snapshot.getKey()).child("connections").child("matches").child(currentUId).setValue(true);
+                    usersDb.child(currentUId).child("connections").child("matches").child(snapshot.getKey()).setValue(true);
+
+                    // Se cargan las imagenes de perfil de ambos usuarios
+                    usersDb.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            Glide.with(myImage);
+                            myImageUrl = datasnapshot.child(currentUId).child("profileImageUrl").getValue().toString();
+                            if ("default".equals(myImageUrl)) {
+                                Glide.with(getApplication()).load(R.mipmap.ic_launcher).into(myImage);
+                            } else {
+                                Glide.with(getApplication()).load(myImageUrl).into(myImage);
+                            }
+
+                            Glide.with(matchImage);
+                            matchImageUrl = datasnapshot.child(snapshot.getKey()).child("profileImageUrl").getValue().toString();
+                            if ("default".equals(matchImageUrl)) {
+                                Glide.with(getApplication()).load(R.mipmap.ic_launcher).into(matchImage);
+                            } else {
+                                Glide.with(getApplication()).load(matchImageUrl).into(matchImage);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
 
                     //Show layout of Match
                     layoutMatch.setVisibility(View.VISIBLE);
-
-                    usersDb.child(snapshot.getKey()).child("connections").child("matches").child(currentUId).setValue(true);
-                    usersDb.child(currentUId).child("connections").child("matches").child(snapshot.getKey()).setValue(true);
                 }
             }
 
@@ -217,6 +248,9 @@ public class PrincipalPage extends AppCompatActivity {
         this.bt_like = findViewById(R.id.bt_like);
         this.layoutHide= findViewById(R.id.hideLayout);
         this.layoutMatch= findViewById(R.id.matchLayout);
+
+        this.myImage = findViewById(R.id.profile_image_you);
+        this.matchImage = findViewById(R.id.profile_image_match);
     }
     private void AnimarFab(final FloatingActionButton fab){
         fab.animate().scaleX(0.7f).scaleY(0.7f).setDuration(100).withEndAction(new Runnable() {
