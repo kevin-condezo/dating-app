@@ -56,7 +56,7 @@
 
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/txt_nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -66,7 +66,7 @@
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/subTitle"
+            android:id="@+id/txt_universidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_medium"

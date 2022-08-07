@@ -55,8 +55,6 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-       // userSex = getIntent().getExtras().getString("sex"); // Se obtiene el dato de la instancia anterior
-
         mNameField = findViewById(R.id.name);
         mNameField.addTextChangedListener(editTextWatcher);
         mProfileImage = findViewById(R.id.circle_profile_image);
