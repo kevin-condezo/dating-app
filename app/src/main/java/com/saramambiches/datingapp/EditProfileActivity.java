@@ -15,6 +15,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -45,22 +47,23 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class EditProfileActivity extends AppCompatActivity {
     private EditText mNameField;
     private Button mConfirm;
+    private RadioGroup mSexChoice;
     private CircleImageView mProfileImage;
     private DatabaseReference mUserDatabase;
     private String userId, name, profileImageUrl, userSex;
     private Uri resultUri;
+    private int selectedSexId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-       // userSex = getIntent().getExtras().getString("sex"); // Se obtiene el dato de la instancia anterior
-
         mNameField = findViewById(R.id.name);
         mNameField.addTextChangedListener(editTextWatcher);
         mProfileImage = findViewById(R.id.circle_profile_image);
         mConfirm = findViewById(R.id.btn_guardar);
+        mSexChoice = findViewById(R.id.radioGroup);
         TextView mBack = findViewById(R.id.regresar);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -75,10 +78,21 @@ public class EditProfileActivity extends AppCompatActivity {
             intent.setType("image/*");
             startActivityForResult(intent, 1);
         });
+
+        mSexChoice.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(selectedSexId != i) {
+                    mConfirm.setEnabled(true);
+                }
+            }
+        });
+
         mConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveUserInformation();
+                mConfirm.setEnabled(false);
             }
         });
         mBack.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +133,12 @@ public class EditProfileActivity extends AppCompatActivity {
                     }
                     if(map.get("sex")!=null){
                         userSex = Objects.requireNonNull(map.get("sex")).toString();
+                        if (userSex.equals("Male")) {
+                            selectedSexId = R.id.maleId;
+                        } else {
+                            selectedSexId = R.id.femaleId;
+                        }
+                        mSexChoice.check(selectedSexId);
                     }
                     Glide.with(mProfileImage);
                     if(map.get("profileImageUrl")!=null){
@@ -140,9 +160,16 @@ public class EditProfileActivity extends AppCompatActivity {
 
     // Se guardan los cambios hechos
     private void saveUserInformation() {
+        int selectId = mSexChoice.getCheckedRadioButtonId();
+        final RadioButton radioButton = (RadioButton) findViewById(selectId);
+        if (radioButton.getText() == null) {
+            return;
+        }
+
         name = mNameField.getText().toString();
         Map userInfo = new HashMap();
         userInfo.put("name", name);
+        userInfo.put("sex", radioButton.getText().toString());
         mUserDatabase.updateChildren(userInfo);
         if(resultUri != null){ // Si se agrega una imagen de perfil
             StorageReference filepath = FirebaseStorage.getInstance().getReference().child("profileImages").child(userId);
@@ -174,9 +201,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
             });
         }
-        /*else{
-            finish();
-        }*/
     }
 
     @Override
