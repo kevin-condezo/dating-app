@@ -1,4 +1,4 @@
-package com.saramambiches.datingapp.Matches;
+package com.saramambiches.datingapp.Chat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,13 +9,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.saramambiches.datingapp.Chat.ChatActivity;
 import com.saramambiches.datingapp.R;
 
-public class MatchesViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class ChatViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
     public TextView mMatchId, mMatchName;
     public ImageView mMatchImage;
-    public MatchesViewHolders(@NonNull View itemView) {
+    public ChatViewHolders(@NonNull View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
 

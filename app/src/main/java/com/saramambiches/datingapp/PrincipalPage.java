@@ -355,14 +355,16 @@ public class PrincipalPage extends AppCompatActivity {
         usersDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                if (snapshot.exists() && !snapshot.child("connections").child("skip").hasChild(currentUId) && !snapshot.child("connections").child("like").hasChild(currentUId) && snapshot.child("sex").getValue().toString().equals(oppositeUserSex) && !snapshot.getKey().equals(currentUId)) {
-                    String imageUrl = "default";
-                    if (!snapshot.child("profileImageUrl").getValue().equals("default")) {
-                        imageUrl = snapshot.child("profileImageUrl").getValue().toString();
+                if(snapshot.child("sex").getValue() !=null) {
+                    if (snapshot.exists() && !snapshot.child("connections").child("skip").hasChild(currentUId) && !snapshot.child("connections").child("like").hasChild(currentUId) && snapshot.child("sex").getValue().toString().equals(oppositeUserSex) && !snapshot.getKey().equals(currentUId)) {
+                        String imageUrl = "default";
+                        if (!snapshot.child("profileImageUrl").getValue().equals("default")) {
+                            imageUrl = snapshot.child("profileImageUrl").getValue().toString();
+                        }
+                        cards Item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString(), imageUrl);
+                        rowItems.add(Item);
+                        arrayAdapter.notifyDataSetChanged();
                     }
-                    cards Item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString(), imageUrl);
-                    rowItems.add(Item);
-                    arrayAdapter.notifyDataSetChanged();
                 }
             }
             @Override

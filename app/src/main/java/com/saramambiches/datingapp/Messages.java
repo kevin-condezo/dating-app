@@ -36,6 +36,7 @@ public class Messages extends AppCompatActivity {
         setContentView(R.layout.activity_messages);
 
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setHasFixedSize(true);
