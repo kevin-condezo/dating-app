@@ -40,7 +40,8 @@
         android:layout_weight="0.4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="mensaje..."
+        android:hint="message..."
+        android:id="@+id/message"
         />
         <Button
             android:layout_weight="0.1"
