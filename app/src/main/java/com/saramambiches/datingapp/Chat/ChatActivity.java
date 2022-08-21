@@ -50,7 +50,7 @@ public class ChatActivity extends AppCompatActivity {
 
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        mDatabaseUser= FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId).child("connections").child("matches").child(matchId).child("chatId");
+        mDatabaseUser= FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId).child("connections").child("matches").child(matchId).child("ChatId");
         mDatabaseChat= FirebaseDatabase.getInstance().getReference().child("Chat");
 
         getChatId();
@@ -81,7 +81,7 @@ public class ChatActivity extends AppCompatActivity {
             DatabaseReference newMessageDb= mDatabaseChat.push();
 
             Map newMessage=new HashMap();
-            newMessage.put("createByUser", currentUserId);
+            newMessage.put("createdByUser", currentUserId);
             newMessage.put("text", sendMessageText);
 
             newMessageDb.setValue(newMessage);
@@ -119,8 +119,8 @@ public class ChatActivity extends AppCompatActivity {
                     if(snapshot.child("text").getValue()!=null){
                         message = snapshot.child("text").getValue().toString();
                     }
-                    if(snapshot.child("createByUser").getValue()!=null){
-                        createdByUser = snapshot.child("createByUser").getValue().toString();
+                    if(snapshot.child("createdByUser").getValue()!=null){
+                        createdByUser = snapshot.child("createdByUser").getValue().toString();
                     }
 
                     if(message!=null && createdByUser!=null){
