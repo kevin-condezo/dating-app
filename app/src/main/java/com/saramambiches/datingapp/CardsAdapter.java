@@ -12,14 +12,14 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class cardsAdapter extends ArrayAdapter<cards> {
+public class CardsAdapter extends ArrayAdapter<Cards> {
 
-    public cardsAdapter(Context context, int resourceId, List<cards> items) {
+    public CardsAdapter(Context context, int resourceId, List<Cards> items) {
         super(context, resourceId, items);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        cards card_item = getItem(position);
+        Cards card_item = getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item, parent, false);

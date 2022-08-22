@@ -33,7 +33,7 @@ import java.util.Queue;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PrincipalPage extends AppCompatActivity {
-    private cardsAdapter adaptadorItems;
+    private CardsAdapter adaptadorItems;
 
     private FirebaseAuth mAuth;
     private String currentUId;
@@ -48,7 +48,7 @@ public class PrincipalPage extends AppCompatActivity {
     private CircleImageView myImage, matchImage;
     private String myImageUrl, matchImageUrl;
 
-    Queue<cards> colaItems;
+    Queue<Cards> colaItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,10 +92,10 @@ public class PrincipalPage extends AppCompatActivity {
 
         checkUserSex();
 
-        colaItems = new LinkedList<cards>();
+        colaItems = new LinkedList<Cards>();
 
 
-        adaptadorItems = new cardsAdapter(this, R.layout.item, (List<cards>) colaItems);
+        adaptadorItems = new CardsAdapter(this, R.layout.item, (List<Cards>) colaItems);
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
@@ -111,14 +111,14 @@ public class PrincipalPage extends AppCompatActivity {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-                cards object = (cards) dataObject;
+                Cards object = (Cards) dataObject;
                 String userId = object.getUserId();
                 usersDb.child(userId).child("connections").child("skip").child(currentUId).setValue(true);
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                cards object = (cards) dataObject;
+                Cards object = (Cards) dataObject;
                 String userId = object.getUserId();
                 usersDb.child(userId).child("connections").child("like").child(currentUId).setValue(true);
                 isConnectionMatch(userId);
@@ -352,7 +352,7 @@ public class PrincipalPage extends AppCompatActivity {
                         if (!snapshot.child("profileImageUrl").getValue().equals("default")) {
                             imageUrl = snapshot.child("profileImageUrl").getValue().toString();
                         }
-                        cards Item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString(), imageUrl);
+                        Cards Item = new Cards(snapshot.getKey(), snapshot.child("name").getValue().toString(), imageUrl);
                         colaItems.add(Item); // se agrega el item a la cola
                         adaptadorItems.notifyDataSetChanged(); // se actualiza la vista
                     }
