@@ -13,14 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.saramambiches.datingapp.R;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ChatViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
     public TextView mMessage;
     public LinearLayout mContainer;
+    public CircleImageView mProfileImage;
 
     public ChatViewHolders(@NonNull View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
-
+        mProfileImage = itemView.findViewById(R.id.profile_image_match);
         mMessage=itemView.findViewById(R.id.message);
         mContainer=itemView.findViewById(R.id.container);
     }

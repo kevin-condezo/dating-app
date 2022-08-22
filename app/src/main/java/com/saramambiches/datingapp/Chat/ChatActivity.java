@@ -7,9 +7,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -28,14 +34,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ChatActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mChatAdapter;
     private RecyclerView.LayoutManager mChatLayoutManager;
 
     private EditText mSendEditText;
+    private TextView bSendButton;
 
-    private Button mSendButton;
+    private ImageView mBackButton, mGalleryButton;
+    private CircleImageView mProfileImage;
+    private TextView mProfileName;
 
     private String currentUserId,matchId,chatId;
 
@@ -64,15 +75,54 @@ public class ChatActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mChatAdapter);
 
         mSendEditText= findViewById(R.id.message);
-        mSendButton=findViewById(R.id.send);
+        bSendButton= findViewById(R.id.send_text);
 
-        mSendButton.setOnClickListener(new View.OnClickListener() {
+        mBackButton= findViewById(R.id.back);
+        mProfileImage= findViewById(R.id.profile_image_match);
+        mProfileName= findViewById(R.id.profile_name_match);
+        mGalleryButton= findViewById(R.id.send_gallery);
+
+        mSendEditText.addTextChangedListener(TextAdd);
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        bSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendMessage();
             }
         });
     }
+
+    private TextWatcher TextAdd = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            String text = mSendEditText.getText().toString().trim();
+            if(!text.isEmpty()){
+                bSendButton.setVisibility(View.VISIBLE);
+                mGalleryButton.setVisibility(View.GONE);
+            }else{
+                bSendButton.setVisibility(View.GONE);
+                mGalleryButton.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 
     private void sendMessage() {
         String sendMessageText= mSendEditText.getText().toString();
@@ -87,6 +137,7 @@ public class ChatActivity extends AppCompatActivity {
             newMessageDb.setValue(newMessage);
         }
         mSendEditText.setText(null);
+
     }
 
     private void getChatId(){

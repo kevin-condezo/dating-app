@@ -18,6 +18,10 @@ import java.util.List;
 public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
     private List<ChatObject> chatList;
     private Context context;
+
+    public static final int MSG_TYPE_LEFT = 0;
+    public static final int MSG_TYPE_RIGHT = 1;
+
     public ChatAdapter(List<ChatObject> matchesList, Context context){
         this.chatList = matchesList;
         this.context = context;
@@ -29,7 +33,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
     @NonNull
     @Override
     public ChatViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat, null  , false);
+        View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat_left, null  , false);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         LayoutView.setLayoutParams(lp);
         ChatViewHolders rcv = new ChatViewHolders(LayoutView);
@@ -39,16 +43,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolders holder, int position) {
         holder.mMessage.setText(chatList.get(position).getMessage());
+
         if(chatList.get(position).getCurrentUser()){
-            holder.mMessage.setGravity(Gravity.END);
             holder.mMessage.setTextColor(Color.parseColor("#404040"));
-            holder.mContainer.setBackgroundColor(Color.parseColor("#F4F4F4"));
+            holder.mProfileImage.setVisibility(View.GONE);
         }else{
-            holder.mMessage.setGravity(Gravity.START);
-            holder.mMessage.setTextColor(Color.parseColor("#FFFFFF"));
-            holder.mContainer.setBackgroundColor(Color.parseColor("#2DB4C8"));
-
-
+            holder.mMessage.setTextColor(Color.parseColor("#404040"));
         }
 
         }
