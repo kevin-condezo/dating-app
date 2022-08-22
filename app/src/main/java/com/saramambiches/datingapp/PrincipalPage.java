@@ -1,29 +1,21 @@
 package com.saramambiches.datingapp;
 
-import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -34,17 +26,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.Queue;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PrincipalPage extends AppCompatActivity {
-    private cards cards_data[];
-    private arrayAdapter arrayAdapter;
-    private int i;
+    private cardsAdapter adaptadorItems;
 
     private FirebaseAuth mAuth;
     private String currentUId;
@@ -59,8 +48,7 @@ public class PrincipalPage extends AppCompatActivity {
     private CircleImageView myImage, matchImage;
     private String myImageUrl, matchImageUrl;
 
-    ListView listView;
-    List<cards> rowItems;
+    Queue<cards> colaItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,21 +92,21 @@ public class PrincipalPage extends AppCompatActivity {
 
         checkUserSex();
 
-        rowItems = new ArrayList<cards>();
+        colaItems = new LinkedList<cards>();
 
 
-        arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems);
+        adaptadorItems = new cardsAdapter(this, R.layout.item, (List<cards>) colaItems);
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
-        flingContainer.setAdapter(arrayAdapter);
+        flingContainer.setAdapter(adaptadorItems);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
-                // this is the simplest way to delete an object from the Adapter (/AdapterView)
-                Log.d("LIST", "removed object!");
-                rowItems.remove(0);
-                arrayAdapter.notifyDataSetChanged();
+                Log.d("colaItems", "item eliminado");
+                // se elimina (desencola) el primer elemento de la cola de items
+                colaItems.remove();
+                adaptadorItems.notifyDataSetChanged();
             }
 
             @Override
@@ -365,8 +353,8 @@ public class PrincipalPage extends AppCompatActivity {
                             imageUrl = snapshot.child("profileImageUrl").getValue().toString();
                         }
                         cards Item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString(), imageUrl);
-                        rowItems.add(Item);
-                        arrayAdapter.notifyDataSetChanged();
+                        colaItems.add(Item); // se agrega el item a la cola
+                        adaptadorItems.notifyDataSetChanged(); // se actualiza la vista
                     }
                 }
             }

@@ -12,10 +12,9 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class arrayAdapter extends ArrayAdapter<cards> {
-    Context context;
+public class cardsAdapter extends ArrayAdapter<cards> {
 
-    public arrayAdapter(Context context, int resourceId, List<cards> items) {
+    public cardsAdapter(Context context, int resourceId, List<cards> items) {
         super(context, resourceId, items);
     }
 
