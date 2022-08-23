@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -17,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +29,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.saramambiches.datingapp.Matches.MatchesAdapter;
 import com.saramambiches.datingapp.Matches.MatchesObject;
 import com.saramambiches.datingapp.Messages;
@@ -33,6 +41,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -44,13 +53,16 @@ public class ChatActivity extends AppCompatActivity {
     private EditText mSendEditText;
     private TextView bSendButton;
 
-    private ImageView mBackButton, mGalleryButton;
+    private ImageView mBackButton, mGalleryButton, mCameraButton;
+
     private CircleImageView mProfileImage;
     private TextView mProfileName;
 
     private String currentUserId,matchId,chatId;
 
     DatabaseReference mDatabaseUser,mDatabaseChat;
+    FirebaseStorage mStorage;
+    StorageReference mStorageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +71,18 @@ public class ChatActivity extends AppCompatActivity {
 
         matchId=getIntent().getExtras().getString("matchId");
 
+        //Obtemos el id del match actual
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         mDatabaseUser= FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId).child("connections").child("matches").child(matchId).child("ChatId");
         mDatabaseChat= FirebaseDatabase.getInstance().getReference().child("Chat");
 
-        getChatId();
+        mStorage=FirebaseStorage.getInstance();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        getChatId();
+        getUserInfoMatch();
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerViewSms);
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setHasFixedSize(false);
         mChatLayoutManager = new LinearLayoutManager(ChatActivity.this);
@@ -81,8 +97,11 @@ public class ChatActivity extends AppCompatActivity {
         mProfileImage= findViewById(R.id.profile_image_match);
         mProfileName= findViewById(R.id.profile_name_match);
         mGalleryButton= findViewById(R.id.send_gallery);
+        mCameraButton= findViewById(R.id.send_camera);
 
         mSendEditText.addTextChangedListener(TextAdd);
+
+
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +116,36 @@ public class ChatActivity extends AppCompatActivity {
                 sendMessage();
             }
         });
+
+
+        //Button Gallery
+        mGalleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryI = new Intent(Intent.ACTION_PICK);
+                galleryI.setType("image/*");
+                startActivityForResult(galleryI, 1);
+            }
+        });
+        //Button Camera
+        mCameraButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cameraI = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraI, 2);
+            }
+        });
+
+
+        mChatAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                mRecyclerView.scrollToPosition(mChatAdapter.getItemCount() - 1);
+            }
+        });
     }
+
 
     private TextWatcher TextAdd = new TextWatcher() {
         @Override
@@ -159,6 +207,54 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+
+    //obtenemos datos del match
+    private void getUserInfoMatch(){
+
+        DatabaseReference usersDb = FirebaseDatabase.getInstance().getReference().child("Users").child(matchId);
+        usersDb.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String profileImageUrl = snapshot.child("profileImageUrl").getValue().toString();
+                    String profileName = snapshot.child("name").getValue().toString();
+                    if ("default".equals(profileImageUrl)) {
+                        Glide.with(getApplication()).load("https://firebasestorage.googleapis.com/v0/b/date-app-e56a0.appspot.com/o/profileImages%2Fimage_profile.jpg?alt=media&token=f1c8e41a-bcf5-40de-adfd-195ce5ef7b0a").into(mProfileImage);
+
+                    } else {
+                        Glide.with(getApplication()).load(profileImageUrl).into(mProfileImage);
+                    }
+
+                    mProfileName.setText(profileName);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1 && resultCode==RESULT_OK){
+            Uri imageUri= data.getData();
+            mStorageReference = mStorage.getReference().child("message_images").child(imageUri.getLastPathSegment());
+            final StorageReference imageReference = mStorageReference.child(imageUri.getLastPathSegment());
+            imageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                }
+            });
+        }
+        if(requestCode==2 && resultCode==RESULT_OK){
+
+        }
+
+    }
+
     private void getChatMessages() {
         mDatabaseChat.addChildEventListener(new ChildEventListener() {
             @Override
@@ -179,7 +275,7 @@ public class ChatActivity extends AppCompatActivity {
                         if(createdByUser.equals(currentUserId)){
                             currentUserBoolean=true;
                         }
-                        ChatObject newMessage=new ChatObject(message, currentUserBoolean);
+                        ChatObject newMessage=new ChatObject(message,null, currentUserBoolean);
                         resultsChat.add(newMessage);
                         mChatAdapter.notifyDataSetChanged();
                     }

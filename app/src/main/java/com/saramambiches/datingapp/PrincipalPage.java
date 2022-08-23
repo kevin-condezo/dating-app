@@ -43,6 +43,7 @@ public class PrincipalPage extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     private Button layoutHide;
+    private Button bt_smsRedirect;
     private LinearLayout layoutMatch;
 
     private CircleImageView myImage, matchImage;
@@ -159,11 +160,25 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });*/
 
+        bt_smsRedirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //redireccionar a la pagina de mensajes
+                startActivity(new Intent(getApplicationContext(), Messages.class));
+                finish();
+            }
+        });
+
         bt_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AnimarFab(bt_skip);
-                flingContainer.getTopCardListener().selectLeft();
+                try {
+                    flingContainer.getTopCardListener().selectLeft();
+                } catch (Exception e) {
+                    Toast.makeText(PrincipalPage.this, "No hay más usuarios", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -172,7 +187,11 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AnimarFab(bt_like);
-                flingContainer.getTopCardListener().selectRight();
+                try {
+                    flingContainer.getTopCardListener().selectRight();
+                } catch (Exception e) {
+                    Toast.makeText(PrincipalPage.this, "No hay más usuarios", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -201,6 +220,7 @@ public class PrincipalPage extends AppCompatActivity {
                     usersDb.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+
                             Glide.with(myImage);
                             myImageUrl = datasnapshot.child(currentUId).child("profileImageUrl").getValue().toString();
                             if ("default".equals(myImageUrl)) {
@@ -239,6 +259,7 @@ public class PrincipalPage extends AppCompatActivity {
         this.bt_like = findViewById(R.id.bt_like);
         this.layoutHide= findViewById(R.id.hideLayout);
         this.layoutMatch= findViewById(R.id.matchLayout);
+        this.bt_smsRedirect= findViewById(R.id.sms_redirect);
 
         this.myImage = findViewById(R.id.profile_image_you);
         this.matchImage = findViewById(R.id.profile_image_match);

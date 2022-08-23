@@ -33,7 +33,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
     @NonNull
     @Override
     public ChatViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat_left, null  , false);
+        View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat, null  , false);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         LayoutView.setLayoutParams(lp);
         ChatViewHolders rcv = new ChatViewHolders(LayoutView);
@@ -43,13 +43,17 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolders holder, int position) {
         holder.mMessage.setText(chatList.get(position).getMessage());
-
+        holder.oppoMessage.setText(chatList.get(position).getMessage());
         if(chatList.get(position).getCurrentUser()){
+            holder.oppoContainer.setVisibility(View.VISIBLE);
+            holder.mContainer.setVisibility(View.GONE);
             holder.mMessage.setTextColor(Color.parseColor("#404040"));
-            holder.mProfileImage.setVisibility(View.GONE);
         }else{
+            holder.oppoContainer.setVisibility(View.GONE);
+            holder.mContainer.setVisibility(View.VISIBLE);
             holder.mMessage.setTextColor(Color.parseColor("#404040"));
         }
+
 
         }
 

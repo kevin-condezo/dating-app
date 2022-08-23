@@ -1,20 +1,20 @@
 package com.saramambiches.datingapp.Matches;
 
 public class MatchesObject {
-    private String userId;
+    private String lastMessage;
     private String name;
     private String profileImageUrl;
 
 
     public MatchesObject(String userId, String name, String profileImageUrl) {
-        this.userId = userId;
+        this.lastMessage = userId;
         this.name = name;
         this.profileImageUrl = profileImageUrl;
     }
 
-    public String getUserId() { return userId; }
+    public String getUserId() { return lastMessage; }
     public void setUserId(String userId) {
-        this.userId = userId;
+        this.lastMessage = userId;
     }
 
     public String getName() { return name; }

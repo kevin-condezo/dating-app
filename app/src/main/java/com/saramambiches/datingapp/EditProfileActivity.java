@@ -140,7 +140,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     if(map.get("profileImageUrl")!=null){
                         profileImageUrl = Objects.requireNonNull(map.get("profileImageUrl")).toString();
                         if ("default".equals(profileImageUrl)) {
-                            Glide.with(getApplication()).load(R.mipmap.ic_launcher).into(mProfileImage);
+                            Glide.with(getApplication()).load("https://zultimate.com/wp-content/uploads/2019/12/default-profile.png").into(mProfileImage);
                         } else {
                             Glide.with(getApplication()).load(profileImageUrl).into(mProfileImage);
                         }
