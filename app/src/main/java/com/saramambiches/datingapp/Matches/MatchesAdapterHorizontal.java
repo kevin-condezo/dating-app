@@ -1,6 +1,5 @@
 package com.saramambiches.datingapp.Matches;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,16 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.saramambiches.datingapp.R;
 
 import java.util.List;
 
-public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolders> {
+public class MatchesAdapterHorizontal extends RecyclerView.Adapter<MatchesViewHolders> {
     private List<MatchesObject> matchesList;
     private Context context;
-    public MatchesAdapter (List<MatchesObject> matchesList, Context context){
+    public MatchesAdapterHorizontal(List<MatchesObject> matchesList, Context context){
         this.matchesList = matchesList;
         this.context = context;
     }
@@ -30,8 +27,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolders> {
     @NonNull
     @Override
     public MatchesViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_matches, null  , false);
-        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_matches_horizontal, null  , false);
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         LayoutView.setLayoutParams(lp);
         MatchesViewHolders rcv = new MatchesViewHolders(LayoutView);
         return rcv;

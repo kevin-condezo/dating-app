@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -37,11 +40,15 @@ import com.saramambiches.datingapp.Matches.MatchesObject;
 import com.saramambiches.datingapp.Messages;
 import com.saramambiches.datingapp.R;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -236,20 +243,78 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+    //get value idChat
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 && resultCode==RESULT_OK){
             Uri imageUri= data.getData();
-            mStorageReference = mStorage.getReference().child("message_images").child(imageUri.getLastPathSegment());
-            final StorageReference imageReference = mStorageReference.child(imageUri.getLastPathSegment());
-            imageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            mStorageReference = mStorage.getReference().child("message_images").child(chatId);
+            final StorageReference urlImage = mStorageReference.child(System.currentTimeMillis() + ".jpg");
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getApplication().getContentResolver(), imageUri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            assert bitmap != null;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+            byte[] dataCamera = baos.toByteArray();
+            UploadTask uploadTask = urlImage.putBytes(dataCamera);
+            uploadTask.addOnFailureListener(e -> finish());
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    //Envia el mensaje con el url de la imagen
+                    urlImage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String imageUrl = uri.toString();
+                            DatabaseReference newMessageDb= mDatabaseChat.push();
+
+                            Map newMessage=new HashMap();
+                            newMessage.put("createdByUser",currentUserId);
+                            newMessage.put("textImage", imageUrl);
+                            newMessageDb.setValue(newMessage);
+
+                        }
+                    });
                 }
             });
         }
+
         if(requestCode==2 && resultCode==RESULT_OK){
+
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] dataImage = baos.toByteArray();
+            mStorageReference = mStorage.getReference().child("message_images").child(chatId);
+            final StorageReference imageReference = mStorageReference.child(System.currentTimeMillis() + ".jpg");
+            imageReference.putBytes(dataImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    //Envia el mensaje con el url de la imagen
+                    imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String imageUrl = uri.toString();
+                            DatabaseReference newMessageDb= mDatabaseChat.push();
+
+                            Map newMessage=new HashMap();
+                            newMessage.put("createdByUser",currentUserId);
+                            newMessage.put("textImage", imageUrl);
+                            newMessageDb.setValue(newMessage);
+
+                        }
+                    });
+                }
+            });
 
         }
 
@@ -261,21 +326,34 @@ public class ChatActivity extends AppCompatActivity {
             public void onChildAdded( DataSnapshot snapshot,  String s) {
                 if(snapshot.exists()){
                     String message=null;
+                    String messageImage=null;
                     String createdByUser= null;
+                    String typeMessage= null;
+                    String idChat= chatId;
 
-                    if(snapshot.child("text").getValue()!=null){
-                        message = snapshot.child("text").getValue().toString();
-                    }
                     if(snapshot.child("createdByUser").getValue()!=null){
                         createdByUser = snapshot.child("createdByUser").getValue().toString();
                     }
 
-                    if(message!=null && createdByUser!=null){
+
+                    if(snapshot.child("createdByUser").getValue()!=null){
+                        createdByUser = snapshot.child("createdByUser").getValue().toString();
+                    }
+
+                    if(snapshot.child("text").getValue()!=null){
+                        message = snapshot.child("text").getValue().toString();
+                        typeMessage ="1";
+                    }else{
+                        messageImage = snapshot.child("textImage").getValue().toString();
+                        typeMessage ="2";
+                    }
+
+                    if(message!=null && createdByUser!=null || messageImage!=null && createdByUser!=null){
                         Boolean currentUserBoolean=false;
                         if(createdByUser.equals(currentUserId)){
                             currentUserBoolean=true;
                         }
-                        ChatObject newMessage=new ChatObject(message,null, currentUserBoolean);
+                        ChatObject newMessage=new ChatObject(message,messageImage,typeMessage,currentUserBoolean);
                         resultsChat.add(newMessage);
                         mChatAdapter.notifyDataSetChanged();
                     }
@@ -295,6 +373,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private ArrayList<ChatObject> resultsChat = new ArrayList<ChatObject>();
     private List<ChatObject> getDataSetChat() {

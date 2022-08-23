@@ -177,7 +177,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             assert bitmap != null;
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
             byte[] data = baos.toByteArray();
             UploadTask uploadTask = filepath.putBytes(data);
             uploadTask.addOnFailureListener(e -> finish());
@@ -187,6 +187,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
+
                             Uri downloadUrl = uri;
                             Map userInfo1 = new HashMap();
                             userInfo1.put("profileImageUrl", downloadUrl.toString());

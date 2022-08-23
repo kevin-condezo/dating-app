@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="5dp"
         android:layout_alignParentStart="true"
-        android:id="@+id/container">
-
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="10dp"
+        android:id="@+id/container_oppo">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,27 +19,50 @@
             android:textSize="16sp"
             android:textColor="@color/black"
             android:fontFamily="@font/roboto_regular"
-            android:id="@+id/message"
+            android:id="@+id/message_oppo"
+            android:visibility="visible"
             android:background="@drawable/msg_oppo"
             android:layout_gravity="center"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/message_image_oppo"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundImageOppo"
+            android:src="@drawable/image_default"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:paddingVertical="5dp"
-        android:id="@+id/container_oppo">
+        android:paddingHorizontal="10dp"
+        android:id="@+id/container"
+        android:gravity="right">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Text"
             android:textSize="16sp"
+            android:background="@drawable/msg_my"
             android:paddingHorizontal="15dp"
             android:paddingVertical="10dp"
             android:textColor="@color/white"
             android:fontFamily="@font/roboto_regular"
-            android:id="@+id/message_oppo"
-            android:background="@drawable/msg_my"
-            android:layout_gravity=""/>
+            android:visibility="visible"
+            android:id="@+id/message"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/message_image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundImage"
+            android:src="@drawable/image_default"/>
+
     </LinearLayout>
+
 </RelativeLayout>

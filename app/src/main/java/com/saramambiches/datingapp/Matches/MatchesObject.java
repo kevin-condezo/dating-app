@@ -5,6 +5,7 @@ public class MatchesObject {
     private String name;
     private String profileImageUrl;
 
+    public MatchesObject(){ }
 
     public MatchesObject(String userId, String name, String profileImageUrl) {
         this.lastMessage = userId;
