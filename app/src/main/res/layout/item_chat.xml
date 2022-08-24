@@ -25,9 +25,8 @@
             android:layout_gravity="center"/>
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/message_image_oppo"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_margin="10dp"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
             android:visibility="gone"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/RoundImageOppo"
@@ -55,9 +54,8 @@
             android:id="@+id/message"/>
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/message_image"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_margin="10dp"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
             android:visibility="gone"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/RoundImage"
