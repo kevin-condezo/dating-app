@@ -6,16 +6,19 @@ public class ChatObject {
     private String typeMessage;
     private String  idChat;
     private Boolean currentUser;
+    private String chatKey;
 
     public ChatObject(){
 
     }
 
-    public ChatObject(String message, String messageImage, String typeMessage, Boolean currentUser) {
+    public ChatObject(String message, String messageImage, String typeMessage, Boolean currentUser, String idChat, String chatKey) {
         this.message = message;
         this.messageImage = messageImage;
         this.typeMessage = typeMessage;
         this.currentUser = currentUser;
+        this.idChat = idChat;
+        this.chatKey = chatKey;
     }
 
 
@@ -51,5 +54,13 @@ public class ChatObject {
     public Boolean getCurrentUser() { return currentUser; }
     public void setCurrentUser(Boolean CurrentUser) {
         this.currentUser = currentUser;
+    }
+
+    public String getChatKey() {
+        return chatKey;
+    }
+
+    public void setChatKey(String chatKey) {
+        this.chatKey = chatKey;
     }
 }

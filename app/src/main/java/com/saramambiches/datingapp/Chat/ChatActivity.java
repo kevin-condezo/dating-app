@@ -330,6 +330,7 @@ public class ChatActivity extends AppCompatActivity {
                     String createdByUser= null;
                     String typeMessage= null;
                     String idChat= chatId;
+                    String chatKey = snapshot.getKey();
 
                     if(snapshot.child("createdByUser").getValue()!=null){
                         createdByUser = snapshot.child("createdByUser").getValue().toString();
@@ -353,7 +354,7 @@ public class ChatActivity extends AppCompatActivity {
                         if(createdByUser.equals(currentUserId)){
                             currentUserBoolean=true;
                         }
-                        ChatObject newMessage=new ChatObject(message,messageImage,typeMessage,currentUserBoolean);
+                        ChatObject newMessage=new ChatObject(message,messageImage,typeMessage,currentUserBoolean,idChat,chatKey);
                         resultsChat.add(newMessage);
                         mChatAdapter.notifyDataSetChanged();
                     }

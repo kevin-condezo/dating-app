@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +16,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.saramambiches.datingapp.R;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
     private List<ChatObject> chatList;
@@ -77,12 +83,17 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
                         .setTitle("¿Deseas eliminar este mensaje?")
                         .setPositiveButton("SI", (dialog, which) -> {
                             //Eliminamos de la base de datos
-                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chats");
-                            reference.child(chatList.get(position).getIdChat()).removeValue();
-                            chatList.remove(position);
-
-                            notifyDataSetChanged();
-                            holder.mContainer.setBackgroundColor(Color.parseColor("#00000000"));
+                            DatabaseReference chatReference = FirebaseDatabase.getInstance().getReference().child("Chat").child(chatList.get(position).getIdChat()).child(chatList.get(position).getChatKey());
+                            Log.d("getId", chatList.get(position).getIdChat());
+                            Log.d("getId()", chatList.get(position).getChatKey());
+                            chatReference.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    chatList.remove(position);
+                                    notifyDataSetChanged();
+                                    holder.mContainer.setBackgroundColor(Color.parseColor("#00000000"));
+                                }
+                            });
                 }).setNegativeButton("NO", (dialog, which) -> {
                     holder.mContainer.setBackgroundColor(Color.parseColor("#00000000"));
                     dialog.dismiss();
