@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -58,6 +59,24 @@ public class Profile extends AppCompatActivity {
 
         getUserInfo();
 
+        mUserDatabase.child("profileImageUrl").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("before-image-url", profileImageUrl);
+                profileImageUrl = (String)snapshot.getValue();
+                Log.d("after-image-url", profileImageUrl);
+                if ("default".equals(profileImageUrl)) {
+                    Glide.with(getApplication()).load("https://zultimate.com/wp-content/uploads/2019/12/default-profile.png").into(mProfileImage);
+                } else {
+                    Glide.with(getApplication()).load(profileImageUrl).into(mProfileImage);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         //Navigation Bar
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
