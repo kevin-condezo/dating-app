@@ -86,9 +86,6 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveUserInformation();
-                startActivity(new Intent(getApplicationContext(), Profile.class));
-                overridePendingTransition(0,0);
-                finish();
             }
         });
         mBack.setOnClickListener(new View.OnClickListener() {
