@@ -12,15 +12,14 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class arrayAdapter extends ArrayAdapter<cards> {
-    Context context;
+public class CardsAdapter extends ArrayAdapter<Cards> {
 
-    public arrayAdapter(Context context, int resourceId, List<cards> items) {
+    public CardsAdapter(Context context, int resourceId, List<Cards> items) {
         super(context, resourceId, items);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        cards card_item = getItem(position);
+        Cards card_item = getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item, parent, false);
@@ -34,7 +33,7 @@ public class arrayAdapter extends ArrayAdapter<cards> {
         Glide.with(image);
         if ("default".equals(card_item.getProfileImageUrl())) {
             // TODO: Reemplazar con imagen de usuario por defecto
-            Glide.with(convertView.getContext()).load(R.mipmap.ic_launcher).into(image);
+            Glide.with(convertView.getContext()).load("https://zultimate.com/wp-content/uploads/2019/12/default-profile.png").into(image);
         } else {
             Glide.with(convertView.getContext()).load(card_item.getProfileImageUrl()).into(image);
         }

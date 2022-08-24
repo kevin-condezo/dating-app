@@ -1,7 +1,6 @@
 package com.saramambiches.datingapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -20,17 +19,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -92,7 +86,9 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveUserInformation();
-                mConfirm.setEnabled(false);
+                startActivity(new Intent(getApplicationContext(), Profile.class));
+                overridePendingTransition(0,0);
+                finish();
             }
         });
         mBack.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +116,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     };
 
-    // Se obtienen los datos del usuario: nombre e imagen de perfil
+    // Obtiene los datos del usuario: imagen de perfil, nombre y sexo
     private void getUserInfo() {
         mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -144,7 +140,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     if(map.get("profileImageUrl")!=null){
                         profileImageUrl = Objects.requireNonNull(map.get("profileImageUrl")).toString();
                         if ("default".equals(profileImageUrl)) {
-                            Glide.with(getApplication()).load(R.mipmap.ic_launcher).into(mProfileImage);
+                            Glide.with(getApplication()).load("https://zultimate.com/wp-content/uploads/2019/12/default-profile.png").into(mProfileImage);
                         } else {
                             Glide.with(getApplication()).load(profileImageUrl).into(mProfileImage);
                         }
@@ -155,10 +151,9 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
     }
 
-    // Se guardan los cambios hechos
+    // Guarda los cambios hechos
     private void saveUserInformation() {
         int selectId = mSexChoice.getCheckedRadioButtonId();
         final RadioButton radioButton = (RadioButton) findViewById(selectId);
@@ -182,7 +177,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             assert bitmap != null;
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
             byte[] data = baos.toByteArray();
             UploadTask uploadTask = filepath.putBytes(data);
             uploadTask.addOnFailureListener(e -> finish());
@@ -192,6 +187,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
+
                             Uri downloadUrl = uri;
                             Map userInfo1 = new HashMap();
                             userInfo1.put("profileImageUrl", downloadUrl.toString());

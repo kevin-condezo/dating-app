@@ -6,7 +6,6 @@
         <item name="colorPrimaryDark">@color/pat6</item>
         <item name="colorAccent">@color/pat1</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
@@ -23,5 +22,18 @@
         <item name="boxCornerRadiusBottomStart">28dp</item>
         <item name="boxCornerRadiusTopStart">28dp</item>
     </style>
-
+    <style name="RoundImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">5dp</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+    </style>
+    <style name="RoundImageOppo" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">5dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+    </style>
 </resources>

@@ -3,30 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/GIBRAN/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_chat.xml" value="0.22" />
-        <entry key="..\:/Users/GIBRAN/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.209375" />
-        <entry key="..\:/Users/GIBRAN/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_messages.xml" value="0.209375" />
-        <entry key="..\:/Users/GIBRAN/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_principal_page.xml" value="0.209375" />
-        <entry key="..\:/Users/GIBRAN/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_and_login.xml" value="0.209375" />
-        <entry key="..\:/Users/GIBRAN/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_register_page.xml" value="0.209375" />
-        <entry key="..\:/Users/GIBRAN/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_chat.xml" value="0.25" />
-        <entry key="..\:/Users/GIBRAN/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_matches.xml" value="0.19375" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/activity_chat.xml" value="0.25" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/activity_edit_profile.xml" value="0.15534420289855072" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/activity_main.xml" value="0.15534420289855072" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/activity_messages.xml" value="0.18655549765502866" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/activity_orientation_select.xml" value="0.18645833333333334" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/activity_principal_page.xml" value="0.25" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/activity_profile.xml" value="0.15534420289855072" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/activity_register_page.xml" value="0.15534420289855072" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/item.xml" value="0.2" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/item_chat.xml" value="0.33" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/item_container_onboarding.xml" value="0.16" />
-        <entry key="..\:/Users/LENOVO PROFESSIONAL/AndroidStudioProjects/DatingApp/app/src/main/res/layout/item_matches.xml" value="0.18" />
         <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.176" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_login_page.xml" value="0.10462962962962963" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/button_white.xml" value="0.207" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_camera.xml" value="0.1625" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_comentario.xml" value="0.1625" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_flecha_izquierda.xml" value="0.207" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_smartphone.xml" value="0.1625" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/msg_my.xml" value="0.1625" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/msg_oppo.xml" value="0.1625" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_chat.xml" value="0.264" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_edit_profile.xml" value="0.2" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_login_page.xml" value="0.25" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.536" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_principal_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_messages.xml" value="0.264" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_principal_page.xml" value="0.2" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_profile.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item.xml" value="0.2" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_chat.xml" value="0.264" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_chat_left.xml" value="0.2" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_chat_right.xml" value="0.264" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_container_onboarding.xml" value="0.18385416666666668" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_matches.xml" value="0.264" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_matches_horizontal.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/screen_match.xml" value="0.2" />
       </map>
     </option>
   </component>
@@ -35,12 +34,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.1" />
-      </ProjectState>
-    </option>
   </component>
 </project>

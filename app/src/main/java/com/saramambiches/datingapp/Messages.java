@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.saramambiches.datingapp.Matches.MatchesAdapter;
+import com.saramambiches.datingapp.Matches.MatchesAdapterHorizontal;
 import com.saramambiches.datingapp.Matches.MatchesObject;
 
 import java.util.ArrayList;
@@ -24,9 +25,9 @@ import java.util.List;
 
 public class Messages extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mMatchesAdapter;
-    private RecyclerView.LayoutManager mMatchesLayoutManager;
+    private RecyclerView mRecyclerView, mRecyclerViewHorizontal;
+    private RecyclerView.Adapter mMatchesAdapter,mMatchesAdapterHorizontal;
+    private RecyclerView.LayoutManager mMatchesLayoutManager,mMatchesLayoutManagerHorizontal;
     private String currentUserId; //= mAuth.getCurrentUser().getUid(); // get current user id
     BottomNavigationView bottomNavigationView;
     @Override
@@ -37,13 +38,23 @@ public class Messages extends AppCompatActivity {
 
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setHasFixedSize(true);
-        mMatchesLayoutManager = new LinearLayoutManager(Messages.this);
+        mMatchesLayoutManager = new LinearLayoutManager(Messages.this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(mMatchesLayoutManager);
         mMatchesAdapter = new MatchesAdapter(getDataSetMatches(), Messages.this);
         mRecyclerView.setAdapter(mMatchesAdapter);
+        //Recycler View Horizontal
+        mRecyclerViewHorizontal = findViewById(R.id.recyclerViewHorizontal);
+        mRecyclerViewHorizontal.setNestedScrollingEnabled(false);
+        mRecyclerViewHorizontal.setHasFixedSize(true);
+        mMatchesLayoutManagerHorizontal = new LinearLayoutManager(Messages.this, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerViewHorizontal.setLayoutManager(mMatchesLayoutManagerHorizontal);
+        mMatchesAdapterHorizontal = new MatchesAdapterHorizontal(getDataSetMatches(), Messages.this);
+        mRecyclerViewHorizontal.setAdapter(mMatchesAdapterHorizontal);//llamamos al adapter
+
+
         getUserMatchId();
 
         /*
@@ -109,6 +120,7 @@ public class Messages extends AppCompatActivity {
 
     private void FetchMatchInformation(String key) {
         DatabaseReference userDb = FirebaseDatabase.getInstance().getReference().child("Users").child(key);
+
         userDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -126,6 +138,7 @@ public class Messages extends AppCompatActivity {
                     MatchesObject obj = new MatchesObject(userId, name, profileImageUrl);
                     resultsMatches.add(obj);
                     mMatchesAdapter.notifyDataSetChanged();
+                    mMatchesAdapterHorizontal.notifyDataSetChanged();
                 }
             }
 
@@ -139,5 +152,10 @@ public class Messages extends AppCompatActivity {
     private ArrayList<MatchesObject> resultsMatches = new ArrayList<MatchesObject>();
     private List<MatchesObject> getDataSetMatches() {
         return resultsMatches;
+    }
+
+    private ArrayList<MatchesObject> resultsChats = new ArrayList<MatchesObject>();
+    private List<MatchesObject> getDataSetChats() {
+        return resultsChats;
     }
 }
