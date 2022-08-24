@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -75,6 +76,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
             holder.mMessage.setVisibility(View.VISIBLE);
             holder.oppoMessage.setVisibility(View.VISIBLE);
         }
+
+
         holder.mContainer.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -84,8 +87,41 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
                         .setPositiveButton("SI", (dialog, which) -> {
                             //Eliminamos de la base de datos
                             DatabaseReference chatReference = FirebaseDatabase.getInstance().getReference().child("Chat").child(chatList.get(position).getIdChat()).child(chatList.get(position).getChatKey());
+
                             Map<String, Object> map = new HashMap<>();
                             map.put("text", "Este mensaje ha sido eliminado");
+
+
+                            chatReference.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot snapshot) {
+                                    if(snapshot.exists()){
+                                        chatReference.updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    Toast.makeText(context, "Mensaje eliminado", Toast.LENGTH_SHORT).show();
+                                                    chatReference.keepSynced(true);
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull com.google.firebase.database.DatabaseError error) {
+
+                                }
+                            });
+
+                            chatReference.updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(context, "Mensaje eliminado", Toast.LENGTH_SHORT).show();
+                                    holder.mContainer.setBackgroundColor(Color.parseColor("#00000000"));
+                                }
+                            });
+                            /*
                             chatReference.updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -94,9 +130,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
                                     }else{
                                         Toast.makeText(context, "Error al eliminar el mensaje", Toast.LENGTH_SHORT).show();
                                     }
-                                    notifyDataSetChanged();
+
                                 }
                             });
+
+                             */
+
+
                             /*
                             chatReference.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -132,4 +172,5 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
     public int getItemCount() {
         return this.chatList.size();
     }
+
 }

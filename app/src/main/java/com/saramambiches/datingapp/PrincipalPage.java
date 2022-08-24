@@ -28,6 +28,8 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Queue;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -49,12 +51,21 @@ public class PrincipalPage extends AppCompatActivity {
     private CircleImageView myImage, matchImage;
     private String myImageUrl, matchImageUrl;
 
+    String profileImageUrl;
+    private CircleImageView mProfileImageTop;
+    private String userId;
+
     Queue<Cards> colaItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_page);
+
+        mAuth = FirebaseAuth.getInstance();
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid(); //hay otro currentUId
+
+        mProfileImageTop = findViewById(R.id.profile_image_top);
 
         //Navigation Bar
 
@@ -88,6 +99,7 @@ public class PrincipalPage extends AppCompatActivity {
         currentUId= mAuth.getCurrentUser().getUid();
 
         checkUserSex();
+        getUserInfo();
 
         colaItems = new LinkedList<Cards>();
 
@@ -281,6 +293,33 @@ public class PrincipalPage extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+    }
+
+    // Se obtienen los datos del usuario: nombre e imagen de perfil
+    private void getUserInfo() {
+        DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
+
+        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
+                    Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
+                    Glide.with(mProfileImageTop);
+                    if(map.get("profileImageUrl")!=null){
+                        profileImageUrl = Objects.requireNonNull(map.get("profileImageUrl")).toString();
+                        if ("default".equals(profileImageUrl)) {
+                            Glide.with(getApplication()).load("https://zultimate.com/wp-content/uploads/2019/12/default-profile.png").into(mProfileImageTop);
+                        } else {
+                            Glide.with(getApplication()).load(profileImageUrl).into(mProfileImageTop);
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
 

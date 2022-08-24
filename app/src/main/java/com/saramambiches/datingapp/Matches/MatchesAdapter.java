@@ -14,12 +14,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.saramambiches.datingapp.R;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolders> {
-    private List<MatchesObject> matchesList;
+    private LinkedList<MatchesObject> matchesList;
     private Context context;
-    public MatchesAdapter (List<MatchesObject> matchesList, Context context){
+    public MatchesAdapter (LinkedList<MatchesObject> matchesList, Context context){
         this.matchesList = matchesList;
         this.context = context;
     }

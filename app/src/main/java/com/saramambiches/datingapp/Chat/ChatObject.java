@@ -12,6 +12,10 @@ public class ChatObject {
 
     }
 
+    public ChatObject(String idChat) {
+        this.idChat = idChat;
+    }
+
     public ChatObject(String message, String messageImage, String typeMessage, Boolean currentUser, String idChat, String chatKey) {
         this.message = message;
         this.messageImage = messageImage;

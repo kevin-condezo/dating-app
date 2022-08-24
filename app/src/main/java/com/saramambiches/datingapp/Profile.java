@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,7 +35,7 @@ public class Profile extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     private FloatingActionButton bt_setting, bt_photoAdd, bt_edit;
-    private CircleImageView mProfileImage;
+    private CircleImageView mProfileImage,mProfileImageTop;
     private TextView mName;//, mUniversity;
     private String userId, name, profileImageUrl;
 
@@ -51,6 +54,7 @@ public class Profile extends AppCompatActivity {
         mName = findViewById(R.id.txt_nombre);
         //mUniversity = findViewById(R.id.txt_universidad);
         mProfileImage = findViewById(R.id.circle_profile_image);
+        mProfileImageTop = findViewById(R.id.profile_image_top);
 
         mAuth = FirebaseAuth.getInstance();
         userId = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
@@ -86,13 +90,12 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+
         //-----------
         bt_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Profile.this, SettingsActivity.class);
-                startActivity(i);
-                finish();
+                ToastMessage("En mantenimiento");
             }
         });
 
@@ -104,6 +107,14 @@ public class Profile extends AppCompatActivity {
                 finish();
             }
         });
+
+        bt_photoAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastMessage("En mantenimiento");
+            }
+        });
+
     }
 
     // Se obtienen los datos del usuario: nombre e imagen de perfil
@@ -126,6 +137,15 @@ public class Profile extends AppCompatActivity {
                             Glide.with(getApplication()).load(profileImageUrl).into(mProfileImage);
                         }
                     }
+                    Glide.with(mProfileImageTop);
+                    if(map.get("profileImageUrl")!=null){
+                        profileImageUrl = Objects.requireNonNull(map.get("profileImageUrl")).toString();
+                        if ("default".equals(profileImageUrl)) {
+                            Glide.with(getApplication()).load("https://zultimate.com/wp-content/uploads/2019/12/default-profile.png").into(mProfileImageTop);
+                        } else {
+                            Glide.with(getApplication()).load(profileImageUrl).into(mProfileImageTop);
+                        }
+                    }
                 }
             }
             @Override
@@ -141,5 +161,18 @@ public class Profile extends AppCompatActivity {
         Intent intent = new Intent(Profile.this, LoginPage.class);
         startActivity(intent);
         finish();
+    }
+    public void ToastMessage(String message){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast,
+                findViewById(R.id.toast_layout));
+        TextView text = layout.findViewById(R.id.toast_text);
+        text.setText(message);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER_VERTICAL|Gravity.BOTTOM, 0, 200);
+        toast.setView(layout);
+        toast.show();
     }
 }

@@ -8,6 +8,8 @@
     tools:context=".Profile"
     android:background="@color/colorBackground">
     <!--Navigation bar-->
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -17,7 +19,17 @@
         app:itemIconSize="24dp"
         app:itemIconTint="@drawable/item_selector"
         app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/menu_nav" />
+        app:menu="@menu/menu_nav" >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image_top"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="right|center_vertical"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="1dp"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/image_profile"/>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <LinearLayout
         android:id="@+id/block_medio"
@@ -41,16 +53,16 @@
             app:pulse_interpolator="Decelerate"
             app:pulse_repeat="0"
             app:pulse_startFromScratch="false">
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/circle_profile_image"
                 android:layout_width="151dp"
                 android:layout_height="161dp"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="59dp"
                 android:src="@mipmap/ic_launcher"
-                app:civ_border_width="2dp"
-                app:civ_border_color="@color/pat2"/>
+                app:civ_border_color="@color/pat2"
+                app:civ_border_width="2dp" />
         </com.saramambiches.datingapp.Utils.PulsatorLayout>
 
 
@@ -71,13 +83,13 @@
             android:fontFamily="@font/quicksand_medium"
             android:text="University"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:visibility="gone" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/block_superior"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:gravity="center"
             android:paddingHorizontal="50dp">
 
@@ -123,16 +135,16 @@
                 android:layout_marginTop="65dp"
                 android:gravity="center"
                 android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="12"
                     android:layout_gravity="center"
+                    android:layout_weight="12"
                     android:paddingHorizontal="3.8dp">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -160,17 +172,17 @@
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/button_white_shadow"
+                        android:fontFamily="@font/roboto_bold"
                         android:gravity="center"
                         android:text="+"
-                        android:textColor="@color/pat2"
-                        android:fontFamily="@font/roboto_bold"/>
+                        android:textColor="@color/pat2" />
                 </RelativeLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginTop="7dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/quicksand_bold"
                     android:text="AÑADIR FOTOS"
                     android:textColor="#c3c9d1"
