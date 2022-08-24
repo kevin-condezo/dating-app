@@ -84,8 +84,20 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
                         .setPositiveButton("SI", (dialog, which) -> {
                             //Eliminamos de la base de datos
                             DatabaseReference chatReference = FirebaseDatabase.getInstance().getReference().child("Chat").child(chatList.get(position).getIdChat()).child(chatList.get(position).getChatKey());
-                            Log.d("getId", chatList.get(position).getIdChat());
-                            Log.d("getId()", chatList.get(position).getChatKey());
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("text", "Este mensaje ha sido eliminado");
+                            chatReference.updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(context, "Mensaje eliminado", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        Toast.makeText(context, "Error al eliminar el mensaje", Toast.LENGTH_SHORT).show();
+                                    }
+                                    notifyDataSetChanged();
+                                }
+                            });
+                            /*
                             chatReference.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
@@ -94,6 +106,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
                                     holder.mContainer.setBackgroundColor(Color.parseColor("#00000000"));
                                 }
                             });
+
+                             */
                 }).setNegativeButton("NO", (dialog, which) -> {
                     holder.mContainer.setBackgroundColor(Color.parseColor("#00000000"));
                     dialog.dismiss();

@@ -21,6 +21,7 @@ import com.saramambiches.datingapp.Matches.MatchesAdapterHorizontal;
 import com.saramambiches.datingapp.Matches.MatchesObject;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Messages extends AppCompatActivity {
@@ -45,6 +46,7 @@ public class Messages extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mMatchesLayoutManager);
         mMatchesAdapter = new MatchesAdapter(getDataSetMatches(), Messages.this);
         mRecyclerView.setAdapter(mMatchesAdapter);
+
         //Recycler View Horizontal
         mRecyclerViewHorizontal = findViewById(R.id.recyclerViewHorizontal);
         mRecyclerViewHorizontal.setNestedScrollingEnabled(false);
@@ -149,12 +151,12 @@ public class Messages extends AppCompatActivity {
         });
     }
 
-    private ArrayList<MatchesObject> resultsMatches = new ArrayList<MatchesObject>();
+    private LinkedList<MatchesObject> resultsMatches = new LinkedList<>();
     private List<MatchesObject> getDataSetMatches() {
         return resultsMatches;
     }
 
-    private ArrayList<MatchesObject> resultsChats = new ArrayList<MatchesObject>();
+    private LinkedList<MatchesObject> resultsChats = new LinkedList<MatchesObject>();
     private List<MatchesObject> getDataSetChats() {
         return resultsChats;
     }
