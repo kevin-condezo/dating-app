@@ -56,7 +56,6 @@ public class PrincipalPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_page);
 
-
         //Navigation Bar
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -84,17 +83,13 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
 
-        //-----------
-
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
         currentUId= mAuth.getCurrentUser().getUid();
 
-
         checkUserSex();
 
         colaItems = new LinkedList<Cards>();
-
 
         adaptadorItems = new CardsAdapter(this, R.layout.item, (List<Cards>) colaItems);
 
@@ -143,22 +138,12 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
                     Toast.makeText(PrincipalPage.this, "Info", Toast.LENGTH_SHORT).show();
-                    //View match = flingContainer.getSelectedView();
-                    //match.findViewById(R.id.item_match).setAlpha(1);
             }
         });
 
         //Botones flotantes
 
         init();
-
-        /*bt_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AnimarFab(bt_back);
-                Toast.makeText(PrincipalPage.this, "Back", Toast.LENGTH_SHORT).show();
-            }
-        });*/
 
         bt_smsRedirect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,7 +167,6 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
 
-
         bt_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -201,7 +185,6 @@ public class PrincipalPage extends AppCompatActivity {
                 layoutMatch.setVisibility(View.INVISIBLE);
             }
         });
-        //--------------
     }
 
     private void isConnectionMatch(String userId) {
@@ -241,12 +224,10 @@ public class PrincipalPage extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError error) {
                         }
                     });
-
                     //Show layout of Match
                     layoutMatch.setVisibility(View.VISIBLE);
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
@@ -272,53 +253,6 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
     }
-/*
-    private String userSex;
-    private String oppositeUserSex;
-    public void checkUserSex() {
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        //male
-        DatabaseReference userDb = usersDb.child(user.getUid());
-        userDb.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                if (snapshot.getKey().equals(user.getUid())) {
-                    if(snapshot.exists()){
-                       if(snapshot.child("sex") !=null){
-                           userSex = snapshot.child("sex").getValue().toString();
-                           oppositeUserSex = "Female";
-                           switch (userSex){
-                               case "Male":
-                                   oppositeUserSex = "Female";
-                                   break;
-                               case "Female":
-                                   oppositeUserSex = "Male";
-                                   break;
-                           }
-                           getOppositeUserSex();
-                       }
-                    }
-                }
-            }
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-
-        //female
-
-    }
-*/
 
     private String userSex;
     private String oppositeUserSex;
@@ -344,17 +278,6 @@ public class PrincipalPage extends AppCompatActivity {
 
                }
             }
-            /*
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-            */
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -393,6 +316,4 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
     }
-
-
 }

@@ -5,7 +5,6 @@ public class Cards {
     private String name;
     private String profileImageUrl;
 
-
     public Cards(String userId, String name, String profileImageUrl) {
         this.userId = userId;
         this.name = name;
