@@ -78,7 +78,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
         }
 
 
-        holder.mContainer.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.mContainer.setOnLongClickListener(new View.OnLongClickListener() { //long click to delete message
             @Override
             public boolean onLongClick(View v) {
 
@@ -126,6 +126,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
+                                        //chatList.get(position).setMessage("Este mensaje ha sido eliminado");
                                         Toast.makeText(context, "Mensaje eliminado", Toast.LENGTH_SHORT).show();
                                     }else{
                                         Toast.makeText(context, "Error al eliminar el mensaje", Toast.LENGTH_SHORT).show();

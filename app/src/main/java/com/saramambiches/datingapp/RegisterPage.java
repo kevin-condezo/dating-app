@@ -55,8 +55,8 @@ public class RegisterPage extends AppCompatActivity {
     private TextInputLayout layout_name, layout_email, layout_pass;
     private RadioGroup r_RadioGroup;
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
+    private FirebaseAuth mAuth; //firebase auth object
+    private FirebaseAuth.AuthStateListener firebaseAuthStateListener; //listener para detectar cambios en el estado de la autenticacion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +102,7 @@ public class RegisterPage extends AppCompatActivity {
         //dropitemsex.setAdapter(itemsAdapter);
 
 
-        btregisterf.setOnClickListener(new View.OnClickListener() {
+        btregisterf.setOnClickListener(new View.OnClickListener() { //botón que registra
             @Override
             public void onClick(View view) {
                 int selectId = r_RadioGroup.getCheckedRadioButtonId();
@@ -116,14 +116,14 @@ public class RegisterPage extends AppCompatActivity {
                 final String name = r_name.getText().toString();
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterPage.this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
+                    public void onComplete(@NonNull Task<AuthResult> task) { //Verifica si el registro fue exitoso
+                        if(!task.isSuccessful()){ //si la creacion de usuario es fallida
                             MotionToast.Companion.createColorToast(RegisterPage.this,"Error al registrarte",
                                     TOAST_ERROR,
                                     GRAVITY_BOTTOM,
                                     SHORT_DURATION,
                                     ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
-                        } else {
+                        } else { //si la creacion de usuario es exitosa
                             String userId = mAuth.getCurrentUser().getUid();
                             DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);//.child("name");
                             Map userInfo = new HashMap<>();
@@ -132,23 +132,24 @@ public class RegisterPage extends AppCompatActivity {
                             userInfo.put("profileImageUrl", "default");
                             currentUserDb.updateChildren(userInfo);
                             //currentUserDb.setValue(name);
+                            MotionToast.Companion.createColorToast(RegisterPage.this,"Registrado Correctamente",
+                                    TOAST_SUCCESS,
+                                    GRAVITY_BOTTOM,
+                                    SHORT_DURATION,
+                                    ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
                         }
-                        MotionToast.Companion.createColorToast(RegisterPage.this,"Registrado Correctamente",
-                                TOAST_SUCCESS,
-                                GRAVITY_BOTTOM,
-                                SHORT_DURATION,
-                                ResourcesCompat.getFont(RegisterPage.this,R.font.quicksand_bold));
+
                     }
                 });
             }
         });
 
-        r_name.addTextChangedListener(loginTextWatcher);
-        r_email.addTextChangedListener(loginTextWatcher);
-        r_password.addTextChangedListener(loginTextWatcher);
+        r_name.addTextChangedListener(loginTextWatcher); //agregando el listener para el campo de texto de nombre
+        r_email.addTextChangedListener(loginTextWatcher); //agregando el listener para el campo de texto de email
+        r_password.addTextChangedListener(loginTextWatcher); //agregando el listener para el campo de texto de contraseña
 
 
-        btredirectl.setOnClickListener(new View.OnClickListener() {
+        btredirectl.setOnClickListener(new View.OnClickListener() { //listener para el boton de redireccionar a la pagina de login
             @Override
             public void onClick(View V) {
                 Intent i = new Intent(RegisterPage.this, LoginPage.class);
@@ -173,10 +174,9 @@ public class RegisterPage extends AppCompatActivity {
 
     }
 
-    private TextWatcher loginTextWatcher = new TextWatcher() {
+    private TextWatcher loginTextWatcher = new TextWatcher() { //watcher para los campos de texto de nombre, email y contraseña
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
         }
 
         @Override

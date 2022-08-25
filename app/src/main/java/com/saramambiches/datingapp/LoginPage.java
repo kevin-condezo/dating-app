@@ -52,7 +52,7 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
 
         mAuth = FirebaseAuth.getInstance();
-        firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
+        firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() { //listener para comparar los datos ingresados con los de la base de datos
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -78,7 +78,7 @@ public class LoginPage extends AppCompatActivity {
 
 
         //Boton Login
-        btloginf.setOnClickListener(new View.OnClickListener() {
+        btloginf.setOnClickListener(new View.OnClickListener() { //Botón que verifica si se loguea correctamente
             @Override
             public void onClick(View view) {
                 final String email = r_email.getText().toString();
@@ -86,19 +86,21 @@ public class LoginPage extends AppCompatActivity {
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (!task.isSuccessful()) {
+                        if (!task.isSuccessful()) { //Si no se loguea correctamente, se muestra un mensaje de error
                             MotionToast.Companion.createColorToast(LoginPage.this,"Error al loguearse",
                                     TOAST_ERROR,
                                     GRAVITY_BOTTOM,
                                     SHORT_DURATION,
                                     ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
 
+                        } else { //Si se loguea correctamente, se muestra un mensaje de éxito
+                            MotionToast.Companion.createColorToast(LoginPage.this,"Logueado Correctamente",
+                                    TOAST_SUCCESS,
+                                    GRAVITY_BOTTOM,
+                                    SHORT_DURATION,
+                                    ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
                         }
-                        MotionToast.Companion.createColorToast(LoginPage.this,"Logueado Correctamente",
-                                TOAST_SUCCESS,
-                                GRAVITY_BOTTOM,
-                                SHORT_DURATION,
-                                ResourcesCompat.getFont(LoginPage.this,R.font.quicksand_bold));
+
                     }
                 });
             }
@@ -106,8 +108,8 @@ public class LoginPage extends AppCompatActivity {
 
 
 
-        r_email.addTextChangedListener(loginTextWatcher);
-        r_password.addTextChangedListener(loginTextWatcher);
+        r_email.addTextChangedListener(loginTextWatcher); //Listener para verificar si el campo de email esta vacio
+        r_password.addTextChangedListener(loginTextWatcher); //Listener para verificar si el campo de password esta vacio
 
         //Boton redirect Register
         btredirectR.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +136,7 @@ public class LoginPage extends AppCompatActivity {
         */
     }
 
-    private TextWatcher loginTextWatcher = new TextWatcher() {
+    private TextWatcher loginTextWatcher = new TextWatcher() { //Listener para verificar si el campo de email esta vacio
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 

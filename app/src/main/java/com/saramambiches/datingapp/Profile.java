@@ -62,7 +62,7 @@ public class Profile extends AppCompatActivity {
 
         getUserInfo();
 
-        mUserDatabase.child("profileImageUrl").addValueEventListener(new ValueEventListener() {
+        mUserDatabase.child("profileImageUrl").addValueEventListener(new ValueEventListener() { //obtiene la url de la imagen de perfil
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 profileImageUrl = (String)snapshot.getValue();
@@ -139,7 +139,7 @@ public class Profile extends AppCompatActivity {
 
     }
 
-    // Se obtienen los datos del usuario: nombre e imagen de perfil
+    // Se obtienen los datos del usuario: nombre e imagen de perfil y foto de arriba
     private void getUserInfo() {
         mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

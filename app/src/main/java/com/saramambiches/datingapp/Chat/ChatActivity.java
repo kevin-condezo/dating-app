@@ -148,7 +148,7 @@ public class ChatActivity extends AppCompatActivity {
 
         mChatAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
-            public void onChanged() {
+            public void onChanged() { //Cuando se hace scroll se actualiza el recyclerView
                 super.onChanged();
                 mRecyclerView.scrollToPosition(mChatAdapter.getItemCount() - 1);
             }
@@ -156,7 +156,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
 
-    private TextWatcher TextAdd = new TextWatcher() {
+    private TextWatcher TextAdd = new TextWatcher() { //Detecta cuando se escribe en el editText
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -197,7 +197,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-    private void getChatId(){
+    private void getChatId(){ //Obtiene el id del chat
         mDatabaseUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -217,7 +217,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
 
-    //obtenemos datos del match
+    //obtenemos la foto y el nombre del match
     private void getUserInfoMatch(){
 
         DatabaseReference usersDb = FirebaseDatabase.getInstance().getReference().child("Users").child(matchId);

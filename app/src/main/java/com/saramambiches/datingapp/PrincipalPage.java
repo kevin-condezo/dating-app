@@ -72,7 +72,7 @@ public class PrincipalPage extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() { //Navigation Bar
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -101,16 +101,18 @@ public class PrincipalPage extends AppCompatActivity {
         checkUserSex();
         getUserInfo();
 
-        colaItems = new LinkedList<Cards>();
+        colaItems = new LinkedList<Cards>(); //Cola de items para el SwipeFlingView (Estructura de datos)
 
+        //Manera en la que todos los datos se van a mostrar en el SwipeFlingView
         adaptadorItems = new CardsAdapter(this, R.layout.item, (List<Cards>) colaItems);
 
+        //Contenedor de los datos de las cards
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
         flingContainer.setAdapter(adaptadorItems);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
-            public void removeFirstObjectInAdapter() {
+            public void removeFirstObjectInAdapter() { //Se llama a este método cuando se desliza y se elimina el primer item de la cola
                 Log.d("colaItems", "item eliminado");
                 // se elimina (desencola) el primer elemento de la cola de items
                 colaItems.remove();
@@ -118,14 +120,14 @@ public class PrincipalPage extends AppCompatActivity {
             }
 
             @Override
-            public void onLeftCardExit(Object dataObject) {
+            public void onLeftCardExit(Object dataObject) { //Se llama a este método cuando se desliza hacia la izquierda y guarda la actividad en la base de datos
                 Cards object = (Cards) dataObject;
                 String userId = object.getUserId();
                 usersDb.child(userId).child("connections").child("skip").child(currentUId).setValue(true);
             }
 
             @Override
-            public void onRightCardExit(Object dataObject) {
+            public void onRightCardExit(Object dataObject) { //Se llama a este método cuando se desliza hacia la derecha y guarda la actividad en la base de datos
                 Cards object = (Cards) dataObject;
                 String userId = object.getUserId();
                 usersDb.child(userId).child("connections").child("like").child(currentUId).setValue(true);
@@ -145,7 +147,7 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
 
-        // Darle click
+        // Notificación al tocar la card
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
@@ -191,7 +193,7 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
 
-        layoutHide.setOnClickListener(new View.OnClickListener() {
+        layoutHide.setOnClickListener(new View.OnClickListener() { //Layout invisible que se hace visible cuando hay match
             @Override
             public void onClick(View view) {
                 layoutMatch.setVisibility(View.INVISIBLE);
@@ -199,12 +201,12 @@ public class PrincipalPage extends AppCompatActivity {
         });
     }
 
-    private void isConnectionMatch(String userId) {
-        DatabaseReference currentUserConnectionsDb = usersDb.child(currentUId).child("connections").child("like").child(userId);
-        currentUserConnectionsDb.addListenerForSingleValueEvent(new ValueEventListener() {
+    private void isConnectionMatch(String userId) { //Método que comprueba si hay match
+        DatabaseReference currentUserConnectionsDb = usersDb.child(currentUId).child("connections").child("like").child(userId); //revisa si hay match en el nodo actual
+        currentUserConnectionsDb.addListenerForSingleValueEvent(new ValueEventListener() { //Listener para el nodo actual de la base de datos
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()){ //si existe un match
 
                     String key = FirebaseDatabase.getInstance().getReference().child("Chat").push().getKey();
 
@@ -268,7 +270,7 @@ public class PrincipalPage extends AppCompatActivity {
 
     private String userSex;
     private String oppositeUserSex;
-    public void checkUserSex(){
+    public void checkUserSex(){ //Método que comprueba el sexo del usuario en la base de datos
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference userDb = usersDb.child(user.getUid());
         userDb.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -298,7 +300,7 @@ public class PrincipalPage extends AppCompatActivity {
 
     }
 
-    // Se obtienen los datos del usuario: nombre e imagen de perfil
+    // Se obtienen la imagen de perfil del usuario
     private void getUserInfo() {
         DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
 
@@ -306,7 +308,7 @@ public class PrincipalPage extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
-                    Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
+                    Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue(); //Se obtienen los datos del usuario (Estructura de datos)
                     Glide.with(mProfileImageTop);
                     if(map.get("profileImageUrl")!=null){
                         profileImageUrl = Objects.requireNonNull(map.get("profileImageUrl")).toString();
@@ -325,7 +327,7 @@ public class PrincipalPage extends AppCompatActivity {
 
     }
 
-    public void getOppositeUserSex() {
+    public void getOppositeUserSex() { //Método que obtiene el sexo del usuario opuesto a la persona actual
         usersDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

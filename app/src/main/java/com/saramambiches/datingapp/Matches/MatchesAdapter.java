@@ -16,7 +16,7 @@ import com.saramambiches.datingapp.R;
 
 import java.util.LinkedList;
 import java.util.List;
-
+//Define las características de la lista de los matches y los métodos para manejarla
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolders> {
     private LinkedList<MatchesObject> matchesList;
     private Context context;

@@ -54,6 +54,7 @@ public class Messages extends AppCompatActivity {
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mProfileImageTop = findViewById(R.id.profile_image_top);
 
+        //Se declara a los matches en la sección Mensajes
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setHasFixedSize(true);
@@ -62,7 +63,7 @@ public class Messages extends AppCompatActivity {
         mMatchesAdapter = new MatchesAdapter(getDataSetChats(), Messages.this);
         mRecyclerView.setAdapter(mMatchesAdapter);
 
-        //Recycler View Horizontal
+        //Se declara a los matches en la sección Nuevos matches
         mRecyclerViewHorizontal = findViewById(R.id.recyclerViewHorizontal);
         mRecyclerViewHorizontal.setNestedScrollingEnabled(false);
         mRecyclerViewHorizontal.setHasFixedSize(true);
@@ -118,7 +119,7 @@ public class Messages extends AppCompatActivity {
         //-----------
     }
 
-    private void getUserMatchId() {
+    private void getUserMatchId() { //Detecta a los usuarios con los que se ha hecho un match
 
         DatabaseReference matchDb = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId).child("connections").child("matches");
         matchDb.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -139,7 +140,7 @@ public class Messages extends AppCompatActivity {
         });
     }
 
-    private void FetchMatchInformation(String key) {
+    private void FetchMatchInformation(String key) { //Obtiene la información de los usuarios con los que se ha hecho un match
         DatabaseReference userDb = FirebaseDatabase.getInstance().getReference().child("Users").child(key);
         userDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -171,7 +172,7 @@ public class Messages extends AppCompatActivity {
         });
     }
 
-    private void FetchChatInformation(String key) {
+    private void FetchChatInformation(String key) { //Proximamente
         DatabaseReference chatDb = FirebaseDatabase.getInstance().getReference().child("User").child(key).child("connections").child("matches").child(chatId);
         final String chatId = chatDb.push().getKey();
         chatDb.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -191,7 +192,7 @@ public class Messages extends AppCompatActivity {
         });
     }
 
-    // Se obtienen los datos del usuario: nombre e imagen de perfil
+    // Se obtienen la imagen de perfil del usuario actual
     private void getUserInfo() {
         DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId);
 

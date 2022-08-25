@@ -13,6 +13,8 @@ import com.saramambiches.datingapp.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+//Define a class that extends RecyclerView.ViewHolder and implements View.OnClickListener:
+//Define las caracteristicas de cada item de la lista:
 public class MatchesViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
     public TextView mLastMessage, mMatchName;
     public CircleImageView mMatchImage;

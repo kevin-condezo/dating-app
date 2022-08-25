@@ -50,6 +50,7 @@ public class RegisterAndLogin extends AppCompatActivity {
         setupOnboardingIndicators();
         setCurrentOnboardingIndicator(0);
 
+        //DETECTA EL CAMBIO DE PAGINA
         onboardingViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -58,6 +59,7 @@ public class RegisterAndLogin extends AppCompatActivity {
             }
         });
 
+        //BOTÓN QUE DESLIZA LOS PASOS Y DIRECCIONA A LA PÁGINA DE REGISTRO
         buttonOnboardingAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,6 +72,7 @@ public class RegisterAndLogin extends AppCompatActivity {
             }
         });
 
+        //SI ES QUE ESTÁS LOGUEADO, YA NO ENTRA A REGISTERANDLOGIN
         //Redireccionamiento directo al PrincipalPage
         mAuth = FirebaseAuth.getInstance();
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -98,12 +101,14 @@ public class RegisterAndLogin extends AppCompatActivity {
         });*/
 
     }
+
+    //METODO PARA CREAR LOS PASOS DE ONBOARDING
     private void setupOnboardingItems(){
         List<OnboardingItem> onboardingItems= new ArrayList<>();
 
         OnboardingItem item_1= new OnboardingItem();
         item_1.setTitle("Mismos intereses");
-        item_1.setDescription("¿Te gusta escuchar música?, ¿Harry Styles?, ¿Dua Lipa? , ¿Bad bunny?");
+        item_1.setDescription("¿Te gusta escuchar música?, ¿Harry Styles?, ¿Dua Lipa?, ¿Bad bunny?");
         item_1.setImage(R.drawable.im1);
 
         OnboardingItem item_2= new OnboardingItem();
@@ -123,6 +128,7 @@ public class RegisterAndLogin extends AppCompatActivity {
         onboardingAdapter = new OnboardingAdapter(onboardingItems);
     }
 
+    //METODO DE DE CREAR LOS PUNTOS QUE INDICAN QUE PAGINA ESTÁ
     private void setupOnboardingIndicators(){
         ImageView[] indicators = new ImageView[onboardingAdapter.getItemCount()];
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -165,7 +171,6 @@ public class RegisterAndLogin extends AppCompatActivity {
         }
     }
 
-    //Nose
     @Override
     protected void onStart() {
         super.onStart();
