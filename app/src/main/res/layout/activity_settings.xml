@@ -1,9 +1,419 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/top_nav" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:text="Mostrarme"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:padding="10dp"
+                            android:text="Hombres"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="18dp" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switch_man"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:background="@null"
+                            android:button="@drawable/switch_selector"
+                            android:thumb="@null"
+                            app:track="@null" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Mujeres"
+                            android:textSize="18sp" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switch_woman"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:background="@null"
+                            android:button="@drawable/switch_selector"
+                            android:checked="true"
+                            android:thumb="@null"
+                            app:track="@null" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:text="Distancia Maxima"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/distance_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="end"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:text="20 Km"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <SeekBar
+                        android:id="@+id/distance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:max="100"
+                        android:min="5"
+                        android:progress="20"
+                        android:progressDrawable="@drawable/custom_seekbar_progress"
+                        android:thumb="@drawable/seek_bar_thumb" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:visibility="visible"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:text="Rango de edad"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/age_range"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="end"
+                        android:fontFamily="@font/roboto_bold"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:text="18-50"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar xmlns:rsb="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/rangeSeekbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        rsb:absoluteMaxValue="18"
+                        rsb:absoluteMinValue="50" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Configuracion de la app"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:text="Notification"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nuevos match"
+                            android:fontFamily="@font/roboto_medium"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:background="@null"
+                            android:button="@drawable/switch_selector"
+                            android:checked="true"
+                            android:thumb="@null"
+                            app:track="@null" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Mensajes"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:background="@null"
+                            android:button="@drawable/switch_selector"
+                            android:checked="true"
+                            android:thumb="@null"
+                            app:track="@null" />
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Contacto"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_white"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="Ayuda y Soporte"
+                android:textColor="@color/colorTextGray"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_white"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="Compartir"
+                android:textColor="@color/colorTextGray"
+                android:textSize="16sp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:text=" Legal"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Licencia de uso"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Politica de privacidad"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Terminos del servicio"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_white"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/signout"
+                android:textColor="@color/colorTextGray"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/button_white"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="Eliminar Cuenta"
+                android:textColor="@color/colorTextGray"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

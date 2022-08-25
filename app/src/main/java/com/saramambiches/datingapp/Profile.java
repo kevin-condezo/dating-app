@@ -114,7 +114,10 @@ public class Profile extends AppCompatActivity {
         bt_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToastMessage("En mantenimiento");
+                //ToastMessage("En mantenimiento");
+                Intent intent = new Intent(Profile.this, SettingsActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

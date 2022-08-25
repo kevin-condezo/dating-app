@@ -50,6 +50,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-storage'
+
+    implementation 'com.yahoo.mobile.client.android.util.rangeseekbar:rangeseekbar-library:0.1.0' //Libreria para el rango de edad
 }
 
 apply plugin: 'com.android.application'
