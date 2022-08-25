@@ -245,8 +245,6 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
-    //get value idChat
-
 
 
     @Override
@@ -378,8 +376,8 @@ public class ChatActivity extends AppCompatActivity {
     }
 
 
-    private ArrayList<ChatObject> resultsChat = new ArrayList<ChatObject>();
-    private List<ChatObject> getDataSetChat() {
+    private ArrayList<ChatObject> resultsChat = new ArrayList<>();
+    private ArrayList<ChatObject> getDataSetChat() {
         return resultsChat;
     }
 }

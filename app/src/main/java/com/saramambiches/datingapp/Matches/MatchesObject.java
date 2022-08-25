@@ -8,7 +8,6 @@ public class MatchesObject {
     public MatchesObject(){ }
 
 
-
     public MatchesObject(String userId, String name, String profileImageUrl) {
         this.lastMessage = userId;
         this.name = name;

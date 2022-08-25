@@ -42,7 +42,6 @@ public class Profile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         PulsatorLayout mPulsator = findViewById(R.id.pulsator);

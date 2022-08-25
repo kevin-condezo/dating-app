@@ -10,8 +10,11 @@
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.536" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_messages.xml" value="0.2" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_principal_page.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_profile.xml" value="0.176" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_profile.xml" value="0.2" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_settings.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/custom_toast.xml" value="0.264" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_matches.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/menu/menu_nav.xml" value="0.25416666666666665" />
       </map>
     </option>
