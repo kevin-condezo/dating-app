@@ -6,7 +6,6 @@
         <item name="colorPrimaryDark">@color/pat6</item>
         <item name="colorAccent">@color/pat1</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
