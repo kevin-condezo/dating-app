@@ -231,6 +231,7 @@ public class Messages extends AppCompatActivity {
         return resultsChats;
     }
 
+    //por implementear
     private ArrayList<ChatObject> resultsChat = new ArrayList<ChatObject>();
     private List<ChatObject> getDataSetChat() {
         return resultsChat;
