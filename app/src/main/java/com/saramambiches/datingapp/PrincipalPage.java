@@ -9,8 +9,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -26,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +49,7 @@ public class PrincipalPage extends AppCompatActivity {
     private String currentUId;
     private DatabaseReference usersDb;
 
-    private FloatingActionButton bt_back, bt_skip, bt_like;
+    private FloatingActionButton bt_back, bt_skip, bt_like, bt_skip_info, bt_like_info;
     BottomNavigationView bottomNavigationView;
 
     private Button layoutHide;
@@ -55,17 +63,31 @@ public class PrincipalPage extends AppCompatActivity {
     private CircleImageView mProfileImageTop;
     private String userId;
 
-    Queue<Cards> colaItems;
+    private Cards cards_data[];
+
+    RelativeLayout screenInfo;
+    FloatingActionButton infoHide;
+    ImageView infoImage;
+    TextView infoName, infoAge, infoBio;
+
+    List<Cards> colaItems;
+
+    Animation expandAnimation,contractAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_page);
+        expandAnimation = AnimationUtils.loadAnimation(this, R.anim.expand);
+        contractAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_out_bottom);
+        init();
 
         mAuth = FirebaseAuth.getInstance();
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid(); //hay otro currentUId
 
         mProfileImageTop = findViewById(R.id.profile_image_top);
+        infoHide = findViewById(R.id.infoHide);
+
 
         //Navigation Bar
 
@@ -101,10 +123,10 @@ public class PrincipalPage extends AppCompatActivity {
         checkUserSex();
         getUserInfo();
 
-        colaItems = new LinkedList<Cards>(); //Cola de items para el SwipeFlingView (Estructura de datos)
+        colaItems = new ArrayList<>(); //Cola de items para el SwipeFlingView (Estructura de datos)
 
         //Manera en la que todos los datos se van a mostrar en el SwipeFlingView
-        adaptadorItems = new CardsAdapter(this, R.layout.item, (List<Cards>) colaItems);
+        adaptadorItems = new CardsAdapter(this, R.layout.item, colaItems);
 
         //Contenedor de los datos de las cards
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
@@ -115,7 +137,7 @@ public class PrincipalPage extends AppCompatActivity {
             public void removeFirstObjectInAdapter() { //Se llama a este método cuando se desliza y se elimina el primer item de la cola
                 Log.d("colaItems", "item eliminado");
                 // se elimina (desencola) el primer elemento de la cola de items
-                colaItems.remove();
+                colaItems.remove(0);
                 adaptadorItems.notifyDataSetChanged();
             }
 
@@ -147,17 +169,33 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
 
-        // Notificación al tocar la card
+        // Informacion de la card
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-                    Toast.makeText(PrincipalPage.this, "Info", Toast.LENGTH_SHORT).show();
+                    screenInfo.setVisibility(View.VISIBLE);
+                    screenInfo.startAnimation(expandAnimation);
+
+                    Cards object = (Cards) dataObject;
+                    String imageUrl = object.getProfileImageUrl();
+                    String name = object.getName();
+                    infoName.setText(name);
+
+                    Glide.with(infoImage);
+                    if (imageUrl.equals("default")) {
+                        infoImage.setImageResource(R.drawable.image_profile);
+                    } else {
+                        Glide.with(infoImage.getContext()).load(imageUrl).into(infoImage);
+                    }
+
+
+
             }
         });
 
         //Botones flotantes
 
-        init();
+
 
         bt_smsRedirect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,6 +228,40 @@ public class PrincipalPage extends AppCompatActivity {
                 } catch (Exception e) {
                     Toast.makeText(PrincipalPage.this, "No hay más usuarios", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        bt_skip_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_skip);
+                try {
+                    flingContainer.getTopCardListener().selectLeft();
+                } catch (Exception e) {
+                    Toast.makeText(PrincipalPage.this, "No hay más usuarios", Toast.LENGTH_SHORT).show();
+                }
+                screenInfo.setVisibility(View.GONE);
+            }
+        });
+
+        bt_like_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnimarFab(bt_like);
+                try {
+                    flingContainer.getTopCardListener().selectRight();
+                } catch (Exception e) {
+                    Toast.makeText(PrincipalPage.this, "No hay más usuarios", Toast.LENGTH_SHORT).show();
+                }
+                screenInfo.setVisibility(View.GONE);
+            }
+        });
+
+        infoHide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                screenInfo.startAnimation(contractAnimation);
+                screenInfo.setVisibility(View.GONE);
             }
         });
 
@@ -252,12 +324,16 @@ public class PrincipalPage extends AppCompatActivity {
         //this.bt_back = findViewById(R.id.bt_back);
         this.bt_skip = findViewById(R.id.bt_skip);
         this.bt_like = findViewById(R.id.bt_like);
+        this.bt_skip_info = findViewById(R.id.bt_skip_info);
+        this.bt_like_info = findViewById(R.id.bt_like_info);
         this.layoutHide= findViewById(R.id.hideLayout);
         this.layoutMatch= findViewById(R.id.matchLayout);
         this.bt_smsRedirect= findViewById(R.id.sms_redirect);
-
+        this.screenInfo= findViewById(R.id.screen_info);
         this.myImage = findViewById(R.id.profile_image_you);
         this.matchImage = findViewById(R.id.profile_image_match);
+        this.infoImage = findViewById(R.id.profile_image_info);
+        this.infoName = findViewById(R.id.name_info);
     }
     private void AnimarFab(final FloatingActionButton fab){
         fab.animate().scaleX(0.7f).scaleY(0.7f).setDuration(100).withEndAction(new Runnable() {
@@ -336,6 +412,7 @@ public class PrincipalPage extends AppCompatActivity {
                         String imageUrl = "default";
                         if (!snapshot.child("profileImageUrl").getValue().equals("default")) {
                             imageUrl = snapshot.child("profileImageUrl").getValue().toString();
+
                         }
                         Cards Item = new Cards(snapshot.getKey(), snapshot.child("name").getValue().toString(), imageUrl);
                         colaItems.add(Item); // se agrega el item a la cola

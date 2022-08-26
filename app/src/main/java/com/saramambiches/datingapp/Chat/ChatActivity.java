@@ -169,6 +169,7 @@ public class ChatActivity extends AppCompatActivity {
             if(!text.isEmpty()){
                 bSendButton.setVisibility(View.VISIBLE);
                 mGalleryButton.setVisibility(View.GONE);
+                mRecyclerView.scrollToPosition(mChatAdapter.getItemCount() - 1);
             }else{
                 bSendButton.setVisibility(View.GONE);
                 mGalleryButton.setVisibility(View.VISIBLE);

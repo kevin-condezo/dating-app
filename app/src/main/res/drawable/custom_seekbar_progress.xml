@@ -7,8 +7,8 @@
             android:shape="rectangle"
             android:tint="@color/PlomoApp">
             <corners android:radius="2dp" />
-            <size android:height="2dp" />
-            <solid android:color="@color/PlomoTransparente" />
+            <size android:height="4dp" />
+            <solid android:color="#26000000" />
         </shape>
     </item>
     <item
@@ -24,7 +24,7 @@
                         android:shape="rectangle"
                         android:tint="@color/colorPrimary">
                         <corners android:radius="8dp" />
-                        <size android:height="5dp" />
+                        <size android:height="4dp" />
                         <solid android:color="@color/colorPrimary" />
                     </shape>
                 </item>

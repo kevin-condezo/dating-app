@@ -55,4 +55,12 @@
     <string name="signout">Sign Out</string>
     <string name="edit">EDIT</string>
     <string name="save">GUARDAR</string>
+
+
+    <string-array name="initial_values">
+        <item name="min">18</item>
+        <item name="max">25</item>
+    </string-array>
+
+    <dimen name="_5dp">5dp</dimen>
 </resources>

@@ -51,6 +51,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-storage'
 
+    implementation 'com.github.MohammedAlaaMorsi:RangeSeekBar:1.0.6' //Rango de busqueda
     implementation 'com.yahoo.mobile.client.android.util.rangeseekbar:rangeseekbar-library:0.1.0' //Libreria para el rango de edad
 }
 
