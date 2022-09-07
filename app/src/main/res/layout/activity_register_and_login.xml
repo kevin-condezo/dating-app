@@ -24,7 +24,8 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/onboardingViewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginBottom="100dp"/>
         <LinearLayout
             android:id="@+id/layoutOnboardingIndicators"
             android:layout_width="0dp"

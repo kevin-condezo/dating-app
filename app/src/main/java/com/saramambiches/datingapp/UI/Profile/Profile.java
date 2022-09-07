@@ -1,11 +1,10 @@
-package com.saramambiches.datingapp;
+package com.saramambiches.datingapp.UI.Profile;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -22,6 +21,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.saramambiches.datingapp.EditProfileActivity;
+import com.saramambiches.datingapp.LoginPage;
+import com.saramambiches.datingapp.R;
+import com.saramambiches.datingapp.SettingsActivity;
+import com.saramambiches.datingapp.UI.Home.PrincipalPage;
+import com.saramambiches.datingapp.UI.Messages.Messages;
 import com.saramambiches.datingapp.Utils.PulsatorLayout;
 
 import java.util.Map;
@@ -92,12 +97,12 @@ public class Profile extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),PrincipalPage.class));
+                        startActivity(new Intent(getApplicationContext(), PrincipalPage.class));
                         overridePendingTransition(0,0);
                         finish();
                         return true;
                     case R.id.nav_sms:
-                        startActivity(new Intent(getApplicationContext(),Messages.class));
+                        startActivity(new Intent(getApplicationContext(), Messages.class));
                         overridePendingTransition(0,0);
                         finish();
                         return true;

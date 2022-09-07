@@ -1,26 +1,28 @@
-package com.saramambiches.datingapp;
+package com.saramambiches.datingapp.UI.Home;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,13 +34,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
+import com.saramambiches.datingapp.Cards;
+import com.saramambiches.datingapp.CardsAdapter;
+import com.saramambiches.datingapp.UI.Messages.Messages;
+import com.saramambiches.datingapp.R;
+import com.saramambiches.datingapp.UI.Messages.MessagesFragment;
+import com.saramambiches.datingapp.UI.Profile.ProfileFragment;
+import com.saramambiches.datingapp.VPadapter;
+import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Queue;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -49,7 +55,7 @@ public class PrincipalPage extends AppCompatActivity {
     private String currentUId;
     private DatabaseReference usersDb;
 
-    private FloatingActionButton bt_back, bt_skip, bt_like, bt_skip_info, bt_like_info;
+    private FloatingActionButton bt_back, bt_skip, bt_like, bt_super_like, bt_skip_info, bt_like_info;
     BottomNavigationView bottomNavigationView;
 
     private Button layoutHide;
@@ -63,6 +69,8 @@ public class PrincipalPage extends AppCompatActivity {
     private CircleImageView mProfileImageTop;
     private String userId;
 
+    int surfaceColors;
+
     private Cards cards_data[];
 
     RelativeLayout screenInfo;
@@ -73,11 +81,33 @@ public class PrincipalPage extends AppCompatActivity {
     List<Cards> colaItems;
 
     Animation expandAnimation,contractAnimation;
+    //Card
+    private CardStackLayoutManager manager;
+    private CardStackAdapter adapter;
+
+    //ViewPager
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        SplashScreen splashScreen= SplashScreen.installSplashScreen(this); //init
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_page);
+
+        //surfaceColors = SurfaceColors.SURFACE_2.getColor(this);
+
+
+        //binding satusbar color
+
+        //Fragment inflater
+        MatchFragment matchFragment = new MatchFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, matchFragment).commit();
+
+
+
+
         expandAnimation = AnimationUtils.loadAnimation(this, R.anim.expand);
         contractAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_out_bottom);
         init();
@@ -85,43 +115,13 @@ public class PrincipalPage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid(); //hay otro currentUId
 
-        mProfileImageTop = findViewById(R.id.profile_image_top);
         infoHide = findViewById(R.id.infoHide);
-
-
-        //Navigation Bar
-
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.nav_home);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() { //Navigation Bar
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-                    case R.id.nav_home:
-                        return true;
-                    case R.id.nav_sms:
-                        startActivity(new Intent(getApplicationContext(), Messages.class));
-                        overridePendingTransition(0,0);
-                        finish();
-                        return true;
-                    case R.id.nav_user:
-                        startActivity(new Intent(getApplicationContext(), Profile.class));
-                        overridePendingTransition(0,0);
-                        finish();
-                        return true;
-                }
-                return false;
-            }
-        });
 
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
         currentUId= mAuth.getCurrentUser().getUid();
 
         checkUserSex();
-        getUserInfo();
 
         colaItems = new ArrayList<>(); //Cola de items para el SwipeFlingView (Estructura de datos)
 
@@ -203,31 +203,6 @@ public class PrincipalPage extends AppCompatActivity {
                 //redireccionar a la pagina de mensajes
                 startActivity(new Intent(getApplicationContext(), Messages.class));
                 finish();
-            }
-        });
-
-        bt_skip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AnimarFab(bt_skip);
-                try {
-                    flingContainer.getTopCardListener().selectLeft();
-                } catch (Exception e) {
-                    Toast.makeText(PrincipalPage.this, "No hay más usuarios", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-
-        bt_like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AnimarFab(bt_like);
-                try {
-                    flingContainer.getTopCardListener().selectRight();
-                } catch (Exception e) {
-                    Toast.makeText(PrincipalPage.this, "No hay más usuarios", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
@@ -322,8 +297,7 @@ public class PrincipalPage extends AppCompatActivity {
 
     private void init() {
         //this.bt_back = findViewById(R.id.bt_back);
-        this.bt_skip = findViewById(R.id.bt_skip);
-        this.bt_like = findViewById(R.id.bt_like);
+
         this.bt_skip_info = findViewById(R.id.bt_skip_info);
         this.bt_like_info = findViewById(R.id.bt_like_info);
         this.layoutHide= findViewById(R.id.hideLayout);
@@ -352,7 +326,7 @@ public class PrincipalPage extends AppCompatActivity {
         userDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-               if(snapshot.exists()){
+                if(snapshot.exists()){
                     if(snapshot.child("sex").getValue() != null) {
                         userSex = snapshot.child("sex").getValue().toString();
                         switch (userSex) {
@@ -366,7 +340,7 @@ public class PrincipalPage extends AppCompatActivity {
                         getOppositeUserSex();
                     }
 
-               }
+                }
             }
 
             @Override
@@ -376,32 +350,6 @@ public class PrincipalPage extends AppCompatActivity {
 
     }
 
-    // Se obtienen la imagen de perfil del usuario
-    private void getUserInfo() {
-        DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
-
-        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
-                    Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue(); //Se obtienen los datos del usuario (Estructura de datos)
-                    Glide.with(mProfileImageTop);
-                    if(map.get("profileImageUrl")!=null){
-                        profileImageUrl = Objects.requireNonNull(map.get("profileImageUrl")).toString();
-                        if ("default".equals(profileImageUrl)) {
-                            Glide.with(getApplication()).load("https://zultimate.com/wp-content/uploads/2019/12/default-profile.png").into(mProfileImageTop);
-                        } else {
-                            Glide.with(getApplication()).load(profileImageUrl).into(mProfileImageTop);
-                        }
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
-    }
 
     public void getOppositeUserSex() { //Método que obtiene el sexo del usuario opuesto a la persona actual
         usersDb.addChildEventListener(new ChildEventListener() {
@@ -434,4 +382,5 @@ public class PrincipalPage extends AppCompatActivity {
             }
         });
     }
+
 }

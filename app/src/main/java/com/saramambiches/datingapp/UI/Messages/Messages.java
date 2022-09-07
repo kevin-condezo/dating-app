@@ -1,4 +1,4 @@
-package com.saramambiches.datingapp;
+package com.saramambiches.datingapp.UI.Messages;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,12 +17,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.saramambiches.datingapp.Chat.ChatActivity;
 import com.saramambiches.datingapp.Chat.ChatAdapter;
 import com.saramambiches.datingapp.Chat.ChatObject;
 import com.saramambiches.datingapp.Matches.MatchesAdapter;
 import com.saramambiches.datingapp.Matches.MatchesAdapterHorizontal;
 import com.saramambiches.datingapp.Matches.MatchesObject;
+import com.saramambiches.datingapp.UI.Profile.Profile;
+import com.saramambiches.datingapp.R;
+import com.saramambiches.datingapp.UI.Home.PrincipalPage;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -43,8 +43,6 @@ public class Messages extends AppCompatActivity {
     private String currentUserId; //= mAuth.getCurrentUser().getUid(); // get current user id
     private String chatId;
     String profileImageUrl;
-    private CircleImageView mProfileImageTop;
-    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mAuth = FirebaseAuth.getInstance();
@@ -52,7 +50,6 @@ public class Messages extends AppCompatActivity {
         setContentView(R.layout.activity_messages);
 
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mProfileImageTop = findViewById(R.id.profile_image_top);
 
         //Se declara a los matches en la sección Mensajes
         mRecyclerView = findViewById(R.id.recyclerView);
@@ -76,7 +73,6 @@ public class Messages extends AppCompatActivity {
 
 
         getUserMatchId();
-        getUserInfo();
 
         /*
         MatchesObject obj = new MatchesObject("asd");
@@ -86,37 +82,7 @@ public class Messages extends AppCompatActivity {
 
        // mMatchesAdapter.notifyDataSetChanged();
 
-        //Navigation Bar
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.nav_sms);
-
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-                    case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),PrincipalPage.class));
-                        overridePendingTransition(0,0);
-                        finish();
-                        return true;
-                    case R.id.nav_sms:
-                        return true;
-                    case R.id.nav_user:
-                        startActivity(new Intent(getApplicationContext(),Profile.class));
-                        overridePendingTransition(0,0);
-                        finish();
-                        return true;
-                }
-
-                return false;
-            }
-        });
-
-
-        //-----------
     }
 
     private void getUserMatchId() { //Detecta a los usuarios con los que se ha hecho un match
@@ -192,32 +158,6 @@ public class Messages extends AppCompatActivity {
         });
     }
 
-    // Se obtienen la imagen de perfil del usuario actual
-    private void getUserInfo() {
-        DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId);
-
-        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
-                    Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
-                    Glide.with(mProfileImageTop);
-                    if(map.get("profileImageUrl")!=null){
-                        profileImageUrl = Objects.requireNonNull(map.get("profileImageUrl")).toString();
-                        if ("default".equals(profileImageUrl)) {
-                            Glide.with(getApplication()).load("https://zultimate.com/wp-content/uploads/2019/12/default-profile.png").into(mProfileImageTop);
-                        } else {
-                            Glide.with(getApplication()).load(profileImageUrl).into(mProfileImageTop);
-                        }
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
-    }
 
 
     //Lista enlazada

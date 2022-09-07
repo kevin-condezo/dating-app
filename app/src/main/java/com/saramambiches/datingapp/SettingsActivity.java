@@ -9,12 +9,10 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.google.android.material.slider.RangeSlider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mohammedalaa.seekbar.OnDoubleValueSeekBarChangeListener;
-import com.mohammedalaa.seekbar.RangeSeekBarView;
 import com.mohammedalaa.seekbar.DoubleValueSeekBarView;
-import com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar;
+import com.saramambiches.datingapp.UI.Profile.Profile;
 
 
 public class SettingsActivity extends AppCompatActivity {

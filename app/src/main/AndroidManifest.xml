@@ -32,10 +32,10 @@
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".Profile"
+            android:name=".UI.Profile.Profile"
             android:exported="false" />
         <activity
-            android:name=".Messages"
+            android:name=".UI.Messages.Messages"
             android:exported="false" />
         <activity
             android:name=".LoginPage"
@@ -44,13 +44,13 @@
             android:name=".RegisterPage"
             android:exported="false" />
         <activity
-            android:name=".PrincipalPage"
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Home.PrincipalPage"
             android:exported="false" />
         <activity
             android:name=".RegisterAndLogin"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
