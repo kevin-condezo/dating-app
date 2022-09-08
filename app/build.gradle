@@ -31,7 +31,6 @@ android {
 dependencies {
 
 
-
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
@@ -62,6 +61,9 @@ dependencies {
     implementation 'com.yahoo.mobile.client.android.util.rangeseekbar:rangeseekbar-library:0.1.0' //Libreria para el rango de edad
     //SplashScreen
     implementation "androidx.core:core-splashscreen:1.0.0-beta02"
+
+    implementation 'com.github.splatte:ViewPagerIndicator:3.0.0' //Libreria para el indicador de paginas
+    implementation 'com.zolad:zoominimageview:1.0.0' //Libreria para el zoom de imagenes
 }
 
 apply plugin: 'com.android.application'

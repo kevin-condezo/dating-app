@@ -2,6 +2,7 @@ package com.saramambiches.datingapp.UI.Home;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DiffUtil;
+import androidx.viewpager.widget.ViewPager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,7 +33,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.saramambiches.datingapp.Cards;
 import com.saramambiches.datingapp.DirectionCustom;
 import com.saramambiches.datingapp.R;
 import com.saramambiches.datingapp.UI.Messages.MessagesFragment;
@@ -47,7 +48,6 @@ import com.yuyakaido.android.cardstackview.SwipeAnimationSetting;
 import com.yuyakaido.android.cardstackview.SwipeableMethod;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -57,8 +57,6 @@ public class MatchFragment extends Fragment {
     private CardStackLayoutManager manager;
     private CardStackAdapter adapter;
     private FloatingActionButton bt_back, bt_skip, bt_like, bt_super_like;
-    private ImageView bt_sms;
-    private CircleImageView mProfileImageTop;
     private String userSex;
     private String oppositeUserSex;
     private FirebaseAuth mAuth;
@@ -74,8 +72,10 @@ public class MatchFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
-        items = new ArrayList<>();
         currentUId= mAuth.getCurrentUser().getUid();
+        items = new ArrayList<>();
+
+
         checkUserSex();
 
         init(root);
@@ -191,13 +191,19 @@ public class MatchFragment extends Fragment {
 
         manager.setStackFrom(StackFrom.Bottom);  //Estilo de cartas
         manager.setVisibleCount(3);
+        manager.setSwipeThreshold(0.3f);
         manager.setTranslationInterval(8.0f);
         manager.setScaleInterval(0.95f);
         manager.setMaxDegree(20.0f);
         manager.setDirections(DirectionCustom.CUSTOM);
         manager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual);
         manager.setOverlayInterpolator(new LinearInterpolator());
-        adapter = new CardStackAdapter(addList());
+        adapter = new CardStackAdapter(addList(), new CardStackAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(ItemModel item) {
+                showProfile(item);
+            }
+        });
         cardStackView.setLayoutManager(manager);
         cardStackView.setAdapter(adapter);
         cardStackView.setItemAnimator(new DefaultItemAnimator());
@@ -257,6 +263,21 @@ public class MatchFragment extends Fragment {
 
     }
 
+    private void showProfile(ItemModel item) {
+        Intent i= new Intent(getContext(), DescriptionActivity.class);
+        i.putExtra("listItem", item);
+        startActivity(i);
+        /*
+
+
+
+        Intent intent = new Intent(getContext(), DescriptionActivity.class);
+        intent.putExtra("ListItem", item);
+        startActivity(intent);
+
+         */
+    }
+
     private void AnimarFab(final FloatingActionButton fab){
         fab.animate().scaleX(0.7f).scaleY(0.7f).setDuration(100).withEndAction(new Runnable() {
             @Override
@@ -276,8 +297,8 @@ public class MatchFragment extends Fragment {
         hasil.dispatchUpdatesTo(adapter);
     }
 
-
-    public void checkUserSex(){ //Método que comprueba el sexo del usuario en la base de datos
+    //Método que comprueba el sexo del usuario en la base de datos
+    public void checkUserSex(){
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference userDb = usersDb.child(user.getUid());
         userDb.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -307,6 +328,7 @@ public class MatchFragment extends Fragment {
 
     }
 
+    //Llenamos la lista con los usuarios de la base de datos
     private List<ItemModel> addList() {
         usersDb.addChildEventListener(new ChildEventListener() {
             @Override
@@ -327,7 +349,7 @@ public class MatchFragment extends Fragment {
                             university = snapshot.child("university").getValue().toString();
                         }
 
-                        ItemModel itemModel = new ItemModel(snapshot.getKey(),image, snapshot.child("name").getValue().toString(), age,university);
+                        ItemModel itemModel = new ItemModel(snapshot.getKey(),image, snapshot.child("name").getValue().toString(), age,university,null);
                         items.add(itemModel);
                         adapter.notifyDataSetChanged();
                     }

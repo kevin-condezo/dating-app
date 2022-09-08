@@ -1,17 +1,28 @@
 package com.saramambiches.datingapp.UI.Home;
 
-public class ItemModel {
-    private String userId,image, name, age, university;
+import java.io.Serializable;
+
+public class ItemModel implements Serializable {
+    private String userId,image, name, age, university, description;
 
     public ItemModel() {
     }
 
-    public ItemModel(String userId, String image, String name, String age, String university) {
+    public ItemModel(String userId, String image, String name, String age, String university, String description) {
         this.image = image;
         this.name = name;
         this.age = age;
         this.university = university;
         this.userId = userId;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getUserId() {

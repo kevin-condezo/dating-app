@@ -19,6 +19,12 @@
     <color name="colorButtonPurple">#9751ff</color>
     <color name="colorOnboardingIndicatorInactive">#8C9751ff</color>
 
+    <color name="dimgray">#696969</color>
+    <color name="pink_color">#fa6565</color>
+    <color name="lightgraycolor">#f2f2f2</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="gainsboro">#DCDCDC</color>
+
     <color name="likegreen">#00CC33</color>
     <color name="dislikered">#FF2400</color>
     <!-- Primary material3 -->

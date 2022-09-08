@@ -11,7 +11,9 @@
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
+        />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
@@ -34,6 +36,17 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </RelativeLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@color/gray"
+        app:itemActiveIndicatorStyle="@null"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_nav" />
+
     <include layout="@layout/screen_match" />
     <!--cuando le dan click a mas informacion-->
     <include android:id="@+id/screen_info" layout="@layout/screen_more_info" android:visibility="gone"/>

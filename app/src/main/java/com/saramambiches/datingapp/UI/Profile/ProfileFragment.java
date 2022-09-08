@@ -14,8 +14,10 @@ import android.view.ViewGroup;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.saramambiches.datingapp.EditProfileActivity;
 import com.saramambiches.datingapp.LoginPage;
 import com.saramambiches.datingapp.R;
+import com.saramambiches.datingapp.SettingsActivity;
 import com.saramambiches.datingapp.UI.Home.MatchFragment;
 
 public class ProfileFragment extends Fragment {
@@ -60,6 +62,21 @@ public class ProfileFragment extends Fragment {
                         .addToBackStack(null)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit();
+            }
+        });
+
+        getView().findViewById(R.id.profile_edit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        getView().findViewById(R.id.setting).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                startActivity(intent);
             }
         });
     }

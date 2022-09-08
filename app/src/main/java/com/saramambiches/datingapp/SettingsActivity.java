@@ -39,8 +39,6 @@ public class SettingsActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         back.setOnClickListener(v -> {
-            Intent intent = new Intent(SettingsActivity.this, Profile.class);
-            startActivity(intent);
             finish();
         });
 
@@ -90,11 +88,4 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(SettingsActivity.this, Profile.class);
-        startActivity(intent);
-        finish();
-    }
 }

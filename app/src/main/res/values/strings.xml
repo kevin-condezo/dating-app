@@ -63,4 +63,14 @@
     </string-array>
 
     <dimen name="_5dp">5dp</dimen>
+
+
+    <string name="edit_profile">Edit Profile</string>
+    <string name="about_profile_name">Acerca de mí</string>
+    <string name="about">Descripción</string>
+    <string name="job_title">Trabajo</string>
+    <string name="company">Compañia</string>
+    <string name="school_college">Universidad</string>
+    <string name="gender">Genero</string>
+    <string name="date_of_birth">Edad</string>
 </resources>

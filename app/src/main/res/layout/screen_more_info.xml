@@ -5,7 +5,6 @@
     android:id="@+id/perfil_view"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-
     android:clickable="true"
     android:visibility="visible"
     android:fitsSystemWindows="true">
@@ -59,7 +58,7 @@
                 android:orientation="vertical"
                 android:layout_marginHorizontal="20dp">
                 <TextView
-                    android:id="@+id/name_info"
+                    android:id="@+id/name_infoo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

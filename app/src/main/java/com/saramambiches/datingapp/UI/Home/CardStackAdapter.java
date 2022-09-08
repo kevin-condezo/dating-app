@@ -19,9 +19,15 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.ViewHolder> {
 
     private List<ItemModel> items;
+    final CardStackAdapter.OnItemClickListener listener;
 
-    public CardStackAdapter(List<ItemModel> items) {
+    public interface OnItemClickListener {
+        void onItemClick(ItemModel item);
+    }
+
+    public CardStackAdapter(List<ItemModel> items, CardStackAdapter.OnItemClickListener listener) {
         this.items = items;
+        this.listener = listener;
     }
 
     @NonNull
@@ -58,7 +64,14 @@ public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.View
             name.setText(data.getName());
             age.setText(data.getAge());
             university.setText(data.getUniversity());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(data);
+                }
+            });
         }
+
     }
 
     public List<ItemModel> getItems() {

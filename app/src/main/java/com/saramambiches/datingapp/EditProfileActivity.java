@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -43,7 +44,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText mNameField;
     private Button mConfirm;
     private RadioGroup mSexChoice;
-    private CircleImageView mProfileImage;
+    private ImageView mProfileImage;
     private DatabaseReference mUserDatabase;
     private String userId, name, profileImageUrl, userSex;
     private Uri resultUri;
@@ -56,7 +57,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         mNameField = findViewById(R.id.name);
         mNameField.addTextChangedListener(editTextWatcher);
-        mProfileImage = findViewById(R.id.circle_profile_image);
+        mProfileImage = findViewById(R.id.image_view_1);
         mConfirm = findViewById(R.id.btn_guardar);
         mSexChoice = findViewById(R.id.radioGroup);
         TextView mBack = findViewById(R.id.regresar);
@@ -87,16 +88,12 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveUserInformation();
-                startActivity(new Intent(getApplicationContext(), Profile.class));
-                overridePendingTransition(0,0);
                 finish();
             }
         });
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Profile.class));
-                overridePendingTransition(0,0);
                 finish();
             }
         });
