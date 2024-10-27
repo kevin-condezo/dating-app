@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.saramambiches.datingapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" ></uses-feature>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +18,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DatingApp"
         tools:targetApi="31">
+
+        <activity android:name=".Chat.ChatActivity"
+                  android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".register.GenderSelect"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".Messages"
+            android:exported="false" />
+        <activity
+            android:name=".LoginPage"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterPage"
+            android:exported="false" />
+        <activity
+            android:name=".PrincipalPage"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterAndLogin"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

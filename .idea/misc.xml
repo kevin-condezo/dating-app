@@ -4,7 +4,26 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/marti/.gradle/caches/transforms-3/198c0ab1a8969ff4d5bb240b45aba76b/transformed/MotionToast-1.3.3.1/res/drawable/toast_round_background.xml" value="0.1485" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/custom_seekbar_progress.xml" value="0.1485" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/custom_switch_on.xml" value="0.1485" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_chevron_left_black_24dp.xml" value="0.1485" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/ic_circle.xml" value="0.1485" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/item_selector.xml" value="0.1485" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/seek_bar_thumb.xml" value="0.124" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/switch_off.xml" value="0.1485" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/switch_on.xml" value="0.1485" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/drawable/toast_drawable.xml" value="0.1485" />
         <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_main.xml" value="0.536" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_messages.xml" value="0.2" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_principal_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_profile.xml" value="0.2" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/activity_settings.xml" value="0.264" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/custom_toast.xml" value="0.264" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/item_matches.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/layout/top_nav.xml" value="0.253125" />
+        <entry key="..\:/Users/marti/AndroidStudioProjects/dating-app/app/src/main/res/menu/menu_nav.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

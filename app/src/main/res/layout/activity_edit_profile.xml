@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:fitsSystemWindows="true"
+    tools:context=".EditProfileActivity">
+
+    <!--TODO: agregar campos para editar-->
+    <!--TODO: mejorar layout-->
+
+    <!--Bloque Superior-->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/bloque_superior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+        <!--Titulo-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circle_profile_image"
+            android:layout_width="151dp"
+            android:layout_height="161dp"
+            android:layout_centerInParent="true"
+            android:layout_marginVertical="59dp"
+            android:src="@drawable/image_profile"/>
+
+        <!--Subtitulo-->
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/quicksand_semibold"
+            android:text="@string/subtitle"
+            android:textColor="@color/colorTextGray"
+            android:textSize="15sp" />
+
+        <!--Campo de Nombre-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameLayout"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="@string/name"
+                android:fontFamily="@font/quicksand_medium"
+                android:hint="@string/name"
+                android:inputType="textPersonName"
+                android:paddingVertical="17dp"
+                android:paddingStart="30dp"
+                android:textSize="16sp"
+                tools:ignore="RtlSymmetry" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Botones de sexo-->
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/maleId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_selector"
+                android:button="@drawable/button_transparent"
+                android:drawableStart="@drawable/ic_male"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/color_selector"
+                android:fontFamily="@font/quicksand_medium"
+                android:padding="15dp"
+                android:text="@string/male"
+                android:textAlignment="center"
+                android:textColor="@color/color_selector"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/femaleId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_selector"
+                android:button="@drawable/button_transparent"
+                android:drawableStart="@drawable/ic_female"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/color_selector"
+                android:fontFamily="@font/quicksand_medium"
+                android:padding="15dp"
+                android:text="@string/female"
+                android:textAlignment="center"
+                android:textColor="@color/color_selector"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--Bloque Inferior-->
+    <LinearLayout
+        android:id="@+id/bloque_inferior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center|bottom"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <!--Boton de Guardar-->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_guardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="17dp"
+            android:enabled="false"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/save"
+            android:textSize="16sp"
+            app:cornerRadius="50dp"/>
+
+        <!--Texto Regresar-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/regresar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10sp"
+                android:gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:clickable="true"
+                android:text="Regresar"
+                android:textColor="@color/pat1"
+                android:focusable="true" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

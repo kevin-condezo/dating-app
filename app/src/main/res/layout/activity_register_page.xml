@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:fitsSystemWindows="true"
+    tools:context=".RegisterPage">
+
+    <!--Bloque Superior-->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/block_superior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp"
+        android:paddingTop="30dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+        <!--Titulo-->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/register"
+            android:textColor="@color/pat1"
+            android:textSize="50sp" />
+
+        <!--Subtitulo-->
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/quicksand_semibold"
+            android:text="@string/subtitle"
+            android:textColor="@color/colorTextGray"
+            android:textSize="15sp" />
+
+        <!--Campo de Nombre-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameLayout"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/quicksand_medium"
+                android:hint="@string/name"
+                android:inputType="textPersonName"
+                android:paddingVertical="17dp"
+                android:textSize="16dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/menu_sex"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            android:gravity="bottom"
+            android:hint="Sexo"
+            android:textColorHint="@color/PlomoApp"
+            app:placeholderTextColor="@color/PlomoApp">
+
+            <AutoCompleteTextView
+                android:id="@+id/drop_item_sex"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/PlomoTransparente"
+                android:fontFamily="@font/quicksand_medium"
+                android:inputType="none"
+                android:paddingLeft="30dp"
+                android:textColor="@color/NegroApp"
+                android:textSize="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        -->
+        <!--Botones de sexo-->
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/maleId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_selector"
+                android:button="@drawable/button_transparent"
+                android:drawableStart="@drawable/ic_male"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/color_selector"
+                android:fontFamily="@font/quicksand_medium"
+                android:padding="15dp"
+                android:text="@string/male"
+                android:textAlignment="center"
+                android:textColor="@color/color_selector"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/femaleId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_selector"
+                android:button="@drawable/button_transparent"
+                android:drawableStart="@drawable/ic_female"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/color_selector"
+                android:fontFamily="@font/quicksand_medium"
+                android:padding="15dp"
+                android:text="@string/female"
+                android:textAlignment="center"
+                android:textColor="@color/color_selector"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+        <!--Campo de Correo-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLayout"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/quicksand_medium"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="30dp"
+                android:paddingVertical="17dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Contraseña-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLayout"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/quicksand_medium"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:paddingLeft="30dp"
+                android:paddingVertical="17dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--Bloque Inferior-->
+    <LinearLayout
+        android:id="@+id/block_inferior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center|bottom"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <!--Boton de Register-->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_register_f"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="17dp"
+            android:enabled="false"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/register"
+            android:textSize="16sp"
+            app:cornerRadius="50dp"/>
+
+        <!--Textos de opcion
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/PlomoApp" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/quicksand_medium"
+                android:text="@string/or_signup"
+                android:textColor="@color/PlomoApp"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/PlomoApp" />
+        </LinearLayout>
+        -->
+        <!--Redes sociales
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/bt_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:backgroundTint="@color/white"
+                app:fabSize="normal"
+                app:rippleColor="@null"
+                app:srcCompat="@drawable/google" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/bt_fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:backgroundTint="@color/white"
+                app:fabSize="normal"
+                app:maxImageSize="18dp"
+                app:rippleColor="@null"
+                app:srcCompat="@drawable/fb" />
+
+        </LinearLayout>
+        -->
+        <!--Textos de confirmacion-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_semibold"
+                android:text="@string/no_register"
+                android:textColor="@color/colorTextGray" />
+
+            <TextView
+                android:id="@+id/text_redirect_l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/cc_login"
+                android:textColor="@color/pat1" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

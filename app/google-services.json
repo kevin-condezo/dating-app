@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "193075957966",
+    "project_id": "date-app-e56a0",
+    "storage_bucket": "date-app-e56a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193075957966:android:f68d0c0792d933c96d409f",
+        "android_client_info": {
+          "package_name": "com.saramambiches.datingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193075957966-2vt4st2mbs8gnao92e7u22mapc4othsf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saramambiches.datingapp",
+            "certificate_hash": "8726f60bcce7d6ed52d35cbc450c0ff5a0a2f914"
+          }
+        },
+        {
+          "client_id": "193075957966-6fdd76at0jluumk966c2faafb59jtv97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7Rmh2fQkhrwBPddBspxngQ5dqACDFhTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193075957966-6fdd76at0jluumk966c2faafb59jtv97.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

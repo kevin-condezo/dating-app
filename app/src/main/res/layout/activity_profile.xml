@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".Profile"
+    android:background="@color/colorBackground">
+    <!--Navigation bar-->
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorCabecera"
+        app:itemIconSize="24dp"
+        app:itemIconTint="@drawable/item_selector"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_nav" >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image_top"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="right|center_vertical"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="1dp"
+            android:layout_marginRight="49dp"
+            android:src="@drawable/image_profile"/>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <LinearLayout
+        android:id="@+id/block_medio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bottom_navigation"
+        android:background="@drawable/panel_curve"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp">
+
+        <com.saramambiches.datingapp.Utils.PulsatorLayout
+            android:id="@+id/pulsator"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_centerInParent="true"
+            app:pulse_color="@color/pat2"
+            app:pulse_count="3"
+            app:pulse_duration="5000"
+            app:pulse_interpolator="Decelerate"
+            app:pulse_repeat="0"
+            app:pulse_startFromScratch="false">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/circle_profile_image"
+                android:layout_width="151dp"
+                android:layout_height="161dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="59dp"
+                android:src="@mipmap/ic_launcher"
+                app:civ_border_color="@color/pat2"
+                app:civ_border_width="2dp" />
+        </com.saramambiches.datingapp.Utils.PulsatorLayout>
+
+
+        <TextView
+            android:id="@+id/txt_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Nombre, x"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/txt_universidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="University"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:visibility="gone" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/block_superior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingHorizontal="50dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginVertical="55dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/button_circle"
+                    android:backgroundTint="@color/white"
+                    android:clickable="true"
+                    app:backgroundTint="#CCf4f5f6"
+                    app:borderWidth="3dp"
+                    app:elevation="0dp"
+                    app:fabSize="normal"
+                    app:srcCompat="@drawable/ic_setting"
+                    app:tint="#c3c9d1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:gravity="center"
+                    android:text="SETTINGS"
+                    android:textColor="#c3c9d1"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="96dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="65dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="12"
+                    android:paddingHorizontal="3.8dp">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/photoAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:backgroundTint="@color/pat2"
+                        android:clickable="true"
+                        app:backgroundTint="#CCf4f5f6"
+                        app:borderWidth="5dp"
+                        app:elevation="0dp"
+                        app:fabCustomSize="90dp"
+                        app:fabSize="normal"
+                        app:maxImageSize="45dp"
+                        app:srcCompat="@drawable/ic_camera"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button_white_shadow"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/pat2" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="AÑADIR FOTOS"
+                    android:textColor="#c3c9d1"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginVertical="55dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/button_circle"
+                    android:backgroundTint="@color/white"
+                    android:clickable="true"
+                    app:backgroundTint="#CCf4f5f6"
+                    app:borderWidth="3dp"
+                    app:elevation="0dp"
+                    app:fabSize="normal"
+                    app:srcCompat="@drawable/ic_edit"
+                    app:tint="#c3c9d1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/edit"
+                    android:textColor="#c3c9d1"
+                    android:textSize="12dp" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button_white"
+        android:fontFamily="@font/quicksand_bold"
+        android:onClick="logoutUser"
+        android:text="@string/signout"
+        android:textColor="@color/colorTextGray"
+        android:textSize="16sp" />
+
+</RelativeLayout>
