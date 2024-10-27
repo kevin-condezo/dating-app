@@ -27,20 +27,39 @@ Fiu Fiu es una aplicación de citas diseñada para conectar personas de manera f
 ## Capturas de Pantalla
 A continuación se muestran algunas capturas de pantalla de la aplicación:
 
-<img src="screenshots/onboarding.png" alt="Onboarding" width="300"/>
+### Onboarding
 
-![Onboarding](screenshots/onboarding.png)
-![Onboarding](screenshots/onboarding_2.png)
-![Pantalla de Inicio](screenshots/home_1.png)
-![Pantalla de Inicio](screenshots/home_2.png)
-![Pantalla de Inicio](screenshots/home_3.png)
-![Pantalla de Registro](screenshots/register.png)
-![Pantalla de Registro_ModoOscuro](screenshots/register_dark.png)
-![Pantalla de Inicio de Sesión](screenshots/login.png)
-![Pantalla de Perfil](screenshots/profile.png)
-![Pantalla de Preferencias](screenshots/settings.png)
-![Pantalla de Chat](screenshots/chat.png)
-![Pantalla de Chat](screenshots/chat_2.png)
+<img src="screenshots/onboarding.png" alt="Onboarding" width="300"/>
+<img src="screenshots/onboarding_2.png" alt="Onboarding" width="300"/>
+
+### Pantalla de Inicio
+
+<img src="screenshots/home_1.png" alt="Pantalla de Inicio" width="300"/>
+<img src="screenshots/home_2.png" alt="Pantalla de Inicio" width="300"/>
+<img src="screenshots/home_3.png" alt="Pantalla de Inicio" width="300"/>
+
+### Pantalla de Registro
+
+<img src="screenshots/register.png" alt="Pantalla de Registro" width="300"/>
+<img src="screenshots/register_dark.png" alt="Pantalla de Registro" width="300"/>
+
+### Pantalla de Inicio de Sesión
+
+<img src="screenshots/login.png" alt="Pantalla de Inicio de Sesión" width="300"/>
+
+### Pantalla de Perfil
+
+<img src="screenshots/profile.png" alt="Pantalla de Perfil" width="300"/>
+
+### Pantalla de Preferencias
+
+<img src="screenshots/settings.png" alt="Pantalla de Preferencias" width="300"/>
+
+### Pantalla de Chat
+
+<img src="screenshots/chat.png" alt="Pantalla de Chat" width="300"/>
+<img src="screenshots/chat_2.png" alt="Pantalla de Chat" width="300"/>
+
 
 ## Instalación
 Para instalar y ejecutar la aplicación localmente, sigue estos pasos:
