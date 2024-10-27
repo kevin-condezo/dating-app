@@ -28,7 +28,7 @@ Fiu Fiu es una aplicación de citas diseñada para conectar personas de manera f
 A continuación se muestran algunas capturas de pantalla de la aplicación:
 
 <img src="screenshots/onboarding.png" alt="Onboarding" width="300"/>
-
+<img src="screenshots/onboarding.png" alt="Onboarding" width="300"/>
 ![Onboarding](screenshots/onboarding.png)
 ![Onboarding](screenshots/onboarding_2.png)
 ![Pantalla de Inicio](screenshots/home_1.png)
