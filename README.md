@@ -27,6 +27,7 @@ Fiu Fiu es una aplicación de citas diseñada para conectar personas de manera f
 ## Capturas de Pantalla
 A continuación se muestran algunas capturas de pantalla de la aplicación:
 
+<img src="screenshots/onboarding.png" alt="Onboarding" width="300"/>
 
 ![Onboarding](screenshots/onboarding.png)
 ![Onboarding](screenshots/onboarding_2.png)
@@ -46,7 +47,7 @@ Para instalar y ejecutar la aplicación localmente, sigue estos pasos:
 
 1. Clona el repositorio:
     ```sh
-    git clone https://github.com/martinxanton/fiu-fiu.git
+    git clone https://github.com/kevin-condezo/dating-app
     ```
 2. Abre el proyecto en Android Studio.
 3. Sincroniza las dependencias de Gradle.
